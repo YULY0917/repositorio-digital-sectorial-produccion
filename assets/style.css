@@ -79,6 +79,28 @@ body {
 .content h1 {
   margin-top: 0;
 }
+.menu-section{
+  margin: 18px 14px 8px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+
+.menu-link{
+  display: block;
+  padding: 12px 14px;
+  margin: 6px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.menu-link--sub{
+  margin-left: 24px;   /* sangría */
+  padding-left: 14px;
+  opacity: .95;
+}
+
 
   
   
