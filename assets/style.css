@@ -31,13 +31,13 @@ body{
 
 /* ✅ LOGO CUADRADO en TOPBAR (barra negra) */
 .brand img{
-  width:40px;
-  height:40px;
+  width:32px;
+  height:32px;
   object-fit:contain;      /* no recorta */
   display:block;
   background:rgba(255,255,255,.12);
-  border-radius:10px;
-  padding:6px;             /* “badge” bonito */
+  border-radius:8px;
+  padding:4px;             /* “badge” bonito */
 }
 
 /* Título */
