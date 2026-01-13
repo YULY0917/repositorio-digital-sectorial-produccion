@@ -1,33 +1,26 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Repositorio Digital Sectorial</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- ✅ En raíz NO va ../ -->
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-
 <body>
+
 <header class="topbar">
-  <button class="burger" type="button" aria-label="Abrir menú">☰</button>
-
   <div class="brand">
-    <!-- ✅ Logo en assets/img/Logo.png -->
-    <img class="brand-logo" src="assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
-    <div class="title">Repositorio Digital Sectorial</div>
+    <div class="brand-logo">
+      <img src="assets/img/Logo.png" alt="Logo Nodo L&P">
+    </div>
+    <div class="brand-title">Repositorio Digital Sectorial</div>
   </div>
-
-  <div class="spacer"></div>
 
   <div class="searchwrap">
-    <span class="icon">🔎</span>
-    <input id="search" type="search" placeholder="Buscar (ej: convenio, anexos, reglas...)" />
+    🔎
+    <input type="search" placeholder="Buscar (ej: convenio, anexos, reglas...)">
   </div>
 </header>
-
-<div class="overlay"></div>
 
 <div class="shell">
   <aside class="sidebar">
@@ -43,14 +36,18 @@
 
   <main class="main">
     <section class="card">
-      <h1 class="h1">Inicio</h1>
-      <p class="lead">Repositorio Digital Sectorial del Nodo Laboral y Previsional (L&amp;P).</p>
-      <p class="muted">Aquí luego podrás agregar una introducción a la wiki.</p>
+      <h1>Inicio</h1>
+      <p>
+        Repositorio Digital Sectorial del Nodo Laboral y Previsional (L&amp;P).
+      </p>
+      <p>
+        Este espacio centraliza la documentación oficial asociada al convenio,
+        anexos técnicos y reglas de uso del repositorio.
+      </p>
     </section>
   </main>
 </div>
 
-<!-- ✅ En raíz NO va ../ -->
 <script src="assets/app.js"></script>
 </body>
 </html>
