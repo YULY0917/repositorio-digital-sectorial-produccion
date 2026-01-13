@@ -144,4 +144,184 @@ body{
   background:rgba(255,255,255,.15);
 }
 
-.me
+.menu a.active{
+  background:rgba(255,255,255,.25);
+  font-weight:700;
+}
+
+/* ✅ Submenú Provisión/Consumo */
+.menu a.sub{
+  padding-left:40px;
+  font-size:.96em;
+  opacity:.95;
+  position:relative;
+}
+
+.menu a.sub::before{
+  content:"";
+  position:absolute;
+  left:20px;
+  top:10px;
+  bottom:10px;
+  width:2px;
+  background:rgba(255,255,255,.35);
+  border-radius:2px;
+}
+
+/* ================= CONTENIDO ================= */
+.main{
+  flex:1;
+  padding:24px;
+}
+
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* ================= DOCUMENTOS (BOTÓN) ================= */
+.doc-box{
+  margin-top:20px;
+  padding:18px;
+  background:#f5f7fa;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:12px;
+}
+
+.doc-link{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px 18px;
+  background:#1e73be;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:600;
+}
+
+.doc-link:hover{
+  filter:brightness(.95);
+}
+
+/* ================= TABLAS (para listar SOLO el convenio) ================= */
+.table-wrap{
+  margin-top:18px;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.table thead th{
+  text-align:left;
+  font-weight:700;
+  padding:14px 16px;
+  background:#f3f6fb;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  font-size:14px;
+}
+
+.table tbody td{
+  padding:14px 16px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  font-size:14px;
+  vertical-align:middle;
+}
+
+.table tbody tr:last-child td{
+  border-bottom:none;
+}
+
+.table .td-actions{
+  white-space:nowrap;
+  text-align:right;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(30,115,190,.12);
+  color:#1e73be;
+  font-weight:700;
+  font-size:12px;
+}
+
+/* botón en tabla */
+.btn{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:650;
+  border:1px solid rgba(0,0,0,.10);
+  background:#fff;
+  color:#0b1a33;
+  transition:filter .15s ease;
+}
+
+.btn:hover{ filter:brightness(.97); }
+
+.btn-primary{
+  background:#1e73be;
+  border-color:#1e73be;
+  color:#fff;
+}
+
+.btn-primary:hover{ filter:brightness(.95); }
+
+/* ================= OVERLAY (móvil) ================= */
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:1200;
+}
+
+/* ================= RESPONSIVE (CELULAR) ================= */
+@media (max-width: 900px){
+  :root{
+    --topbar-h: 80px;
+    --logo-h: var(--logo-h-mobile);
+  }
+
+  .burger{ display:inline-flex; }
+
+  .searchwrap input{ width:150px; }
+
+  /* menú off-canvas */
+  .sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    z-index:1300;
+    transform:translateX(-105%);
+    transition:transform .2s ease;
+  }
+
+  body.menu-open .sidebar{ transform:translateX(0); }
+  body.menu-open .overlay{ display:block; }
+
+  .main{ padding:18px; }
+
+  .table thead{ display:none; }
+  .table, .table tbody, .table tr, .table td{ display:block; width:100%; }
+  .table tbody td{
+    border-bottom:none;
+    padding:10px 14px;
+  }
+  .table tbody tr{
+    border-bottom:1px solid rgba(0,0,0,.08);
+    padding:10px 0;
+  }
+  .table .td-actions{ text-align:left; padding-top:0; }
+}
