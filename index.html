@@ -1,33 +1,39 @@
-<header class="topbar">
-  <div class="brand">
-    <img src="assets/img/Logo.png" alt="Nodo L&P" class="brand-logo">
-    <span class="brand-title">Repositorio Digital Sectorial</span>
-  </div>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Repositorio digital sectorial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
 
-  <div class="search">
-    🔎
-    <input type="text" placeholder="Buscar (ej: convenio, anexos, reglas...)">
+<header class="topbar">
+  <div class="brand">Repositorio Digital Sectorial</div>
+
+  <div class="searchbar">
+    <label for="search">Buscar</label>
+    <input id="search" placeholder="Buscar (ej: convenio, anexos, reglas...)" />
   </div>
 </header>
 
 <div class="shell">
-  <aside class="sidebar">
-    <nav>
-      <a class="active" href="index.html">Inicio</a>
-      <a href="paginas/convenio.html">Convenio de Adhesión</a>
-      <a href="paginas/anexos-tecnicos.html">Anexos Técnicos</a>
-      <a href="paginas/reglas-uso.html">Reglas de Uso</a>
-    </nav>
-  </aside>
+  <aside class="sidebar" id="sidebar"></aside>
 
   <main class="main">
     <div class="card">
-      <h1>Inicio</h1>
-      <p>Repositorio Digital Sectorial del Nodo Laboral y Previsional (L&amp;P).</p>
-      <p class="muted">
-        Este espacio centraliza la documentación oficial asociada al convenio,
-        anexos técnicos y reglas de uso del repositorio.
+      <h1 class="h1">Inicio</h1>
+      <p class="lead">
+        <!-- Déjalo vacío o escribe tu introducción después -->
       </p>
     </div>
+
+    <div style="height:14px"></div>
+
+    <div class="card" id="searchResults" style="display:none; padding:0; overflow:hidden;"></div>
   </main>
 </div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
