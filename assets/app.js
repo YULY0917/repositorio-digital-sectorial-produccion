@@ -14,12 +14,11 @@
 
   // Marcar link activo según URL
   function markActiveLinks() {
-    const path = location.pathname.split("/").pop(); // ej: reglas-uso.html
+    const path = location.pathname.split("/").pop();
     document.querySelectorAll(".menu a").forEach(a => {
       const href = (a.getAttribute("href") || "").split("/").pop();
       if (href && href === path) a.classList.add("active");
-      // caso index (cuando estás en /index.html o /)
-      if (!path && href === "index.html") a.classList.add("active");
+      if ((!path || path === "") && href === "index.html") a.classList.add("active");
     });
   }
 
