@@ -1,5 +1,4 @@
-/* ================= RESET ================= */
-
+/* ================= RESET GLOBAL ================= */
 *{
   box-sizing:border-box;
   margin:0;
@@ -21,30 +20,31 @@ body{
   display:flex;
   align-items:center;
   padding:0 20px;
-  gap:20px;
+  gap:16px;
 }
 
-/* Marca (logo + título) */
+/* ===== FORZAR LOGO EN TOPBAR (NO IMPORTA EL HTML) ===== */
+.topbar img{
+  width:26px !important;
+  height:26px !important;
+  max-width:26px !important;
+  max-height:26px !important;
+  object-fit:contain !important;
+  display:block !important;
+  background:rgba(255,255,255,.12) !important;
+  border-radius:6px !important;
+  padding:3px !important;
+}
+
+/* Contenedor marca */
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
   min-width:0;
 }
 
-/* ✅ LOGO CUADRADO, PEQUEÑO Y FIJO (barra negra) */
-.topbar .brand img,
-.brand img{
-  width:28px !important;
-  height:28px !important;
-  object-fit:contain !important;
-  display:block;
-  background:rgba(255,255,255,.12);
-  border-radius:7px;
-  padding:3px;
-}
-
-/* Título (compatibilidad: brand-title y title) */
+/* Título (funciona con .title o .brand-title) */
 .brand-title,
 .brand .title{
   font-weight:600;
@@ -53,12 +53,7 @@ body{
   text-overflow:ellipsis;
 }
 
-/* Espaciador */
-.spacer{
-  flex:1;
-}
-
-/* ================= BUSCADOR (arriba derecha) ================= */
+/* ================= BUSCADOR ================= */
 
 .searchwrap{
   margin-left:auto;
@@ -70,16 +65,12 @@ body{
   gap:8px;
 }
 
-.searchwrap .icon{
-  opacity:.9;
-}
-
 .searchwrap input{
   background:none;
   border:none;
   outline:none;
   color:#fff;
-  width:260px;
+  width:240px;
 }
 
 .searchwrap input::placeholder{
@@ -103,39 +94,14 @@ body{
   flex-direction:column;
 }
 
-/* (Si usas logo/título dentro del menú izquierdo) */
-.sidebrand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px;
-}
-
-.sidebrand-logo{
-  width:42px;
-  height:42px;
-  border-radius:10px;
-  background:rgba(255,255,255,.12);
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex:0 0 auto;
-}
-
-/* Logo “cuadrado” y bien contenido */
-.sidebrand-logo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-.sidebrand-title{
-  color:#fff;
-  font-weight:600;
-  font-size:14px;
-  line-height:1.2;
+/* ===== FORZAR LOGO EN SIDEBAR ===== */
+.sidebar img{
+  max-width:44px !important;
+  max-height:44px !important;
+  width:auto !important;
+  height:auto !important;
+  object-fit:contain !important;
+  display:block !important;
 }
 
 /* ================= MENÚ ================= */
@@ -164,7 +130,6 @@ body{
   font-weight:600;
 }
 
-/* Subniveles */
 .menu a.sub{
   padding-left:32px;
   font-size:.95em;
@@ -194,38 +159,25 @@ body{
   color:#4a5b78;
 }
 
-/* ================= OCULTAR HAMBURGUESA SIEMPRE ================= */
-/* Oculta el botón aunque venga sin class="burger" */
+/* ================= OCULTAR HAMBURGUESA (SIN EXCEPCIONES) ================= */
 
 .burger,
-.topbar button[aria-label],
-.topbar button{
+button,
+.topbar button,
+.topbar [aria-label],
+.topbar [class*="burger"],
+.topbar [aria-label*="men"],
+.topbar [aria-label*="Men"]{
   display:none !important;
 }
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 900px){
+@media (max-width:900px){
   .sidebar{
     width:220px;
   }
   .searchwrap input{
-    width:180px;
-  }
-}
-
-@media (max-width: 720px){
-  .topbar{
-    padding:0 12px;
-    gap:12px;
-  }
-  .searchwrap{
-    padding:6px 10px;
-  }
-  .searchwrap input{
-    width:140px;
-  }
-  .sidebar{
-    width:210px;
+    width:160px;
   }
 }
