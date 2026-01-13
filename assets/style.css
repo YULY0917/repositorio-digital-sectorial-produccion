@@ -6,21 +6,23 @@
   font-family:system-ui, Arial, sans-serif;
 }
 
+/* ================= VARIABLES ================= */
 :root{
   --topbar-h: 92px;
   --sidebar-w: 270px;
 
-  /* ✅ LOGO horizontal: se controla por ALTURA */
+  /* Logo horizontal */
   --logo-h: 64px;
   --logo-h-mobile: 52px;
 }
 
+/* ================= BASE ================= */
 body{
   background:#f2f5f8;
   color:#0b1a33;
 }
 
-/* ================= TOPBAR (BLANCA) ================= */
+/* ================= TOPBAR ================= */
 .topbar{
   height:var(--topbar-h);
   background:#fff;
@@ -37,9 +39,9 @@ body{
   border-bottom:1px solid rgba(0,0,0,.08);
 }
 
-/* ✅ hamburguesa: SOLO móvil */
+/* Hamburguesa (solo móvil) */
 .burger{
-  display:none;                 /* desktop oculto */
+  display:none;
   border:none;
   background:transparent;
   color:#000;
@@ -55,11 +57,11 @@ body{
   gap:14px;
 }
 
-/* ✅ FIX DEFINITIVO LOGO (HORIZONTAL, GRANDE) */
+/* LOGO DEFINITIVO (horizontal, grande) */
 .brand img{
   height:var(--logo-h);
-  width:auto;               /* ✅ clave */
-  max-width:260px;          /* evita que se coma todo */
+  width:auto;
+  max-width:260px;
   object-fit:contain;
   display:block;
 
@@ -68,15 +70,16 @@ body{
   border-radius:0;
 }
 
+/* Título */
 .brand-title,
 .title{
   font-weight:750;
-  white-space:nowrap;
   font-size:18px;
+  white-space:nowrap;
   color:#000;
 }
 
-/* empuja el buscador a la derecha */
+/* Empujador */
 .spacer{ flex:1; }
 
 /* ================= BUSCADOR ================= */
@@ -91,7 +94,9 @@ body{
   border:1px solid rgba(0,0,0,.10);
 }
 
-.searchwrap .icon{ line-height:1; }
+.searchwrap .icon{
+  line-height:1;
+}
 
 .searchwrap input{
   background:none;
@@ -111,7 +116,7 @@ body{
   min-height:calc(100vh - var(--topbar-h));
 }
 
-/* ================= SIDEBAR (IZQUIERDA, FIJA) ================= */
+/* ================= SIDEBAR ================= */
 .sidebar{
   width:var(--sidebar-w);
   background:#1e73be;
@@ -149,7 +154,7 @@ body{
   font-weight:700;
 }
 
-/* ✅ Submenú Provisión/Consumo */
+/* Submenú */
 .menu a.sub{
   padding-left:40px;
   font-size:.96em;
@@ -181,31 +186,15 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-/* ================= DOCUMENTOS (BOTÓN) ================= */
-.doc-box{
-  margin-top:20px;
-  padding:18px;
-  background:#f5f7fa;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:12px;
+/* ================= TEXTO INTRODUCTORIO ================= */
+.intro-text{
+  margin-top:14px;
+  margin-bottom:26px;
+  font-size:15px;
+  line-height:1.6;
 }
 
-.doc-link{
-  display:inline-block;
-  margin-top:10px;
-  padding:12px 18px;
-  background:#1e73be;
-  color:#fff;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:600;
-}
-
-.doc-link:hover{
-  filter:brightness(.95);
-}
-
-/* ================= TABLAS (para listar SOLO el convenio) ================= */
+/* ================= TABLAS ================= */
 .table-wrap{
   margin-top:18px;
   border:1px solid rgba(0,0,0,.10);
@@ -239,22 +228,12 @@ body{
   border-bottom:none;
 }
 
-.table .td-actions{
-  white-space:nowrap;
+.td-actions{
   text-align:right;
+  white-space:nowrap;
 }
 
-.badge{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:999px;
-  background:rgba(30,115,190,.12);
-  color:#1e73be;
-  font-weight:700;
-  font-size:12px;
-}
-
-/* botón en tabla */
+/* ================= BOTONES ================= */
 .btn{
   display:inline-block;
   padding:10px 14px;
@@ -267,7 +246,9 @@ body{
   transition:filter .15s ease;
 }
 
-.btn:hover{ filter:brightness(.97); }
+.btn:hover{
+  filter:brightness(.97);
+}
 
 .btn-primary{
   background:#1e73be;
@@ -275,9 +256,11 @@ body{
   color:#fff;
 }
 
-.btn-primary:hover{ filter:brightness(.95); }
+.btn-primary:hover{
+  filter:brightness(.95);
+}
 
-/* ================= OVERLAY (móvil) ================= */
+/* ================= OVERLAY (MÓVIL) ================= */
 .overlay{
   display:none;
   position:fixed;
@@ -286,18 +269,22 @@ body{
   z-index:1200;
 }
 
-/* ================= RESPONSIVE (CELULAR) ================= */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 900px){
   :root{
     --topbar-h: 80px;
     --logo-h: var(--logo-h-mobile);
   }
 
-  .burger{ display:inline-flex; }
+  .burger{
+    display:inline-flex;
+  }
 
-  .searchwrap input{ width:150px; }
+  .searchwrap input{
+    width:150px;
+  }
 
-  /* menú off-canvas */
+  /* Sidebar off-canvas */
   .sidebar{
     position:fixed;
     top:0;
@@ -308,20 +295,43 @@ body{
     transition:transform .2s ease;
   }
 
-  body.menu-open .sidebar{ transform:translateX(0); }
-  body.menu-open .overlay{ display:block; }
-
-  .main{ padding:18px; }
-
-  .table thead{ display:none; }
-  .table, .table tbody, .table tr, .table td{ display:block; width:100%; }
-  .table tbody td{
-    border-bottom:none;
-    padding:10px 14px;
+  body.menu-open .sidebar{
+    transform:translateX(0);
   }
+
+  body.menu-open .overlay{
+    display:block;
+  }
+
+  .main{
+    padding:18px;
+  }
+
+  /* Tabla responsive */
+  .table thead{
+    display:none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td{
+    display:block;
+    width:100%;
+  }
+
   .table tbody tr{
     border-bottom:1px solid rgba(0,0,0,.08);
     padding:10px 0;
   }
-  .table .td-actions{ text-align:left; padding-top:0; }
+
+  .table tbody td{
+    border-bottom:none;
+    padding:10px 14px;
+  }
+
+  .td-actions{
+    text-align:left;
+    padding-top:0;
+  }
 }
