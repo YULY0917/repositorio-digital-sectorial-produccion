@@ -1,4 +1,5 @@
 /* ================= RESET ================= */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -20,39 +21,34 @@ body{
   display:flex;
   align-items:center;
   padding:0 20px;
-  gap:16px; /* un poco más compacto */
+  gap:20px;
 }
 
-/* Contenedor marca (logo + título) */
+/* Marca (logo + título) */
 .brand{
   display:flex;
   align-items:center;
-  gap:10px;
-  min-width: 0; /* evita desbordes */
+  gap:12px;
 }
 
-/* ✅ LOGO CUADRADO en TOPBAR (más pequeño y alineado) */
+/* LOGO CUADRADO, PEQUEÑO Y FIJO */
 .brand img{
-  width:28px;            /* 👈 más pequeño */
-  height:28px;           /* 👈 más pequeño */
-  object-fit:contain;    /* no recorta */
-  display:block;
+  width:28px;
+  height:28px;
+  object-fit:contain;
   background:rgba(255,255,255,.12);
   border-radius:7px;
-  padding:3px;           /* badge más delgado */
-  flex:0 0 auto;
+  padding:3px;
+  display:block;
 }
 
 /* Título */
 .brand-title{
   font-weight:600;
   white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  max-width: 360px; /* para que no empuje el buscador */
 }
 
-/* ================= SEARCH ================= */
+/* ================= BUSCADOR ================= */
 
 .searchwrap{
   margin-left:auto;
@@ -62,7 +58,6 @@ body{
   display:flex;
   align-items:center;
   gap:8px;
-  min-width: 260px;
 }
 
 .searchwrap input{
@@ -71,7 +66,6 @@ body{
   outline:none;
   color:#fff;
   width:260px;
-  font-size:14px;
 }
 
 .searchwrap input::placeholder{
@@ -85,10 +79,49 @@ body{
   min-height:calc(100vh - 64px);
 }
 
+/* ================= SIDEBAR ================= */
+
 .sidebar{
   width:260px;
   background:#1e73be;
   padding:20px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ===== Logo dentro del menú izquierdo ===== */
+
+.sidebrand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.sidebrand-logo{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:rgba(255,255,255,.12);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+}
+
+.sidebrand-logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.sidebrand-title{
+  color:#fff;
+  font-weight:600;
+  font-size:14px;
+  line-height:1.2;
 }
 
 /* ================= MENÚ ================= */
@@ -104,7 +137,7 @@ body{
   text-decoration:none;
   padding:10px 14px;
   border-radius:8px;
-  line-height:1.2;
+  transition:background .15s ease;
 }
 
 .menu a:hover{
@@ -116,13 +149,14 @@ body{
   font-weight:600;
 }
 
+/* Subniveles */
 .menu a.sub{
   padding-left:32px;
   font-size:.95em;
-  opacity:.95;
+  opacity:.9;
 }
 
-/* ================= CONTENT ================= */
+/* ================= CONTENIDO ================= */
 
 .main{
   flex:1;
@@ -136,45 +170,36 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-/* ================= RESPONSIVE (CELULAR) ================= */
-@media (max-width: 920px){
-  .topbar{
-    padding:0 14px;
-    gap:12px;
-  }
+.h1{
+  font-size:28px;
+  margin-bottom:8px;
+}
 
-  .brand-title{
-    max-width: 180px;
-  }
+.lead{
+  color:#4a5b78;
+}
 
-  .searchwrap{
-    min-width: 180px;
-    padding:6px 10px;
+/* ================= UTILIDADES ================= */
+
+.spacer{
+  flex:1;
+}
+
+/* ================= OCULTAR HAMBURGUESA ================= */
+/* (evita que aparezca en algunas páginas) */
+
+.burger{
+  display:none !important;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px){
+  .sidebar{
+    width:220px;
   }
 
   .searchwrap input{
-    width:160px;
-  }
-
-  .sidebar{
-    width:240px;
-  }
-
-  .main{
-    padding:16px;
-  }
-
-  .card{
-    padding:18px;
-  }
-}
-
-@media (max-width: 640px){
-  .searchwrap{
-    display:none; /* en móvil muy pequeño, ocultamos buscador para que no se rompa */
-  }
-
-  .sidebar{
-    width:220px;
+    width:180px;
   }
 }
