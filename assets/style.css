@@ -29,26 +29,36 @@ body{
   display:flex;
   align-items:center;
   gap:12px;
+  min-width:0;
 }
 
-/* LOGO CUADRADO, PEQUEÑO Y FIJO */
+/* ✅ LOGO CUADRADO, PEQUEÑO Y FIJO (barra negra) */
+.topbar .brand img,
 .brand img{
-  width:28px;
-  height:28px;
-  object-fit:contain;
+  width:28px !important;
+  height:28px !important;
+  object-fit:contain !important;
+  display:block;
   background:rgba(255,255,255,.12);
   border-radius:7px;
   padding:3px;
-  display:block;
 }
 
-/* Título */
-.brand-title{
+/* Título (compatibilidad: brand-title y title) */
+.brand-title,
+.brand .title{
   font-weight:600;
   white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-/* ================= BUSCADOR ================= */
+/* Espaciador */
+.spacer{
+  flex:1;
+}
+
+/* ================= BUSCADOR (arriba derecha) ================= */
 
 .searchwrap{
   margin-left:auto;
@@ -58,6 +68,10 @@ body{
   display:flex;
   align-items:center;
   gap:8px;
+}
+
+.searchwrap .icon{
+  opacity:.9;
 }
 
 .searchwrap input{
@@ -89,18 +103,17 @@ body{
   flex-direction:column;
 }
 
-/* ===== Logo dentro del menú izquierdo ===== */
-
+/* (Si usas logo/título dentro del menú izquierdo) */
 .sidebrand{
   display:flex;
   align-items:center;
   gap:12px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .sidebrand-logo{
-  width:44px;
-  height:44px;
+  width:42px;
+  height:42px;
   border-radius:10px;
   background:rgba(255,255,255,.12);
   overflow:hidden;
@@ -110,6 +123,7 @@ body{
   flex:0 0 auto;
 }
 
+/* Logo “cuadrado” y bien contenido */
 .sidebrand-logo img{
   width:100%;
   height:100%;
@@ -138,6 +152,7 @@ body{
   padding:10px 14px;
   border-radius:8px;
   transition:background .15s ease;
+  display:block;
 }
 
 .menu a:hover{
@@ -153,7 +168,7 @@ body{
 .menu a.sub{
   padding-left:32px;
   font-size:.95em;
-  opacity:.9;
+  opacity:.95;
 }
 
 /* ================= CONTENIDO ================= */
@@ -179,16 +194,12 @@ body{
   color:#4a5b78;
 }
 
-/* ================= UTILIDADES ================= */
+/* ================= OCULTAR HAMBURGUESA SIEMPRE ================= */
+/* Oculta el botón aunque venga sin class="burger" */
 
-.spacer{
-  flex:1;
-}
-
-/* ================= OCULTAR HAMBURGUESA ================= */
-/* (evita que aparezca en algunas páginas) */
-
-.burger{
+.burger,
+.topbar button[aria-label],
+.topbar button{
   display:none !important;
 }
 
@@ -198,8 +209,23 @@ body{
   .sidebar{
     width:220px;
   }
-
   .searchwrap input{
     width:180px;
+  }
+}
+
+@media (max-width: 720px){
+  .topbar{
+    padding:0 12px;
+    gap:12px;
+  }
+  .searchwrap{
+    padding:6px 10px;
+  }
+  .searchwrap input{
+    width:140px;
+  }
+  .sidebar{
+    width:210px;
   }
 }
