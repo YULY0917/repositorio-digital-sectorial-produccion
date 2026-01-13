@@ -186,9 +186,14 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-/* ================= TEXTO INTRODUCTORIO ================= */
+/* ✅ ESPACIO ENTRE TÍTULO Y TEXTO */
+.card h1{
+  margin-bottom:18px;
+}
+
+/* Texto introductorio */
 .intro-text{
-  margin-top:14px;
+  margin-top:0;
   margin-bottom:26px;
   font-size:15px;
   line-height:1.6;
