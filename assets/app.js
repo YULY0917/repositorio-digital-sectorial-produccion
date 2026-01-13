@@ -1,58 +1,77 @@
+/* assets/app.js
+   - Construye el menú izquierdo (sidebar) con rutas absolutas (evita 404).
+   - Marca como "active" el link de la página actual.
+   - (Opcional) Buscador: filtra links del menú si existe #search en la topbar.
+*/
+
 (function () {
-  const sidebar = document.querySelector(".sidebar");
-  const overlay = document.querySelector(".overlay");
-  const burger = document.querySelector(".burger");
-  const search = document.querySelector("#search");
+  // Cambia esto SOLO si tu repo tiene otro nombre
+  const BASE = "/repositorio-digital-sectorial";
 
-  // ===== 1) Menú activo =====
-  const current = location.pathname.replace(/\/+$/, "");
-  const links = Array.from(document.querySelectorAll(".menu a"));
+  const MENU = [
+    { type: "item", label: "Inicio", href: `${BASE}/index.html` },
 
-  links.forEach(a => {
-    const href = a.getAttribute("href");
-    if (!href) return;
+    { type: "item", label: "Convenio de Adhesión", href: `${BASE}/paginas/convenio.html` },
 
-    // Normaliza para comparar rutas
-    const url = new URL(href, location.href);
-    const path = url.pathname.replace(/\/+$/, "");
+    { type: "item", label: "Anexos Técnicos", href: `${BASE}/paginas/anexos-tecnicos.html` },
+    { type: "sub",  label: "Anexos de provisión de datos", href: `${BASE}/paginas/anexos-provision-datos.html` },
+    { type: "sub",  label: "Anexos de consumo de datos",   href: `${BASE}/paginas/anexos-consumo-datos.html` },
 
-    if (path === current) a.classList.add("active");
-  });
+    { type: "item", label: "Reglas de Uso", href: `${BASE}/paginas/reglas-uso.html` },
+  ];
 
-  // ===== 2) Buscador (filtra links del menú) =====
-  function normalize(s){
-    return (s || "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g,"");
+  function buildMenuHTML() {
+    return `
+      <div class="side-head">
+        <div class="side-logo">
+          <img src="${BASE}/assets/img/Logo.png" alt="Nodo Laboral y Previsional">
+        </div>
+      </div>
+
+      <nav class="nav">
+        ${MENU.map(m => {
+          const cls = m.type === "sub" ? "nav-sub" : "nav-item";
+          return `<a class="${cls}" href="${m.href}">${m.label}</a>`;
+        }).join("")}
+      </nav>
+    `;
   }
 
-  if (search) {
-    search.addEventListener("input", () => {
-      const q = normalize(search.value.trim());
-      links.forEach(a => {
-        const text = normalize(a.textContent);
-        a.style.display = (!q || text.includes(q)) ? "" : "none";
+  function markActiveLinks() {
+    const current = window.location.pathname;
+    document.querySelectorAll(".nav a").forEach(a => {
+      // active exact match o match con /index.html cuando estás en /
+      const href = a.getAttribute("href");
+      if (!href) return;
+
+      const same =
+        current === href ||
+        (current.endsWith("/") && href.endsWith("/index.html")) ||
+        (current.endsWith("/index.html") && href.endsWith("/index.html"));
+
+      if (same) a.classList.add("active");
+    });
+  }
+
+  function setupSearch() {
+    const input = document.getElementById("search");
+    if (!input) return;
+
+    input.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      document.querySelectorAll(".nav a").forEach(a => {
+        const text = a.textContent.toLowerCase();
+        a.style.display = text.includes(q) ? "" : "none";
       });
     });
   }
 
-  // ===== 3) Menú móvil =====
-  function openMenu() {
-    document.body.classList.add("menu-open");
+  // --- Render ---
+  const menuEl = document.getElementById("menu");
+  if (menuEl) {
+    menuEl.innerHTML = buildMenuHTML();
+    markActiveLinks();
   }
-  function closeMenu() {
-    document.body.classList.remove("menu-open");
-  }
 
-  if (burger) burger.addEventListener("click", () => {
-    document.body.classList.contains("menu-open") ? closeMenu() : openMenu();
-  });
-
-  if (overlay) overlay.addEventListener("click", closeMenu);
-
-  // Cierra menú al hacer click en un link (móvil)
-  links.forEach(a => a.addEventListener("click", () => {
-    if (window.matchMedia("(max-width: 980px)").matches) closeMenu();
-  }));
+  setupSearch();
 })();
