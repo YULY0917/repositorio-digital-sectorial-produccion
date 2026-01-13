@@ -4,25 +4,30 @@
   <meta charset="utf-8">
   <title>Repositorio Digital Sectorial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css?v=2">
+  <!-- ✅ EN RAÍZ: NO VA ../ -->
+  <link rel="stylesheet" href="assets/style.css?v=3">
 </head>
 <body>
 
 <header class="topbar">
-    <button class="burger" aria-label="Abrir menú" type="button">☰</button>
+  <!-- ✅ Hamburguesa: SOLO se verá en celular por CSS -->
+  <button class="burger" type="button" aria-label="Abrir menú">☰</button>
+
   <div class="brand">
-    <div class="brand-logo">
-      <img src="assets/img/Logo.png" alt="Logo Nodo L&P">
-    </div>
+    <img src="assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
     <div class="brand-title">Repositorio Digital Sectorial</div>
   </div>
 
+  <div class="spacer"></div>
+
   <div class="searchwrap">
-    🔎
-    <input id="search" type="search" placeholder="Buscar (ej: convenio, anexos, reglas...)">
+    <span class="icon">🔎</span>
+    <!-- ✅ el JS usa #search -->
+    <input id="search" type="search" placeholder="Buscar (ej: convenio, anexos, reglas...)" />
   </div>
 </header>
 
+<!-- ✅ overlay para cerrar en celular -->
 <div class="overlay" aria-hidden="true"></div>
 
 <div class="shell">
@@ -40,17 +45,12 @@
   <main class="main">
     <section class="card">
       <h1>Inicio</h1>
-      <p>
-        Repositorio Digital Sectorial del Nodo Laboral y Previsional (L&amp;P).
-      </p>
-      <p>
-        Este espacio centraliza la documentación oficial asociada al convenio,
-        anexos técnicos y reglas de uso del repositorio.
-      </p>
+      <p>Repositorio Digital Sectorial del Nodo Laboral y Previsional (L&amp;P).</p>
+      <p>Este espacio centraliza la documentación oficial asociada al convenio, anexos técnicos y reglas de uso del repositorio.</p>
     </section>
   </main>
 </div>
 
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=3"></script>
 </body>
 </html>
