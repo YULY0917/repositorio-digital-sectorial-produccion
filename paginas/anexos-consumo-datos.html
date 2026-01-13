@@ -2,25 +2,35 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Anexos de consumo de datos</title>
+  <title>Anexos de Consumo de Datos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 
+<header class="topbar">
+  <div class="brand">Repositorio Digital Sectorial</div>
+
+  <div class="searchbar">
+    <label for="search">Buscar</label>
+    <input id="search" placeholder="Buscar (ej: convenio, anexos, reglas...)" />
+  </div>
+</header>
+
 <div class="shell">
-  <aside class="sidebar">
-    <a class="menu-link" href="../index.html">Inicio</a>
-    <a class="menu-link" href="convenio.html">Convenio de Adhesión</a>
-    <a class="menu-link" href="anexos-tecnicos.html">Anexos Técnicos</a>
-    <a class="menu-link sub" href="anexos-provision-datos.html">Anexos de provisión de datos</a>
-    <a class="menu-link sub active" href="anexos-consumo-datos.html">Anexos de consumo de datos</a>
-    <a class="menu-link" href="reglas-uso.html">Reglas de Uso</a>
-  </aside>
+  <aside class="sidebar" id="sidebar"></aside>
 
   <main class="main">
-    <h1>Anexos de consumo de datos</h1>
+    <div class="card">
+      <h1 class="h1">Anexos de Consumo de Datos</h1>
+      <p class="lead">Aquí irán los documentos/anexos relacionados a consumo de datos.</p>
+    </div>
+
+    <div style="height:14px"></div>
+    <div class="card" id="searchResults" style="display:none; padding:0; overflow:hidden;"></div>
   </main>
 </div>
 
+<script src="../assets/app.js"></script>
 </body>
 </html>
