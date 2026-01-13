@@ -3,7 +3,7 @@
   const overlay = document.querySelector(".overlay");
   const search = document.getElementById("search");
 
-  function openMenu() { document.body.classList.add("menu-open"); }
+  function openMenu(){ document.body.classList.add("menu-open"); }
   function closeMenu(){ document.body.classList.remove("menu-open"); }
 
   if (burger) {
@@ -14,15 +14,15 @@
 
   if (overlay) overlay.addEventListener("click", closeMenu);
 
-  // Cerrar menú al hacer click en un link (solo móvil)
+  // cerrar menú al tocar un link (solo móvil)
   document.addEventListener("click", (e) => {
-    const a = e.target.closest(".menu a");
-    if (!a) return;
+    const link = e.target.closest(".menu a");
+    if (!link) return;
     if (window.matchMedia("(max-width: 900px)").matches) closeMenu();
   });
 
-  // Marcar activo según URL
-  (function markActiveLinks() {
+  // marcar activo según URL
+  (function markActive(){
     const path = location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll(".menu a").forEach(a => {
       const href = (a.getAttribute("href") || "").split("/").pop();
@@ -30,7 +30,7 @@
     });
   })();
 
-  // Buscador filtra links
+  // buscador filtra links
   (function setupSearch(){
     if (!search) return;
     const links = Array.from(document.querySelectorAll(".menu a"));
