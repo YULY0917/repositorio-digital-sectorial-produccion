@@ -9,25 +9,40 @@
 <body>
 
 <header class="topbar">
-  <div class="brand">Repositorio Digital Sectorial</div>
+  <button class="burger" type="button" aria-label="Abrir menú">☰</button>
 
-  <div class="searchbar">
-    <label for="search">Buscar</label>
-    <input id="search" placeholder="Buscar (ej: convenio, anexos, reglas...)" />
+  <div class="brand">
+    <img src="../assets/Logo.png" alt="Logo Nodo Laboral y Previsional">
+    <div class="title">Repositorio Digital Sectorial</div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="searchwrap">
+    <span class="icon">🔎</span>
+    <input id="search" type="search" placeholder="Buscar (ej: convenio, anexos, reglas...)" />
   </div>
 </header>
 
+<div class="overlay"></div>
+
 <div class="shell">
-  <aside class="sidebar" id="sidebar"></aside>
+  <aside class="sidebar">
+    <nav class="menu">
+      <a href="../index.html">Inicio</a>
+      <a href="convenio.html">Convenio de Adhesión</a>
+      <a href="anexos-tecnicos.html">Anexos Técnicos</a>
+      <a class="sub" href="anexos-provision.html">Anexos de Provisión de Datos</a>
+      <a class="sub" href="anexos-consumo.html">Anexos de Consumo de Datos</a>
+      <a href="reglas-uso.html">Reglas de Uso</a>
+    </nav>
+  </aside>
 
   <main class="main">
-    <div class="card">
+    <section class="card">
       <h1 class="h1">Reglas de Uso</h1>
-      <p class="lead">Reglas generales para el uso del repositorio.</p>
-    </div>
-
-    <div style="height:14px"></div>
-    <div class="card" id="searchResults" style="display:none; padding:0; overflow:hidden;"></div>
+      <p class="lead">Reglas generales y consideraciones de uso del repositorio.</p>
+    </section>
   </main>
 </div>
 
