@@ -1,3 +1,4 @@
+/* ================= RESET ================= */
 *{
   box-sizing:border-box;
   margin:0;
@@ -19,31 +20,36 @@ body{
   display:flex;
   align-items:center;
   padding:0 20px;
-  gap:20px;
+  gap:16px; /* un poco más compacto */
 }
 
 /* Contenedor marca (logo + título) */
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
+  min-width: 0; /* evita desbordes */
 }
 
-/* ✅ LOGO CUADRADO en TOPBAR (barra negra) */
+/* ✅ LOGO CUADRADO en TOPBAR (más pequeño y alineado) */
 .brand img{
-  width:32px;
-  height:32px;
-  object-fit:contain;      /* no recorta */
+  width:28px;            /* 👈 más pequeño */
+  height:28px;           /* 👈 más pequeño */
+  object-fit:contain;    /* no recorta */
   display:block;
   background:rgba(255,255,255,.12);
-  border-radius:8px;
-  padding:4px;             /* “badge” bonito */
+  border-radius:7px;
+  padding:3px;           /* badge más delgado */
+  flex:0 0 auto;
 }
 
 /* Título */
 .brand-title{
   font-weight:600;
   white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width: 360px; /* para que no empuje el buscador */
 }
 
 /* ================= SEARCH ================= */
@@ -56,6 +62,7 @@ body{
   display:flex;
   align-items:center;
   gap:8px;
+  min-width: 260px;
 }
 
 .searchwrap input{
@@ -64,6 +71,11 @@ body{
   outline:none;
   color:#fff;
   width:260px;
+  font-size:14px;
+}
+
+.searchwrap input::placeholder{
+  color:rgba(255,255,255,.75);
 }
 
 /* ================= LAYOUT ================= */
@@ -92,6 +104,7 @@ body{
   text-decoration:none;
   padding:10px 14px;
   border-radius:8px;
+  line-height:1.2;
 }
 
 .menu a:hover{
@@ -106,7 +119,7 @@ body{
 .menu a.sub{
   padding-left:32px;
   font-size:.95em;
-  opacity:.9;
+  opacity:.95;
 }
 
 /* ================= CONTENT ================= */
@@ -121,4 +134,47 @@ body{
   border-radius:14px;
   padding:28px;
   box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* ================= RESPONSIVE (CELULAR) ================= */
+@media (max-width: 920px){
+  .topbar{
+    padding:0 14px;
+    gap:12px;
+  }
+
+  .brand-title{
+    max-width: 180px;
+  }
+
+  .searchwrap{
+    min-width: 180px;
+    padding:6px 10px;
+  }
+
+  .searchwrap input{
+    width:160px;
+  }
+
+  .sidebar{
+    width:240px;
+  }
+
+  .main{
+    padding:16px;
+  }
+
+  .card{
+    padding:18px;
+  }
+}
+
+@media (max-width: 640px){
+  .searchwrap{
+    display:none; /* en móvil muy pequeño, ocultamos buscador para que no se rompa */
+  }
+
+  .sidebar{
+    width:220px;
+  }
 }
