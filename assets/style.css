@@ -21,12 +21,24 @@ body{
   display:flex;
   align-items:center;
   padding:0 20px;
-  gap:16px;
+  gap:20px;
+
+  /* ✅ fija la barra superior */
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-/* 🔒 Ocultar hamburguesa SIEMPRE (desktop y móvil) */
+/* Botón hamburguesa (solo móvil) */
 .burger{
-  display:none !important;
+  border:none;
+  background:transparent;
+  color:#fff;
+  font-size:26px;
+  line-height:1;
+  cursor:pointer;
+
+  display:none; /* desktop: oculto */
 }
 
 /* Marca (logo + título) */
@@ -34,36 +46,26 @@ body{
   display:flex;
   align-items:center;
   gap:12px;
-  min-width: 0;
 }
 
-/* Contenedor cuadrado del logo en la barra negra */
-.brand-logo{
-  width:40px;              /* <- tamaño del “cuadro” */
-  height:40px;
-  border-radius:10px;
-  background:rgba(255,255,255,.10);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;          /* <- asegura recorte al cuadrado del contenedor */
-  flex:0 0 auto;
-}
-
-/* El PNG se ajusta dentro del cuadrado sin deformarse */
+/* ✅ Soporta ambas estructuras:
+   - <img> directo dentro de .brand
+   - <div class="brand-logo"><img ...></div>
+*/
+.brand img,
 .brand-logo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;         /* <- llena el cuadrado (queda “cuadrado” visualmente) */
+  width:40px;
+  height:40px;
+  object-fit:contain;
   display:block;
+  background:rgba(255,255,255,.12);
+  border-radius:8px;
+  padding:4px;
 }
 
-/* Título */
 .brand-title{
   font-weight:600;
   white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
 }
 
 /* ================= BUSCADOR ================= */
@@ -105,6 +107,12 @@ body{
   padding:20px;
   display:flex;
   flex-direction:column;
+
+  /* ✅ fijo a la izquierda al hacer scroll */
+  position:sticky;
+  top:64px; /* altura topbar */
+  height:calc(100vh - 64px);
+  overflow:auto;
 }
 
 /* ================= MENÚ ================= */
@@ -132,11 +140,23 @@ body{
   font-weight:600;
 }
 
-/* Subniveles */
+/* ✅ Subniveles: Provisión / Consumo */
 .menu a.sub{
-  padding-left:32px;
+  padding-left:34px;
   font-size:.95em;
   opacity:.95;
+  position:relative;
+}
+
+.menu a.sub::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:10px;
+  bottom:10px;
+  width:2px;
+  background:rgba(255,255,255,.35);
+  border-radius:2px;
 }
 
 /* ================= CONTENIDO ================= */
@@ -153,28 +173,49 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.h1{
-  font-size:28px;
-  margin-bottom:8px;
-}
+/* ================= OVERLAY (móvil) ================= */
 
-.lead{
-  color:#4a5b78;
-}
-
-/* ================= UTILIDADES ================= */
-
-.spacer{
-  flex:1;
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:1200;
 }
 
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 900px){
+
+  /* hamburguesa solo en celular */
+  .burger{ display:inline-flex; }
+
+  /* sidebar tipo off-canvas */
   .sidebar{
-    width:220px;
+    position:fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    z-index:1300;
+    transform:translateX(-105%);
+    transition:transform .2s ease;
+    width:260px;
   }
+
+  body.menu-open .sidebar{
+    transform:translateX(0);
+  }
+
+  body.menu-open .overlay{
+    display:block;
+  }
+
+  /* el contenido ocupa todo el ancho */
+  .main{
+    padding:18px;
+  }
+
   .searchwrap input{
-    width:180px;
+    width:160px;
   }
 }
