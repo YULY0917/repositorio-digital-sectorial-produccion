@@ -28,22 +28,24 @@ body{
   gap:12px;
 }
 
-.brand-logo{
-  width:56px;
-  height:56px;
-  background:rgba(255,255,255,.10);
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden; /* evita que se salga */
+/* ====== LOGO MENÚ IZQUIERDO (sidebrand) ====== */
+.sidebrand-logo{
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,.10);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex: 0 0 auto;
 }
 
-.brand-logo img{
-  width:90%;
-  height:90%;
-  object-fit:contain; /* muestra el logo completo */
-  display:block;
+.sidebrand-logo img{
+  width: 90%;
+  height: 90%;
+  object-fit: contain; /* NO recorta */
+  display: block;
 }
 
 .brand-title{
