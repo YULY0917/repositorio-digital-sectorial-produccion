@@ -9,27 +9,28 @@
 <body>
 
 <header class="topbar">
-  <div class="brand">Repositorio digital sectorial</div>
+  <div class="brand">Repositorio Digital Sectorial</div>
+
+  <div class="searchbar">
+    <label for="search">Buscar</label>
+    <input id="search" placeholder="Buscar (ej: convenio, anexos, reglas...)" />
+  </div>
 </header>
 
 <div class="shell">
-  <aside class="sidebar">
-    <a class="menu-link" href="../index.html">Inicio</a>
-
-    <a class="menu-link" href="convenio.html">Convenio de Adhesión</a>
-
-    <a class="menu-link" href="anexos-tecnicos.html">Anexos Técnicos</a>
-    <a class="menu-link sub" href="anexos-provision-datos.html">Anexos de provisión de datos</a>
-    <a class="menu-link sub" href="anexos-consumo-datos.html">Anexos de consumo de datos</a>
-
-    <a class="menu-link active" href="reglas-uso.html">Reglas de Uso</a>
-  </aside>
+  <aside class="sidebar" id="sidebar"></aside>
 
   <main class="main">
-    <h1>Reglas de Uso</h1>
-    <p>Contenido de reglas de uso.</p>
+    <div class="card">
+      <h1 class="h1">Reglas de Uso</h1>
+      <p class="lead">Reglas generales para el uso del repositorio.</p>
+    </div>
+
+    <div style="height:14px"></div>
+    <div class="card" id="searchResults" style="display:none; padding:0; overflow:hidden;"></div>
   </main>
 </div>
 
+<script src="../assets/app.js"></script>
 </body>
 </html>
