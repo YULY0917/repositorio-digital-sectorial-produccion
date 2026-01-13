@@ -1,5 +1,4 @@
 /* ================= RESET ================= */
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -8,9 +7,9 @@
 }
 
 :root{
-  --topbar-h: 82px;   /* ✅ más alto para logo grande */
-  --logo: 62px;       /* ✅ logo grande */
+  --topbar-h: 92px;      /* ✅ altura suficiente para logo grande */
   --sidebar-w: 270px;
+  --logo-size: 82px;     /* ✅ logo grande */
 }
 
 body{
@@ -19,11 +18,10 @@ body{
 }
 
 /* ================= TOPBAR ================= */
-
 .topbar{
   height:var(--topbar-h);
-  background:linear-gradient(180deg,#0b1a33,#071224);
-  color:#fff;
+  background:#fff;               /* ✅ blanco */
+  color:#000;                    /* ✅ texto negro */
   display:flex;
   align-items:center;
   padding:0 18px;
@@ -32,85 +30,90 @@ body{
   position:sticky;
   top:0;
   z-index:1000;
+
+  border-bottom:1px solid rgba(0,0,0,.08);
 }
 
-/* Hamburguesa: oculto en desktop, visible en celular */
+/* hamburguesa (solo móvil) */
 .burger{
-  display:none;
+  display:none;                  /* desktop oculto */
   border:none;
   background:transparent;
-  color:#fff;
+  color:#000;                    /* ✅ negro */
   font-size:30px;
   line-height:1;
   cursor:pointer;
 }
 
-/* Marca (logo + título) */
+/* Marca */
 .brand{
   display:flex;
   align-items:center;
   gap:14px;
 }
 
-/* ✅ Logo grande y consistente */
+/* ✅ LOGO TOPBAR (FIX DEFINITIVO) */
 .brand img{
-  width:var(--logo);
-  height:var(--logo);
+  width:var(--logo-size);
+  height:var(--logo-size);
   object-fit:contain;
   display:block;
-  background:rgba(255,255,255,.10);
-  border-radius:12px;
-  padding:6px;
+
+  /* ✅ sin padding (el padding lo achica mucho) */
+  padding:0 !important;
+
+  /* ✅ fondo suave opcional */
+  background:rgba(0,0,0,.05);
+  border-radius:14px;
+
+  /* ✅ si tu PNG trae mucho margen blanco, esto lo aprovecha mejor */
+  transform:scale(1.22);
+  transform-origin:center;
 }
 
-/* Título (soporta brand-title y title si existe en otras páginas) */
 .brand-title,
 .title{
-  font-weight:650;
+  font-weight:750;
   white-space:nowrap;
   font-size:18px;
+  color:#000;                    /* ✅ negro */
 }
 
-/* empuja el buscador a la derecha cuando existe */
 .spacer{ flex:1; }
 
 /* ================= BUSCADOR ================= */
-
 .searchwrap{
   margin-left:auto;
-  background:rgba(255,255,255,.12);
-  padding:8px 14px;
+  background:rgba(0,0,0,.06);   /* ✅ gris claro en fondo blanco */
+  padding:10px 14px;
   border-radius:999px;
   display:flex;
   align-items:center;
   gap:10px;
+  border:1px solid rgba(0,0,0,.10);
 }
 
-.searchwrap .icon{
-  line-height:1;
-}
+.searchwrap .icon{ line-height:1; }
 
 .searchwrap input{
   background:none;
   border:none;
   outline:none;
-  color:#fff;
+  color:#000;                    /* ✅ negro */
   width:280px;
 }
 
 .searchwrap input::placeholder{
-  color:rgba(255,255,255,.75);
+  color:rgba(0,0,0,.55);
 }
 
 /* ================= LAYOUT ================= */
-
 .shell{
   display:flex;
   min-height:calc(100vh - var(--topbar-h));
 }
 
 /* ================= SIDEBAR ================= */
-
 .sidebar{
   width:var(--sidebar-w);
   background:#1e73be;
@@ -118,7 +121,6 @@ body{
   display:flex;
   flex-direction:column;
 
-  /* ✅ fijo al hacer scroll */
   position:sticky;
   top:var(--topbar-h);
   height:calc(100vh - var(--topbar-h));
@@ -126,7 +128,6 @@ body{
 }
 
 /* ================= MENÚ ================= */
-
 .menu{
   display:flex;
   flex-direction:column;
@@ -147,10 +148,10 @@ body{
 
 .menu a.active{
   background:rgba(255,255,255,.25);
-  font-weight:650;
+  font-weight:700;
 }
 
-/* ✅ SUBMENÚ Provisión/Consumo (se ve “bien” e indentado) */
+/* ✅ Submenú Provisión/Consumo */
 .menu a.sub{
   padding-left:40px;
   font-size:.96em;
@@ -170,7 +171,6 @@ body{
 }
 
 /* ================= CONTENIDO ================= */
-
 .main{
   flex:1;
   padding:24px;
@@ -184,7 +184,6 @@ body{
 }
 
 /* ================= OVERLAY (móvil) ================= */
-
 .overlay{
   display:none;
   position:fixed;
@@ -194,24 +193,24 @@ body{
 }
 
 /* ================= RESPONSIVE (CELULAR) ================= */
-
 @media (max-width: 900px){
   :root{
-    --topbar-h: 74px;
-    --logo: 54px;
+    --topbar-h: 80px;
+    --logo-size: 64px;
     --sidebar-w: 270px;
   }
 
-  .burger{ display:inline-flex; }
+  .burger{ display:inline-flex; } /* ✅ solo móvil */
 
-  /* menú tipo off-canvas */
+  .searchwrap input{ width:150px; }
+
+  /* off-canvas */
   .sidebar{
     position:fixed;
     top:0;
     left:0;
     height:100vh;
     z-index:1300;
-
     transform:translateX(-105%);
     transition:transform .2s ease;
   }
@@ -224,7 +223,5 @@ body{
     display:block;
   }
 
-  .searchwrap input{
-    width:150px;
-  }
+  .main{ padding:18px; }
 }
