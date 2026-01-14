@@ -4,28 +4,37 @@
   <meta charset="utf-8">
   <title>Anexos de Provisión de Datos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="../assets/style.css?v=2">
+  <link rel="stylesheet" href="../assets/style.css?v=20">
 </head>
 <body>
 
+<!-- ================= TOPBAR ================= -->
 <header class="topbar">
-    <button class="burger" aria-label="Abrir menú" type="button">☰</button>
+  <button class="burger" type="button" aria-label="Abrir menú">☰</button>
+
   <div class="brand">
-    <div class="brand-logo">
-      <img src="../assets/img/Logo.png" alt="Logo Nodo L&P">
-    </div>
+    <img src="../assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
     <div class="brand-title">Repositorio Digital Sectorial</div>
   </div>
 
+  <div class="spacer"></div>
+
   <div class="searchwrap">
-    🔎
-    <input id="search" type="search" placeholder="Buscar (ej: convenio, anexos, reglas...)">
+    <span class="icon">🔎</span>
+    <input
+      id="search"
+      type="search"
+      placeholder="Buscar (ej: anexos, provisión, datos...)"
+    />
   </div>
 </header>
 
 <div class="overlay" aria-hidden="true"></div>
 
+<!-- ================= LAYOUT ================= -->
 <div class="shell">
+
+  <!-- ================= MENÚ LATERAL ================= -->
   <aside class="sidebar">
     <nav class="menu">
       <a href="../index.html">Inicio</a>
@@ -37,14 +46,81 @@
     </nav>
   </aside>
 
+  <!-- ================= CONTENIDO ================= -->
   <main class="main">
     <section class="card">
+
+      <!-- ===== TÍTULO ===== -->
       <h1>Anexos de Provisión de Datos</h1>
-      <p>Documentos asociados a la provisión de datos.</p>
+
+      <!-- ===== TEXTO ===== -->
+      <p class="intro-text">
+        En esta sección se encuentran disponibles los anexos asociados a la
+        provisión de datos del Repositorio Digital Sectorial del
+        Nodo Laboral y Previsional.
+      </p>
+
+      <!-- ===== MATRIZ DE ANEXOS ===== -->
+      <h2>Matriz de Anexos por Institución</h2>
+
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th class="matrix-lefthead"></th>
+              <th>ANEXO 1</th>
+              <th>ANEXO 2</th>
+              <th>ANEXO 3</th>
+              <th>ANEXO 4</th>
+              <th>RESOLUCIÓN SPS - OAE</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th class="matrix-rowhead">SUPERINTENDENCIA DE PENSIONES (SP)</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th class="matrix-rowhead">SUSESO</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th class="matrix-rowhead">DIRECCIÓN DEL TRABAJO (DT)</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th class="matrix-rowhead">INSTITUTO DE PREVISIÓN SOCIAL (IPS)</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </section>
   </main>
 </div>
 
-<script src="../assets/app.js"></script>
+<!-- ================= JS ================= -->
+<script src="../assets/app.js?v=20"></script>
 </body>
 </html>
