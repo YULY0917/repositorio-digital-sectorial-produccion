@@ -1,4 +1,5 @@
 /* ================= RESET ================= */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -6,115 +7,89 @@
   font-family:system-ui, Arial, sans-serif;
 }
 
-/* ================= VARIABLES ================= */
-:root{
-  --topbar-h: 92px;
-  --sidebar-w: 270px;
-  --logo-h: 64px;
-  --logo-h-mobile: 48px;
-  --primary:#1e73be;
-  --bg:#f2f5f8;
-  --card:#ffffff;
-  --text:#0b1a33;
-}
-
-/* ================= BASE ================= */
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:#f2f5f8;
+  color:#0b1a33;
 }
 
 /* ================= TOPBAR ================= */
+
 .topbar{
-  height:var(--topbar-h);
+  height:64px;
   background:#fff;
+  color:#0b1a33;
   display:flex;
   align-items:center;
-  padding:0 18px;
-  gap:16px;
-  position:sticky;
-  top:0;
-  z-index:1000;
+  padding:0 20px;
+  gap:20px;
   border-bottom:1px solid rgba(0,0,0,.08);
-}
-
-.burger{
-  display:none;
-  border:none;
-  background:none;
-  font-size:28px;
-  cursor:pointer;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:12px;
 }
 
 .brand img{
-  height:var(--logo-h);
+  height:52px;
   width:auto;
-  max-width:260px;
+  max-width:240px;
   object-fit:contain;
 }
 
 .brand-title{
-  font-size:18px;
   font-weight:700;
-  white-space:nowrap;
+  font-size:18px;
+  color:#0b1a33;
 }
 
-.spacer{ flex:1; }
+.spacer{
+  flex:1;
+}
 
-/* ================= BUSCADOR ================= */
 .searchwrap{
   display:flex;
   align-items:center;
   gap:8px;
-  padding:10px 14px;
-  border-radius:999px;
   background:#f1f3f6;
   border:1px solid rgba(0,0,0,.12);
+  padding:8px 12px;
+  border-radius:999px;
 }
 
 .searchwrap input{
   border:none;
-  background:none;
+  background:transparent;
   outline:none;
-  width:260px;
+  width:240px;
 }
 
 /* ================= LAYOUT ================= */
+
 .shell{
   display:flex;
-  min-height:calc(100vh - var(--topbar-h));
+  min-height:calc(100vh - 64px);
 }
 
-/* ================= SIDEBAR ================= */
 .sidebar{
-  width:var(--sidebar-w);
-  background:var(--primary);
+  width:260px;
+  background:#1e73be;
   padding:18px 16px;
-  position:sticky;
-  top:var(--topbar-h);
-  height:calc(100vh - var(--topbar-h));
-  overflow:auto;
 }
 
-/* ================= MENÚ ================= */
 .menu{
   display:flex;
   flex-direction:column;
-  gap:6px;
+  gap:4px;
 }
 
 .menu a{
   color:#fff;
   text-decoration:none;
-  padding:11px 14px;
-  border-radius:10px;
-  transition:background .15s;
+  padding:10px 14px;
+  border-radius:8px;
+  transition:background .15s ease;
 }
 
 .menu a:hover{
@@ -123,203 +98,38 @@ body{
 
 .menu a.active{
   background:rgba(255,255,255,.25);
-  font-weight:700;
+  font-weight:600;
 }
 
-/* SUBNIVEL */
-.menu a.sub{
-  padding-left:40px;
-  position:relative;
-}
-
-/* línea vertical subnivel */
-.menu a.sub::before{
-  content:"";
-  position:absolute;
-  left:20px;
-  top:10px;
-  bottom:10px;
-  width:2px;
-  background:rgba(255,255,255,.4);
-}
-
-/* ⭐ FIX CLAVE: sub + active NO pierde indentación */
+/* FIX: si un item sub está activo, mantiene su indentación */
 .menu a.sub.active{
-  padding-left:40px;
+  padding-left:32px !important;
 }
 
-/* refuerza subnivel activo */
-.menu a.sub.active::before{
-  background:rgba(255,255,255,.7);
+/* Subniveles */
+.menu a.sub{
+  padding-left:32px !important;
+  font-size:.95em;
+  opacity:.9;
 }
 
 /* ================= CONTENIDO ================= */
+
 .main{
   flex:1;
   padding:24px;
 }
 
 .card{
-  background:var(--card);
-  border-radius:16px;
+  background:#fff;
+  border-radius:14px;
   padding:28px;
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.card h1{
-  margin-bottom:18px;
-}
+/* ================= OCULTAR HAMBURGUESA (solo esto) ================= */
 
-.intro-text{
-  margin-bottom:26px;
-  line-height:1.6;
-}
-
-/* ================= BOTONES ================= */
-.btn{
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-  border:1px solid rgba(0,0,0,.1);
-}
-
-.btn-primary{
-  background:var(--primary);
-  color:#fff;
-  border-color:var(--primary);
-}
-
-/* ================= TABLAS BASE ================= */
-.table-wrap{
-  margin-top:18px;
-  border:1px solid rgba(0,0,0,.12);
-  border-radius:12px;
-  overflow:hidden;
-  background:#fff;
-}
-
-.table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-.table thead th{
-  background:#f3f6fb;
-  padding:14px 16px;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:.3px;
-  border-bottom:1px solid rgba(0,0,0,.1);
-}
-
-.table tbody td{
-  padding:18px 16px;
-  border-bottom:1px solid rgba(0,0,0,.08);
-  vertical-align:middle;
-}
-
-.table tbody tr:last-child td{
-  border-bottom:none;
-}
-
-/* ================= TABLA CONVENIO / REGLAS ================= */
-.table-convenio{
-  table-layout:fixed;
-}
-
-.table-convenio col.col-doc{ width:72%; }
-.table-convenio col.col-act{ width:28%; }
-
-.table-convenio thead th:nth-child(1){ text-align:left; }
-.table-convenio thead th:nth-child(2){ text-align:center; }
-
-.table-convenio tbody td:nth-child(1){ text-align:left; }
-.table-convenio tbody td:nth-child(2){ text-align:center; }
-
-/* ================= TABLA OAEs ================= */
-.oaes-scroll{
-  overflow-x:auto;
-}
-
-.table-oaes{
-  min-width:900px;
-}
-
-.col-oae{ width:38%; }
-
-.col-doc{
-  width:20.5%;
-  text-align:center;
-  white-space:nowrap;
-}
-
-.oae-name{ font-weight:600; }
-.cell-center{ text-align:center; }
-
-/* ================= OVERLAY ================= */
-.overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  z-index:1200;
-}
-
-/* ================= RESPONSIVE / MÓVIL ================= */
-@media (max-width:900px){
-
-  :root{
-    --topbar-h:80px;
-  }
-
-  .burger{ display:block; }
-
-  .brand img{
-    height:var(--logo-h-mobile);
-    max-width:180px;
-  }
-
-  .brand-title{
-    font-size:16px;
-    white-space:normal;
-    line-height:1.1;
-  }
-
-  .searchwrap{ display:none; }
-
-  .sidebar{
-    position:fixed;
-    top:0;
-    left:0;
-    height:100vh;
-    transform:translateX(-105%);
-    transition:.2s;
-    z-index:1300;
-  }
-
-  body.menu-open .sidebar{
-    transform:translateX(0);
-  }
-
-  body.menu-open .overlay{
-    display:block;
-  }
-
-  .main{ padding:18px; }
-
-  .table-wrap{
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  .table{
-    min-width:520px;
-  }
-
-  .btn{
-    padding:9px 12px;
-    font-size:14px;
-  }
+/* Si el botón tiene class="burger" */
+.burger{
+  display:none !important;
 }
