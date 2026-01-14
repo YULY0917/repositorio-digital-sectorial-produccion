@@ -94,9 +94,7 @@ body{
   border:1px solid rgba(0,0,0,.10);
 }
 
-.searchwrap .icon{
-  line-height:1;
-}
+.searchwrap .icon{ line-height:1; }
 
 .searchwrap input{
   background:none;
@@ -186,14 +184,13 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-/* ✅ ESPACIO ENTRE TÍTULO Y TEXTO */
+/* Espacio entre título y texto */
 .card h1{
-  margin-bottom:32px;
+  margin-bottom:18px;
 }
 
 /* Texto introductorio */
 .intro-text{
-  margin-top:0;
   margin-bottom:26px;
   font-size:15px;
   line-height:1.6;
@@ -213,15 +210,41 @@ body{
   border-collapse:collapse;
 }
 
-.table thead th{
-  text-align:left;
-  font-weight:700;
-  padding:14px 16px;
+/* ===== THEAD EN 2 FILAS ===== */
+.thead-2rows th{
   background:#f3f6fb;
   border-bottom:1px solid rgba(0,0,0,.08);
+  font-weight:700;
   font-size:14px;
 }
 
+/* Fila superior */
+.thead-2rows tr:first-child th{
+  padding:10px 16px;
+}
+
+/* Fila inferior */
+.thead-2rows tr:last-child th{
+  padding:10px 16px;
+}
+
+/* Celdas vacías */
+.th-empty{
+  color:transparent;
+}
+
+/* Alineaciones */
+.th-action,
+.td-actions{
+  text-align:right;
+  white-space:nowrap;
+}
+
+.th-doc{
+  text-align:left;
+}
+
+/* Cuerpo tabla */
 .table tbody td{
   padding:14px 16px;
   border-bottom:1px solid rgba(0,0,0,.06);
@@ -231,11 +254,6 @@ body{
 
 .table tbody tr:last-child td{
   border-bottom:none;
-}
-
-.td-actions{
-  text-align:right;
-  white-space:nowrap;
 }
 
 /* ================= BOTONES ================= */
@@ -251,9 +269,7 @@ body{
   transition:filter .15s ease;
 }
 
-.btn:hover{
-  filter:brightness(.97);
-}
+.btn:hover{ filter:brightness(.97); }
 
 .btn-primary{
   background:#1e73be;
@@ -261,9 +277,7 @@ body{
   color:#fff;
 }
 
-.btn-primary:hover{
-  filter:brightness(.95);
-}
+.btn-primary:hover{ filter:brightness(.95); }
 
 /* ================= OVERLAY (MÓVIL) ================= */
 .overlay{
@@ -281,13 +295,9 @@ body{
     --logo-h: var(--logo-h-mobile);
   }
 
-  .burger{
-    display:inline-flex;
-  }
+  .burger{ display:inline-flex; }
 
-  .searchwrap input{
-    width:150px;
-  }
+  .searchwrap input{ width:150px; }
 
   /* Sidebar off-canvas */
   .sidebar{
@@ -300,22 +310,13 @@ body{
     transition:transform .2s ease;
   }
 
-  body.menu-open .sidebar{
-    transform:translateX(0);
-  }
+  body.menu-open .sidebar{ transform:translateX(0); }
+  body.menu-open .overlay{ display:block; }
 
-  body.menu-open .overlay{
-    display:block;
-  }
-
-  .main{
-    padding:18px;
-  }
+  .main{ padding:18px; }
 
   /* Tabla responsive */
-  .table thead{
-    display:none;
-  }
+  .table thead{ display:none; }
 
   .table,
   .table tbody,
