@@ -114,6 +114,7 @@ body{
   text-decoration:none;
   padding:11px 14px;
   border-radius:10px;
+  transition:background .15s;
 }
 
 .menu a:hover{
@@ -125,11 +126,13 @@ body{
   font-weight:700;
 }
 
+/* SUBNIVEL */
 .menu a.sub{
   padding-left:40px;
   position:relative;
 }
 
+/* línea vertical subnivel */
 .menu a.sub::before{
   content:"";
   position:absolute;
@@ -138,6 +141,16 @@ body{
   bottom:10px;
   width:2px;
   background:rgba(255,255,255,.4);
+}
+
+/* ⭐ FIX CLAVE: sub + active NO pierde indentación */
+.menu a.sub.active{
+  padding-left:40px;
+}
+
+/* refuerza subnivel activo */
+.menu a.sub.active::before{
+  background:rgba(255,255,255,.7);
 }
 
 /* ================= CONTENIDO ================= */
@@ -235,6 +248,7 @@ body{
 }
 
 .col-oae{ width:38%; }
+
 .col-doc{
   width:20.5%;
   text-align:center;
@@ -260,7 +274,6 @@ body{
     --topbar-h:80px;
   }
 
-  /* topbar */
   .burger{ display:block; }
 
   .brand img{
@@ -276,7 +289,6 @@ body{
 
   .searchwrap{ display:none; }
 
-  /* sidebar móvil */
   .sidebar{
     position:fixed;
     top:0;
@@ -297,7 +309,6 @@ body{
 
   .main{ padding:18px; }
 
-  /* tablas en móvil */
   .table-wrap{
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
