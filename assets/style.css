@@ -8,10 +8,10 @@
 
 /* ================= VARIABLES ================= */
 :root{
-  --topbar-h: 92px;
-  --sidebar-w: 270px;
-  --logo-h: 64px;
-  --logo-h-mobile: 52px;
+  --topbar-h:92px;
+  --sidebar-w:270px;
+  --logo-h:64px;
+  --logo-h-mobile:52px;
 }
 
 /* ================= BASE ================= */
@@ -24,7 +24,6 @@ body{
 .topbar{
   height:var(--topbar-h);
   background:#fff;
-  color:#000;
   display:flex;
   align-items:center;
   padding:0 18px;
@@ -35,17 +34,14 @@ body{
   border-bottom:1px solid rgba(0,0,0,.08);
 }
 
-/* Hamburguesa (solo móvil) */
 .burger{
   display:none;
   border:none;
-  background:transparent;
-  color:#000;
-  font-size:30px;
+  background:none;
+  font-size:28px;
   cursor:pointer;
 }
 
-/* Marca */
 .brand{
   display:flex;
   align-items:center;
@@ -56,39 +52,31 @@ body{
   height:var(--logo-h);
   width:auto;
   max-width:260px;
-  object-fit:contain;
-  display:block;
 }
 
 .brand-title{
-  font-weight:750;
   font-size:18px;
-  white-space:nowrap;
-  color:#000;
+  font-weight:750;
 }
 
 .spacer{ flex:1; }
 
 /* ================= BUSCADOR ================= */
 .searchwrap{
-  margin-left:auto;
-  background:rgba(0,0,0,.06);
-  padding:10px 14px;
-  border-radius:999px;
   display:flex;
   align-items:center;
-  gap:10px;
-  border:1px solid rgba(0,0,0,.10);
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#f1f3f6;
+  border:1px solid rgba(0,0,0,.12);
 }
 
-.searchwrap .icon{ line-height:1; }
-
 .searchwrap input{
-  background:none;
   border:none;
+  background:none;
   outline:none;
-  color:#000;
-  width:280px;
+  width:260px;
 }
 
 /* ================= LAYOUT ================= */
@@ -105,10 +93,8 @@ body{
   position:sticky;
   top:var(--topbar-h);
   height:calc(100vh - var(--topbar-h));
-  overflow:auto;
 }
 
-/* ================= MENÚ ================= */
 .menu{
   display:flex;
   flex-direction:column;
@@ -120,19 +106,15 @@ body{
   text-decoration:none;
   padding:11px 14px;
   border-radius:10px;
-  transition:background .15s ease;
 }
 
-.menu a:hover{
-  background:rgba(255,255,255,.15);
-}
+.menu a:hover{ background:rgba(255,255,255,.15); }
 
 .menu a.active{
   background:rgba(255,255,255,.25);
   font-weight:700;
 }
 
-/* Submenú */
 .menu a.sub{
   padding-left:40px;
   position:relative;
@@ -145,14 +127,11 @@ body{
   top:10px;
   bottom:10px;
   width:2px;
-  background:rgba(255,255,255,.35);
+  background:rgba(255,255,255,.4);
 }
 
 /* ================= CONTENIDO ================= */
-.main{
-  flex:1;
-  padding:24px;
-}
+.main{ flex:1; padding:24px; }
 
 .card{
   background:#fff;
@@ -161,13 +140,10 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.card h1{
-  margin-bottom:18px;
-}
+.card h1{ margin-bottom:18px; }
 
 .intro-text{
   margin-bottom:26px;
-  font-size:15px;
   line-height:1.6;
 }
 
@@ -175,24 +151,22 @@ body{
 .btn{
   display:inline-block;
   padding:10px 14px;
-  border-radius:8px;
+  border-radius:10px;
   text-decoration:none;
   font-weight:650;
-  border:1px solid rgba(0,0,0,.10);
-  background:#fff;
-  color:#0b1a33;
+  border:1px solid rgba(0,0,0,.1);
 }
 
 .btn-primary{
   background:#1e73be;
-  border-color:#1e73be;
   color:#fff;
+  border-color:#1e73be;
 }
 
-/* ================= TABLA (FORMATO CONVENIO / ANEXOS) ================= */
+/* ================= TABLAS ================= */
 .table-wrap{
   margin-top:18px;
-  border:1px solid rgba(0,0,0,.10);
+  border:1px solid rgba(0,0,0,.12);
   border-radius:12px;
   overflow:hidden;
   background:#fff;
@@ -206,92 +180,47 @@ body{
 .table thead th{
   background:#f3f6fb;
   padding:14px 16px;
-  font-weight:700;
-  font-size:14px;
-  border-bottom:1px solid rgba(0,0,0,.08);
-  text-align:left;
+  font-size:12px;
+  text-transform:uppercase;
+  border-bottom:1px solid rgba(0,0,0,.1);
 }
 
 .table tbody td{
-  padding:14px 16px;
-  font-size:14px;
-  border-bottom:1px solid rgba(0,0,0,.06);
+  padding:18px 16px;
+  border-bottom:1px solid rgba(0,0,0,.08);
   vertical-align:middle;
 }
 
-.table tbody tr:last-child td{
-  border-bottom:none;
-}
+.table tbody tr:last-child td{ border-bottom:none; }
 
-.td-actions{
-  text-align:right;
+/* ===== MATRIZ OAEs ===== */
+.oaes-scroll{ overflow-x:auto; }
+
+.table-oaes{ min-width:900px; }
+
+.col-oae{ width:38%; }
+
+.col-doc{
+  width:20.5%;
+  text-align:center;
   white-space:nowrap;
 }
 
-/* Encabezado en 2 filas (Acción arriba / Documento abajo) */
-.thead-2rows th{
-  background:#f3f6fb;
-}
+.oae-name{ font-weight:650; }
 
-.thead-2rows tr:first-child th,
-.thead-2rows tr:last-child th{
-  padding:10px 16px;
-}
-
-.th-empty{ color:transparent; }
-.th-action{ text-align:right; }
-.th-doc{ text-align:left; }
-
-/* ================= OVERLAY (MÓVIL) ================= */
-.overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  z-index:1200;
-}
+.cell-center{ text-align:center; }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 900px){
-  :root{
-    --topbar-h: 80px;
-    --logo-h: var(--logo-h-mobile);
-  }
-
-  .burger{ display:inline-flex; }
-  .searchwrap input{ width:150px; }
-
+@media (max-width:900px){
+  .burger{ display:block; }
   .sidebar{
     position:fixed;
-    top:0;
     left:0;
+    top:0;
     height:100vh;
     transform:translateX(-105%);
-    transition:transform .2s ease;
-    z-index:1300;
+    transition:.2s;
+    z-index:1200;
   }
-
   body.menu-open .sidebar{ transform:translateX(0); }
-  body.menu-open .overlay{ display:block; }
-
-  .main{ padding:18px; }
-
-  /* Tabla en móvil */
-  .table thead{ display:none; }
-  .table, .table tbody, .table tr, .table td{
-    display:block;
-    width:100%;
-  }
-  .table tbody tr{
-    padding:10px 0;
-    border-bottom:1px solid rgba(0,0,0,.08);
-  }
-  .table tbody td{
-    border-bottom:none;
-    padding:10px 14px;
-  }
-  .td-actions{
-    text-align:left;
-    padding-top:0;
-  }
 }
