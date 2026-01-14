@@ -4,10 +4,13 @@
   <meta charset="utf-8">
   <title>Convenio de Adhesión</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/style.css?v=1000">
+
+  <!-- CSS (ruta correcta desde /paginas/) -->
+  <link rel="stylesheet" href="../assets/style.css?v=15000">
 </head>
 <body>
 
+<!-- ================= TOPBAR ================= -->
 <header class="topbar">
   <button class="burger" type="button" aria-label="Abrir menú">☰</button>
 
@@ -19,14 +22,17 @@
   <div class="spacer"></div>
 
   <div class="searchwrap">
-    <span class="icon">🔎</span>
-    <input id="search" type="search" placeholder="Buscar (ej: convenio, anexos, reglas...)" />
+    <span>🔎</span>
+    <input type="search" placeholder="Buscar (ej: convenio, anexos)">
   </div>
 </header>
 
-<div class="overlay" aria-hidden="true"></div>
+<div class="overlay"></div>
 
+<!-- ================= LAYOUT ================= -->
 <div class="shell">
+
+  <!-- ================= SIDEBAR ================= -->
   <aside class="sidebar">
     <nav class="menu">
       <a href="../index.html">Inicio</a>
@@ -38,36 +44,42 @@
     </nav>
   </aside>
 
+  <!-- ================= CONTENIDO ================= -->
   <main class="main">
     <section class="card">
+
       <h1>Convenio de Adhesión</h1>
 
       <p class="intro-text">
-        En esta sección se encuentra disponible el documento oficial del Convenio de Adhesión del Nodo Laboral y Previsional.
+        En esta sección se encuentra disponible el documento oficial del Convenio de Adhesión
+        del Nodo Laboral y Previsional.
       </p>
 
+      <!-- ================= TABLA CONVENIO ================= -->
       <div class="table-wrap">
         <table class="table">
-          <thead class="thead-2rows">
+
+          <thead>
             <tr>
-              <th class="th-empty"></th>
-              <th class="th-action">Acción</th>
-            </tr>
-            <tr>
-              <th class="th-doc">Documento</th>
-              <th class="th-empty"></th>
+              <th style="text-align:center;">DOCUMENTO</th>
+              <th style="text-align:right;">ACCIÓN</th>
             </tr>
           </thead>
+
           <tbody>
             <tr>
               <td>Convenio Sectorial Nodo Laboral y Previsional</td>
-              <td class="td-actions">
-                <a class="btn btn-primary" href="../docs/Convenio-Sectorial-Nodo.pdf" target="_blank" rel="noopener">
+              <td style="text-align:right;">
+                <a class="btn btn-primary"
+                   href="../docs/Convenio-Sectorial-Nodo.pdf"
+                   target="_blank"
+                   rel="noopener">
                   📄 Descargar
                 </a>
               </td>
             </tr>
           </tbody>
+
         </table>
       </div>
 
@@ -75,6 +87,7 @@
   </main>
 </div>
 
-<script src="../assets/app.js?v=1000"></script>
+<!-- ================= JS ================= -->
+<script src="../assets/app.js?v=15000"></script>
 </body>
 </html>
