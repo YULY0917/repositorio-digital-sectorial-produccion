@@ -5,11 +5,12 @@
   <title>Convenio de Adhesión</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS correcto -->
-  <link rel="stylesheet" href="../assets/style.css?v=20000">
+  <!-- CSS (ruta correcta desde /paginas/) -->
+  <link rel="stylesheet" href="../assets/style.css?v=21000">
 </head>
 <body>
 
+<!-- ================= TOPBAR ================= -->
 <header class="topbar">
   <button class="burger" type="button" aria-label="Abrir menú">☰</button>
 
@@ -28,8 +29,10 @@
 
 <div class="overlay"></div>
 
+<!-- ================= LAYOUT ================= -->
 <div class="shell">
 
+  <!-- ================= SIDEBAR ================= -->
   <aside class="sidebar">
     <nav class="menu">
       <a href="../index.html">Inicio</a>
@@ -41,6 +44,7 @@
     </nav>
   </aside>
 
+  <!-- ================= CONTENIDO ================= -->
   <main class="main">
     <section class="card">
 
@@ -51,26 +55,25 @@
         del Nodo Laboral y Previsional.
       </p>
 
-      <!-- ===== TABLA CORRECTA Y ÚNICA ===== -->
+      <!-- ================= TABLA CONVENIO (CORRECTA) ================= -->
       <div class="table-wrap">
         <table class="table">
-
           <thead>
             <tr>
-              <!-- Encabezados centrados -->
-              <th style="text-align:center;">DOCUMENTO</th>
-              <th style="text-align:center;">ACCIÓN</th>
+              <!-- Encabezados centrados, y columnas fijas para que no se “corran” -->
+              <th style="text-align:center; width:75%;">DOCUMENTO</th>
+              <th style="text-align:center; width:25%;">ACCIÓN</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <!-- Texto a la izquierda -->
+              <!-- Texto del documento a la izquierda -->
               <td style="text-align:left;">
                 Convenio Sectorial Nodo Laboral y Previsional
               </td>
 
-              <!-- Botón centrado -->
+              <!-- Botón centrado bajo ACCIÓN -->
               <td style="text-align:center;">
                 <a class="btn btn-primary"
                    href="../docs/Convenio-Sectorial-Nodo.pdf"
@@ -81,7 +84,6 @@
               </td>
             </tr>
           </tbody>
-
         </table>
       </div>
 
@@ -89,6 +91,7 @@
   </main>
 </div>
 
-<script src="../assets/app.js?v=20000"></script>
+<!-- ================= JS ================= -->
+<script src="../assets/app.js?v=21000"></script>
 </body>
 </html>
