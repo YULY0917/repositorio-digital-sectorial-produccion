@@ -1,4 +1,6 @@
-/* ================= RESET ================= */
+/* =========================================================
+   RESET
+========================================================= */
 *{
   box-sizing:border-box;
   margin:0;
@@ -6,41 +8,34 @@
   font-family:system-ui, Arial, sans-serif;
 }
 
-/* ================= VARIABLES ================= */
-:root{
-  --topbar-h: 80px;
-  --sidebar-w: 270px;
-  --primary:#1e73be;
-  --bg:#f2f5f8;
-  --card:#ffffff;
-  --text:#0b1a33;
-}
-
-/* ================= BASE ================= */
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:#f2f5f8;
+  color:#0b1a33;
+  line-height:1.45;
 }
 
-/* ================= TOPBAR ================= */
+/* =========================================================
+   TOPBAR
+========================================================= */
 .topbar{
-  height:var(--topbar-h);
+  height:64px;
   background:#fff;
+  color:#0b1a33;
   display:flex;
   align-items:center;
+  gap:16px;
   padding:0 16px;
-  gap:14px;
+  border-bottom:1px solid rgba(0,0,0,.1);
   position:sticky;
   top:0;
   z-index:1000;
-  border-bottom:1px solid rgba(0,0,0,.08);
 }
 
 .burger{
   display:none;
   border:none;
-  background:none;
-  font-size:28px;
+  background:transparent;
+  font-size:22px;
   cursor:pointer;
 }
 
@@ -51,70 +46,60 @@ body{
 }
 
 .brand img{
-  height:56px;
+  height:42px;
   width:auto;
-  max-width:260px;
-  object-fit:contain;
-  display:block;
 }
 
 .brand-title{
   font-weight:700;
-  font-size:18px;
-  color:var(--text);
-  white-space:nowrap;
+  font-size:15px;
 }
 
 .spacer{ flex:1; }
 
-/* ================= BUSCADOR ================= */
 .searchwrap{
   display:flex;
   align-items:center;
-  gap:8px;
-  background:#f1f3f6;
-  border:1px solid rgba(0,0,0,.12);
-  padding:8px 12px;
-  border-radius:999px;
+  gap:6px;
+  background:#f1f4f9;
+  padding:6px 10px;
+  border-radius:20px;
 }
 
 .searchwrap input{
   border:none;
   background:transparent;
   outline:none;
-  width:240px;
+  font-size:14px;
+  width:220px;
 }
 
-/* ================= LAYOUT ================= */
+/* =========================================================
+   LAYOUT
+========================================================= */
 .shell{
   display:flex;
-  min-height:calc(100vh - var(--topbar-h));
+  min-height:calc(100vh - 64px);
 }
 
-/* ================= SIDEBAR ================= */
 .sidebar{
-  width:var(--sidebar-w);
-  background:var(--primary);
-  padding:18px 16px;
-  position:sticky;
-  top:var(--topbar-h);
-  height:calc(100vh - var(--topbar-h));
-  overflow:auto;
+  width:260px;
+  background:#1e73be;
+  color:#fff;
+  padding:16px 12px;
 }
 
-/* ================= MENÚ ================= */
 .menu{
   display:flex;
   flex-direction:column;
-  gap:6px;
 }
 
 .menu a{
   color:#fff;
   text-decoration:none;
-  padding:11px 14px;
+  padding:10px 14px;
   border-radius:10px;
-  transition:background .15s;
+  font-size:14px;
 }
 
 .menu a:hover{
@@ -126,93 +111,77 @@ body{
   font-weight:700;
 }
 
-/* Subnivel SIEMPRE (blindado para que no "suba") */
+/* subniveles */
 .menu a.sub{
-  padding-left:40px !important;
+  padding-left:36px !important;
+  font-size:13.5px;
   position:relative;
-  opacity:.95;
 }
 
 .menu a.sub::before{
   content:"";
   position:absolute;
-  left:20px;
-  top:10px;
-  bottom:10px;
-  width:2px;
-  background:rgba(255,255,255,.45);
+  left:18px;
+  top:50%;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:rgba(255,255,255,.5);
+  transform:translateY(-50%);
 }
 
-/* sub + active NO pierde indentación */
 .menu a.sub.active{
-  padding-left:40px !important;
+  padding-left:36px !important;
 }
 
-.menu a.sub.active::before{
-  background:rgba(255,255,255,.75);
-}
-
-/* ================= CONTENIDO ================= */
+/* =========================================================
+   MAIN
+========================================================= */
 .main{
   flex:1;
   padding:24px;
 }
 
 .card{
-  background:var(--card);
+  background:#fff;
   border-radius:16px;
-  padding:28px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  padding:24px;
+  box-shadow:0 4px 16px rgba(0,0,0,.08);
 }
 
-.card h1{ margin-bottom:14px; }
+h1{
+  font-size:26px;
+  margin-bottom:12px;
+}
 
 .intro-text{
-  margin-bottom:22px;
-  line-height:1.6;
+  margin-bottom:24px;
+  font-size:15px;
 }
 
-/* ================= BOTONES ================= */
-.btn{
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:650;
-  border:1px solid rgba(0,0,0,.1);
-}
-
-.btn-primary{
-  background:var(--primary);
-  color:#fff;
-  border-color:var(--primary);
-}
-
-/* ================= TABLAS (ESTO ES LO QUE TE FALTABA) ================= */
+/* =========================================================
+   TABLAS
+========================================================= */
 .table-wrap{
-  margin-top:18px;
-  border:1px solid rgba(0,0,0,.12);
-  border-radius:12px;
-  overflow:hidden;
-  background:#fff;
+  overflow-x:auto;
 }
 
 .table{
   width:100%;
-  border-collapse:collapse;
+  border-collapse:separate;
+  border-spacing:0;
 }
 
 .table thead th{
   background:#f3f6fb;
-  padding:14px 16px;
-  font-size:12px;
+  padding:14px 12px;
+  font-size:13px;
   text-transform:uppercase;
-  letter-spacing:.3px;
-  border-bottom:1px solid rgba(0,0,0,.1);
+  border-bottom:1px solid rgba(0,0,0,.12);
 }
 
 .table tbody td{
-  padding:16px 16px;
+  padding:14px 12px;
   border-bottom:1px solid rgba(0,0,0,.08);
   vertical-align:middle;
 }
@@ -221,68 +190,151 @@ body{
   border-bottom:none;
 }
 
-/* OAEs */
-.oaes-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
-.table-oaes{ min-width:900px; }
-.oae-name{ font-weight:650; }
-.cell-center{ text-align:center; white-space:nowrap; }
-
-/* Convenio/Reglas (2 columnas) */
-.table-convenio{
-  table-layout:fixed;
+.cell-center{
+  text-align:center;
 }
-.table-convenio col.col-doc{ width:72%; }
-.table-convenio col.col-act{ width:28%; }
-.table-convenio thead th:nth-child(1){ text-align:left; }
-.table-convenio thead th:nth-child(2){ text-align:center; }
-.table-convenio tbody td:nth-child(1){ text-align:left; }
-.table-convenio tbody td:nth-child(2){ text-align:center; }
 
-/* ================= OVERLAY (móvil) ================= */
+.oae-name{
+  font-weight:600;
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  border-radius:12px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.btn-primary{
+  background:#1e73be;
+  color:#fff;
+}
+
+.btn-primary:hover{
+  background:#155a98;
+}
+
+/* =========================================================
+   BUSCADOR GLOBAL – RESULTADOS
+========================================================= */
+.search-results{
+  position:absolute;
+  left:0;
+  right:0;
+  top:calc(100% + 8px);
+  background:#fff;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
+  display:none;
+  z-index:2000;
+}
+
+.search-results.open{ display:block; }
+
+.sr-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 12px;
+  background:#f3f6fb;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.sr-close{
+  border:none;
+  background:transparent;
+  font-size:16px;
+  cursor:pointer;
+  padding:4px 8px;
+  border-radius:8px;
+}
+
+.sr-close:hover{
+  background:rgba(0,0,0,.06);
+}
+
+.sr-list{
+  max-height:320px;
+  overflow:auto;
+}
+
+.sr-item{
+  display:block;
+  padding:10px 12px;
+  text-decoration:none;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  color:#0b1a33;
+}
+
+.sr-item:hover{
+  background:rgba(30,115,190,.08);
+}
+
+.sr-title{
+  font-weight:700;
+  font-size:14px;
+}
+
+.sr-meta{
+  font-size:12px;
+  opacity:.75;
+}
+
+.sr-empty{
+  padding:12px;
+  font-size:14px;
+  opacity:.8;
+}
+
+/* =========================================================
+   OVERLAY + MOBILE
+========================================================= */
 .overlay{
   display:none;
+}
+
+body.menu-open .overlay{
+  display:block;
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.45);
-  z-index:1200;
+  z-index:900;
 }
 
-/* ================= MÓVIL ================= */
 @media (max-width:900px){
   .burger{ display:block; }
 
-  .brand img{
-    height:48px;
-    max-width:180px;
-  }
-
-  .brand-title{
-    font-size:16px;
-    white-space:normal;
-    line-height:1.1;
-  }
-
-  .searchwrap{ display:none; }
-
-  /* sidebar como drawer */
   .sidebar{
     position:fixed;
-    top:0;
-    left:0;
-    height:100vh;
-    transform:translateX(-105%);
-    transition:.2s;
-    z-index:1300;
+    left:-280px;
+    top:64px;
+    height:calc(100vh - 64px);
+    transition:left .25s ease;
+    z-index:1000;
   }
 
-  body.menu-open .sidebar{ transform:translateX(0); }
-  body.menu-open .overlay{ display:block; }
+  body.menu-open .sidebar{
+    left:0;
+  }
 
-  .main{ padding:18px; }
+  .shell{
+    flex-direction:column;
+  }
 
-  /* tablas en móvil con scroll */
-  .table-wrap{ overflow-x:auto; }
-  .table{ min-width:520px; }
+  .main{
+    padding:16px;
+  }
 
-  .btn{ padding:9px 12px; font-size:14px; }
+  .searchwrap input{
+    width:140px;
+  }
 }
