@@ -1,82 +1,74 @@
-/* ================= FIX TABLA CONVENIO (NO TOCAR RESTO) ================= */
+/* ================= FIX SOLO PARA TABLA DE CONVENIO ================= */
+/* (Evita centrado/morado por estilos externos) */
 
-/* Botones (evita link morado/subrayado y devuelve estilo azul) */
-.btn{
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:650;
-  border:1px solid rgba(0,0,0,.10);
-  background:#fff;
-  color:#0b1a33;
-  transition:filter .15s ease;
+.card .table-wrap{
+  margin-top:18px !important;
+  border:1px solid rgba(0,0,0,.10) !important;
+  border-radius:12px !important;
+  overflow:hidden !important;
+  background:#fff !important;
 }
 
-.btn:hover{ filter:brightness(.97); }
-
-.btn-primary{
-  background:#1e73be;
-  border-color:#1e73be;
-  color:#fff;
+.card table.table{
+  width:100% !important;
+  border-collapse:collapse !important;
+  text-align:left !important;
 }
 
-.btn-primary:hover{ filter:brightness(.95); }
-
-/* Contenedor tabla */
-.table-wrap{
-  margin-top:18px;
-  border:1px solid rgba(0,0,0,.10);
-  border-radius:12px;
-  overflow:hidden;
-  background:#fff;
+.card table.table thead th{
+  text-align:left !important;
+  font-weight:700 !important;
+  padding:14px 16px !important;
+  background:#f3f6fb !important;
+  border-bottom:1px solid rgba(0,0,0,.08) !important;
+  font-size:14px !important;
 }
 
-/* Tabla base */
-.table{
-  width:100%;
-  border-collapse:collapse;
+.card table.table tbody td{
+  text-align:left !important;
+  padding:14px 16px !important;
+  border-bottom:1px solid rgba(0,0,0,.06) !important;
+  font-size:14px !important;
+  vertical-align:middle !important;
 }
 
-/* Encabezado */
-.table thead th{
-  text-align:left;
-  font-weight:700;
-  padding:14px 16px;
-  background:#f3f6fb;
-  border-bottom:1px solid rgba(0,0,0,.08);
-  font-size:14px;
+.card table.table tbody tr:last-child td{
+  border-bottom:none !important;
 }
 
-/* Cuerpo */
-.table tbody td{
-  padding:14px 16px;
-  border-bottom:1px solid rgba(0,0,0,.06);
-  font-size:14px;
-  vertical-align:middle;
+/* Columna acción a la derecha */
+.card .td-actions{
+  text-align:right !important;
+  white-space:nowrap !important;
 }
 
-.table tbody tr:last-child td{ border-bottom:none; }
-
-/* Columna acción alineada a la derecha */
-.td-actions{
-  text-align:right;
-  white-space:nowrap;
+/* Encabezado en 2 filas (Acción arriba / Documento abajo) */
+.card .thead-2rows th{
+  background:#f3f6fb !important;
+  border-bottom:1px solid rgba(0,0,0,.08) !important;
+  font-weight:700 !important;
+  font-size:14px !important;
+  padding:10px 16px !important;
 }
 
-/* ===== THEAD EN 2 FILAS (Acción arriba / Documento abajo) ===== */
-.thead-2rows th{
-  background:#f3f6fb;
-  border-bottom:1px solid rgba(0,0,0,.08);
-  font-weight:700;
-  font-size:14px;
+.card .th-empty{ color:transparent !important; }
+.card .th-action{ text-align:right !important; }
+.card .th-doc{ text-align:left !important; }
+
+/* Botón (evita link morado/subrayado) */
+.card a.btn{
+  display:inline-block !important;
+  padding:10px 14px !important;
+  border-radius:8px !important;
+  text-decoration:none !important;
+  font-weight:650 !important;
+  border:1px solid rgba(0,0,0,.10) !important;
+  background:#fff !important;
+  color:#0b1a33 !important;
 }
 
-.thead-2rows tr:first-child th,
-.thead-2rows tr:last-child th{
-  padding:10px 16px;
+.card a.btn-primary{
+  background:#1e73be !important;
+  border-color:#1e73be !important;
+  color:#fff !important;
 }
-
-.th-empty{ color:transparent; }
-.th-action{ text-align:right; }
-.th-doc{ text-align:left; }
