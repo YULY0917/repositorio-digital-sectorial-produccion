@@ -39,21 +39,19 @@ body{
   cursor:pointer;
 }
 
-/* ---------- BRAND (LOGO + TEXTO) ---------- */
+/* ---------- BRAND ---------- */
 .brand{
   display:flex;
   align-items:center;
   gap:14px;
 }
 
-/* Logo más grande pero contenido */
 .brand img{
   height:50px;
   max-height:56px;
   width:auto;
 }
 
-/* Texto más legible */
 .brand-title{
   font-weight:700;
   font-size:17px;
@@ -73,7 +71,6 @@ body{
   background:#f1f4f9;
   padding:6px 10px;
   border-radius:20px;
-  position:relative;
 }
 
 .searchwrap input{
@@ -121,7 +118,7 @@ body{
   font-weight:700;
 }
 
-/* Subniveles (Provisión/Consumo) */
+/* Subniveles */
 .menu a.sub{
   padding-left:36px !important;
   font-size:13.5px;
@@ -192,7 +189,7 @@ h1{
 }
 
 /* =========================================================
-   TABLAS (ESTABLES)
+   TABLAS (BASE)
 ========================================================= */
 .table-wrap{
   margin-top:18px;
@@ -227,47 +224,56 @@ h1{
   border-bottom:none;
 }
 
-/* Convenio / Reglas (2 columnas) */
+/* =========================================================
+   CONVENIO / REGLAS (2 COL)
+========================================================= */
 .table-convenio thead th:nth-child(1),
 .table-convenio tbody td:nth-child(1){
-  text-align:left;
   width:70%;
+  text-align:left;
 }
 
 .table-convenio thead th:nth-child(2),
 .table-convenio tbody td:nth-child(2){
-  text-align:center;
   width:30%;
+  text-align:center;
 }
 
-/* Provisión (5 columnas) */
+/* =========================================================
+   PROVISIÓN / CONSUMO (5 COL)
+========================================================= */
 .table-oaes-5{
   min-width:1100px;
-  table-layout:fixed;
 }
+
 .table-oaes-5 thead th:nth-child(1),
 .table-oaes-5 tbody td:nth-child(1){
   width:44%;
   text-align:left;
 }
+
 .table-oaes-5 thead th:nth-child(2),
 .table-oaes-5 thead th:nth-child(3),
 .table-oaes-5 thead th:nth-child(4),
 .table-oaes-5 thead th:nth-child(5){
-  text-align:center;
   width:14%;
+  text-align:center;
 }
+
 .table-oaes-5 tbody td:nth-child(2),
 .table-oaes-5 tbody td:nth-child(3),
 .table-oaes-5 tbody td:nth-child(4),
 .table-oaes-5 tbody td:nth-child(5){
-  text-align:center;
   width:14%;
+  text-align:center;
 }
-.oae-name{ font-weight:700; }
+
+.oae-name{
+  font-weight:700;
+}
 
 /* =========================================================
-   ANEXOS TÉCNICOS – BLOQUES
+   ANEXOS TÉCNICOS (BLOQUES)
 ========================================================= */
 .anexo-item{
   margin-top:16px;
@@ -276,6 +282,7 @@ h1{
   border-left:4px solid #1e73be;
   border-radius:10px;
 }
+
 .anexo-label{
   display:inline-block;
   font-weight:700;
@@ -283,6 +290,7 @@ h1{
   color:#1e73be;
   margin-bottom:6px;
 }
+
 .anexo-desc{
   margin-top:6px;
   font-size:14.5px;
@@ -327,5 +335,6 @@ body.menu-open .overlay{
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
   }
+
   .table{ min-width:720px; }
 }
