@@ -1,98 +1,287 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <title>Anexos de Provisión de Datos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/style.css?v=FINAL">
-</head>
-<body>
+/* ================= RESET ================= */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:system-ui, Arial, sans-serif;
+}
 
-<header class="topbar">
-  <button class="burger">☰</button>
+/* ================= VARIABLES ================= */
+:root{
+  --topbar-h: 92px;
+  --sidebar-w: 270px;
+  --logo-h: 64px;
+  --logo-h-mobile: 52px;
+}
 
-  <div class="brand">
-    <img src="../assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
-    <div class="brand-title">Repositorio Digital Sectorial</div>
-  </div>
+/* ================= BASE ================= */
+body{
+  background:#f2f5f8;
+  color:#0b1a33;
+}
 
-  <div class="spacer"></div>
+/* ================= TOPBAR ================= */
+.topbar{
+  height:var(--topbar-h);
+  background:#fff;
+  color:#000;
+  display:flex;
+  align-items:center;
+  padding:0 18px;
+  gap:16px;
 
-  <div class="searchwrap">
-    🔎 <input type="search" placeholder="Buscar (ej: anexos, datos)">
-  </div>
-</header>
+  position:sticky;
+  top:0;
+  z-index:1000;
 
-<div class="shell">
-  <aside class="sidebar">
-    <nav class="menu">
-      <a href="../index.html">Inicio</a>
-      <a href="convenio.html">Convenio de Adhesión</a>
-      <a href="anexos-tecnicos.html">Anexos Técnicos</a>
-      <a class="sub active" href="anexos-provision-datos.html">Anexos de Provisión de Datos</a>
-      <a class="sub" href="anexos-consumo-datos.html">Anexos de Consumo de Datos</a>
-      <a href="reglas-uso.html">Reglas de Uso</a>
-    </nav>
-  </aside>
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
 
-  <main class="main">
-    <section class="card">
+.burger{
+  display:none;
+  border:none;
+  background:transparent;
+  color:#000;
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+}
 
-      <h1>Anexos de Provisión de Datos</h1>
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
 
-      <p class="intro-text">
-        Anexos asociados a la provisión de datos del Nodo Laboral y Previsional.
-      </p>
+.brand img{
+  height:var(--logo-h);
+  width:auto;
+  max-width:260px;
+  object-fit:contain;
+  display:block;
+}
 
-      <div class="table-wrap">
-        <div class="oaes-scroll">
-          <table class="table table-oaes">
-            <thead>
-              <tr>
-                <th class="col-oae">OAEs</th>
-                <th class="col-doc">Anexo 1</th>
-                <th class="col-doc">Anexo 2</th>
-                <th class="col-doc">Resolución SPS - OAE</th>
-              </tr>
-            </thead>
+.brand-title{
+  font-weight:750;
+  font-size:18px;
+  white-space:nowrap;
+  color:#000;
+}
 
-            <tbody>
-              <tr>
-                <td class="oae-name">SUPERINTENDENCIA DE PENSIONES (SP)</td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-              </tr>
+.spacer{ flex:1; }
 
-              <tr>
-                <td class="oae-name">DIRECCIÓN DEL TRABAJO (DT)</td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-              </tr>
+/* ================= BUSCADOR ================= */
+.searchwrap{
+  margin-left:auto;
+  background:rgba(0,0,0,.06);
+  padding:10px 14px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(0,0,0,.10);
+}
 
-              <tr>
-                <td class="oae-name">INSTITUTO DE PREVISIÓN SOCIAL (IPS)</td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-              </tr>
+.searchwrap input{
+  background:none;
+  border:none;
+  outline:none;
+  color:#000;
+  width:280px;
+}
 
-              <tr>
-                <td class="oae-name">SUSESO</td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-                <td class="cell-center"><a class="btn btn-primary" href="#">Descargar</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+.searchwrap input::placeholder{
+  color:rgba(0,0,0,.55);
+}
 
-    </section>
-  </main>
-</div>
+/* ================= LAYOUT ================= */
+.shell{
+  display:flex;
+  min-height:calc(100vh - var(--topbar-h));
+}
 
-<script src="../assets/app.js?v=FINAL"></script>
-</body>
-</html>
+/* ================= SIDEBAR ================= */
+.sidebar{
+  width:var(--sidebar-w);
+  background:#1e73be;
+  padding:18px 16px;
+
+  position:sticky;
+  top:var(--topbar-h);
+  height:calc(100vh - var(--topbar-h));
+  overflow:auto;
+}
+
+/* ================= MENÚ ================= */
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.menu a{
+  color:#fff;
+  text-decoration:none;
+  padding:11px 14px;
+  border-radius:10px;
+  transition:background .15s ease;
+}
+
+.menu a:hover{
+  background:rgba(255,255,255,.15);
+}
+
+.menu a.active{
+  background:rgba(255,255,255,.25);
+  font-weight:700;
+}
+
+.menu a.sub{
+  padding-left:40px;
+  position:relative;
+  opacity:.98;
+}
+
+.menu a.sub::before{
+  content:"";
+  position:absolute;
+  left:20px;
+  top:10px;
+  bottom:10px;
+  width:2px;
+  background:rgba(255,255,255,.35);
+  border-radius:2px;
+}
+
+/* ================= CONTENIDO ================= */
+.main{
+  flex:1;
+  padding:24px;
+}
+
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.card h1{ margin-bottom:18px; }
+
+.intro-text{
+  margin-bottom:26px;
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* ================= BOTONES ================= */
+.btn{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:650;
+  border:1px solid rgba(0,0,0,.10);
+  background:#fff;
+  color:#0b1a33;
+}
+
+.btn-primary{
+  background:#1e73be;
+  border-color:#1e73be;
+  color:#fff;
+}
+
+/* ================= TABLA BASE ================= */
+.table-wrap{
+  margin-top:18px;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.table thead th{
+  background:#f3f6fb;
+  padding:14px 16px;
+  font-weight:800;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+  border-bottom:1px solid rgba(0,0,0,.10);
+}
+
+.table tbody td{
+  padding:18px 16px;
+  font-size:14px;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  vertical-align:middle;
+}
+
+.table tbody tr:last-child td{ border-bottom:none; }
+
+/* ================= TABLA OAEs (como tu imagen) ================= */
+.oaes-scroll{
+  overflow-x:auto;
+}
+
+.table-oaes{
+  min-width:900px;
+}
+
+.table-oaes .col-oae{ width:38%; }
+
+.table-oaes .col-doc{
+  width:20.5%;
+  text-align:center;
+  white-space:nowrap;
+}
+
+.table-oaes .oae-name{
+  font-weight:750;
+}
+
+.table-oaes .cell-center{
+  text-align:center;
+}
+
+/* ================= OVERLAY (móvil) ================= */
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:1200;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px){
+  :root{
+    --topbar-h: 80px;
+    --logo-h: var(--logo-h-mobile);
+  }
+
+  .burger{ display:inline-flex; }
+
+  .searchwrap input{ width:150px; }
+
+  .sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    transform:translateX(-105%);
+    transition:transform .2s ease;
+    z-index:1300;
+  }
+
+  body.menu-open .sidebar{ transform:translateX(0); }
+  body.menu-open .overlay{ display:block; }
+
+  .main{ padding:18px; }
+}
