@@ -39,24 +39,33 @@ body{
   cursor:pointer;
 }
 
+/* ---------- BRAND (LOGO + TEXTO) ---------- */
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
 }
 
+/* Logo más grande pero contenido */
 .brand img{
-  height:42px;
+  height:50px;
+  max-height:56px;
   width:auto;
 }
 
+/* Texto más legible */
 .brand-title{
   font-weight:700;
-  font-size:15px;
+  font-size:17px;
+  line-height:1.1;
+  white-space:nowrap;
 }
 
 .spacer{ flex:1; }
 
+/* =========================================================
+   BUSCADOR
+========================================================= */
 .searchwrap{
   display:flex;
   align-items:center;
@@ -64,7 +73,7 @@ body{
   background:#f1f4f9;
   padding:6px 10px;
   border-radius:20px;
-  position:relative; /* para panel de resultados */
+  position:relative;
 }
 
 .searchwrap input{
@@ -112,7 +121,7 @@ body{
   font-weight:700;
 }
 
-/* subniveles (blindado) */
+/* Subniveles blindados */
 .menu a.sub{
   padding-left:36px !important;
   font-size:13.5px;
@@ -174,6 +183,7 @@ h1{
   font-size:13px;
   font-weight:600;
   white-space:nowrap;
+  min-width:120px;
 }
 
 .btn-primary{
@@ -186,7 +196,116 @@ h1{
 }
 
 /* =========================================================
-   BUSCADOR GLOBAL – RESULTADOS
+   TABLAS (FIX FINAL ESTABLE)
+========================================================= */
+.table-wrap{
+  margin-top:18px;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+
+.table thead th{
+  background:#f3f6fb;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(0,0,0,.10);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+}
+
+.table tbody td{
+  padding:16px 16px;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  vertical-align:middle;
+}
+
+.table tbody tr:last-child td{
+  border-bottom:none;
+}
+
+/* OAEs */
+.table-oaes{
+  min-width:980px;
+}
+
+.table-oaes thead th:nth-child(1),
+.table-oaes tbody td:nth-child(1){
+  text-align:left;
+  width:52%;
+}
+
+.table-oaes thead th:nth-child(2),
+.table-oaes tbody td:nth-child(2){
+  text-align:center;
+  width:16%;
+}
+
+.table-oaes thead th:nth-child(3),
+.table-oaes tbody td:nth-child(3){
+  text-align:center;
+  width:16%;
+}
+
+.table-oaes thead th:nth-child(4),
+.table-oaes tbody td:nth-child(4){
+  text-align:center;
+  width:16%;
+}
+
+.oae-name{
+  font-weight:700;
+  letter-spacing:.2px;
+}
+
+/* Convenio / Reglas */
+.table-convenio thead th:nth-child(1),
+.table-convenio tbody td:nth-child(1){
+  text-align:left;
+  width:70%;
+}
+
+.table-convenio thead th:nth-child(2),
+.table-convenio tbody td:nth-child(2){
+  text-align:center;
+  width:30%;
+}
+
+/* =========================================================
+   ANEXOS TÉCNICOS – BLOQUES
+========================================================= */
+.anexo-item{
+  margin-top:16px;
+  padding:16px 18px;
+  background:#f3f6fb;
+  border-left:4px solid #1e73be;
+  border-radius:10px;
+}
+
+.anexo-label{
+  display:inline-block;
+  font-weight:700;
+  font-size:14px;
+  color:#1e73be;
+  margin-bottom:6px;
+}
+
+.anexo-desc{
+  margin-top:6px;
+  font-size:14.5px;
+  line-height:1.5;
+  color:#0b1a33;
+}
+
+/* =========================================================
+   BUSCADOR – RESULTADOS
 ========================================================= */
 .search-results{
   position:absolute;
@@ -259,115 +378,6 @@ h1{
 }
 
 /* =========================================================
-   TABLAS - FIX FINAL (ESTABILIZA TODO)
-========================================================= */
-.table-wrap{
-  margin-top:18px;
-  border:1px solid rgba(0,0,0,.10);
-  border-radius:14px;
-  overflow:hidden;
-  background:#fff;
-}
-
-.table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed; /* 🔒 clave para que no “salten” */
-}
-
-.table thead th{
-  background:#f3f6fb;
-  padding:14px 16px;
-  border-bottom:1px solid rgba(0,0,0,.10);
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:.3px;
-}
-
-.table tbody td{
-  padding:16px 16px;
-  border-bottom:1px solid rgba(0,0,0,.08);
-  vertical-align:middle;
-}
-
-.table tbody tr:last-child td{
-  border-bottom:none;
-}
-
-/* OAEs (4 columnas) */
-.table-oaes{
-  min-width:980px;
-}
-
-.table-oaes thead th:nth-child(1),
-.table-oaes tbody td:nth-child(1){
-  text-align:left;
-  width:52%;
-}
-
-.table-oaes thead th:nth-child(2),
-.table-oaes tbody td:nth-child(2){
-  text-align:center;
-  width:16%;
-}
-
-.table-oaes thead th:nth-child(3),
-.table-oaes tbody td:nth-child(3){
-  text-align:center;
-  width:16%;
-}
-
-.table-oaes thead th:nth-child(4),
-.table-oaes tbody td:nth-child(4){
-  text-align:center;
-  width:16%;
-}
-
-.oae-name{
-  font-weight:700;
-  letter-spacing:.2px;
-}
-
-/* Convenio/Reglas (2 columnas) */
-.table-convenio thead th:nth-child(1),
-.table-convenio tbody td:nth-child(1){
-  text-align:left;
-  width:70%;
-}
-
-.table-convenio thead th:nth-child(2),
-.table-convenio tbody td:nth-child(2){
-  text-align:center;
-  width:30%;
-}
-
-/* =========================================================
-   ANEXOS TÉCNICOS (bloques bonitos)
-========================================================= */
-.anexo-item{
-  margin-top:16px;
-  padding:16px 18px;
-  background:#f3f6fb;
-  border-left:4px solid #1e73be;
-  border-radius:10px;
-}
-
-.anexo-label{
-  display:inline-block;
-  font-weight:700;
-  font-size:14px;
-  color:#1e73be;
-  margin-bottom:6px;
-}
-
-.anexo-desc{
-  margin-top:6px;
-  font-size:14.5px;
-  line-height:1.5;
-  color:#0b1a33;
-}
-
-/* =========================================================
    OVERLAY + MOBILE
 ========================================================= */
 .overlay{ display:none; }
@@ -400,10 +410,10 @@ body.menu-open .overlay{
 
   .searchwrap input{ width:140px; }
 
-  /* tablas: scroll horizontal en móvil */
   .table-wrap{
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
   }
+
   .table{ min-width:720px; }
 }
