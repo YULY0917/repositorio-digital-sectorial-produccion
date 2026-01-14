@@ -230,29 +230,26 @@ body{
 .oae-name{ font-weight:650; }
 .cell-center{ text-align:center; }
 
-/* ================= TABLA CONVENIO (AJUSTE FINAL) ================= */
+/* ================= TABLA CONVENIO (CORRECCIÓN REAL) ================= */
+/* OBJETIVO:
+   - DOCUMENTO alineado a la izquierda (como el texto)
+   - ACCIÓN centrado sobre el botón
+   - Evitar que DOCUMENTO se vaya al centro visual de la tarjeta
+*/
 .table-convenio{
   table-layout:fixed;
 }
 
-.table-convenio col.col-doc{ width:75%; }
-.table-convenio col.col-act{ width:25%; }
+.table-convenio col.col-doc{ width:72%; }
+.table-convenio col.col-act{ width:28%; }
 
-.table-convenio thead th:nth-child(1){
-  text-align:center;
-}
+/* Encabezados */
+.table-convenio thead th:nth-child(1){ text-align:left; }     /* DOCUMENTO a la izquierda */
+.table-convenio thead th:nth-child(2){ text-align:center; }   /* ACCIÓN centrado */
 
-.table-convenio thead th:nth-child(2){
-  text-align:center;
-}
-
-.table-convenio tbody td:nth-child(1){
-  text-align:left;
-}
-
-.table-convenio tbody td:nth-child(2){
-  text-align:center;
-}
+/* Celdas */
+.table-convenio tbody td:nth-child(1){ text-align:left; }     /* texto a la izquierda */
+.table-convenio tbody td:nth-child(2){ text-align:center; }   /* botón centrado */
 
 /* ================= OVERLAY ================= */
 .overlay{
