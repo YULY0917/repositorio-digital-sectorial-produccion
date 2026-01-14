@@ -12,10 +12,13 @@ body{background:#f2f5f8;color:#0b1a33;line-height:1.45;}
   display:none;border:1px solid rgba(0,0,0,.15);background:#fff;
   font-size:18px;line-height:1;border-radius:8px;padding:6px 10px;cursor:pointer;
 }
+
 .brand{display:flex;align-items:center;gap:12px;min-width:240px;}
-.brand img{height:52px;width:auto;max-width:150px;object-fit:contain;}
+.brand img{height:52px;width:auto;max-width:160px;object-fit:contain;}
 .brand-title{font-weight:800;font-size:16px;white-space:nowrap;}
+
 .spacer{flex:1;}
+
 .searchwrap{
   display:flex;align-items:center;gap:8px;background:#f1f4f9;
   padding:7px 12px;border-radius:22px;border:1px solid rgba(0,0,0,.08);
@@ -31,7 +34,8 @@ body{background:#f2f5f8;color:#0b1a33;line-height:1.45;}
 }
 .menu a:hover{background:rgba(255,255,255,.14);}
 .menu a.active{background:rgba(255,255,255,.24);font-weight:800;}
-/* Subniveles fijos (no “suben de nivel”) */
+
+/* Subniveles: Provisión / Consumo */
 .menu a.sub{padding-left:38px !important;font-size:13.5px;position:relative;}
 .menu a.sub::before{
   content:"";position:absolute;left:18px;top:50%;
@@ -45,7 +49,7 @@ body{background:#f2f5f8;color:#0b1a33;line-height:1.45;}
   box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
 h1{font-size:28px;margin-bottom:10px;}
-.intro-text,.lead{font-size:15px;margin-bottom:20px;color:#0b1a33;}
+.intro-text{font-size:15px;margin-bottom:20px;color:#0b1a33;}
 
 /* ================= BOTONES ================= */
 .btn{
@@ -74,13 +78,13 @@ h1{font-size:28px;margin-bottom:10px;}
 }
 .table tbody tr:last-child td{border-bottom:none;}
 
-/* Convenio/Reglas (2 columnas) */
+/* Convenio / Reglas (2 columnas) */
 .table-convenio thead th:nth-child(1),
 .table-convenio tbody td:nth-child(1){width:70%;text-align:left;}
 .table-convenio thead th:nth-child(2),
 .table-convenio tbody td:nth-child(2){width:30%;text-align:center;}
 
-/* Provisión/Consumo (5 columnas) */
+/* Provisión / Consumo (5 columnas) */
 .table-oaes-5{min-width:1100px;}
 .table-oaes-5 thead th:nth-child(1),
 .table-oaes-5 tbody td:nth-child(1){width:44%;text-align:left;}
@@ -92,6 +96,7 @@ h1{font-size:28px;margin-bottom:10px;}
 .table-oaes-5 tbody td:nth-child(3),
 .table-oaes-5 tbody td:nth-child(4),
 .table-oaes-5 tbody td:nth-child(5){width:14%;text-align:center;}
+
 .oae-name{font-weight:900;}
 
 /* ================= OVERLAY + MOBILE ================= */
