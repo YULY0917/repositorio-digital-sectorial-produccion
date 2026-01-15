@@ -4,36 +4,34 @@
   <meta charset="utf-8">
   <title>Anexos Técnicos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CSS correcto -->
-  <link rel="stylesheet" href="../assets/style.css?v=3">
+  <link rel="stylesheet" href="../assets/style.css?v=99">
 </head>
-
 <body>
 
 <header class="topbar">
-  <button class="burger" type="button" aria-label="Abrir menú">☰</button>
+  <button class="burger" aria-label="Abrir menú">☰</button>
 
   <div class="brand">
-    <img src="../assets/img/Logo.png" alt="Nodo Laboral y Previsional">
+    <img src="../assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
     <div class="brand-title">Repositorio Digital Sectorial</div>
   </div>
 
   <div class="spacer"></div>
 
   <div class="searchwrap">
-    <span>🔎</span>
-    <input type="search" placeholder="Buscar (ej: anexo 2, consumo)">
+    <span class="icon">🔎</span>
+    <input id="search" type="search" placeholder="Buscar (ej: suseso, anexo 2, consumo)">
   </div>
 </header>
 
-<div class="shell">
+<div class="overlay"></div>
 
+<div class="shell">
   <aside class="sidebar">
     <nav class="menu">
       <a href="../index.html">Inicio</a>
       <a href="convenio.html">Convenio de Adhesión</a>
-      <a class="active" href="anexos-tecnicos.html">Anexos Técnicos</a>
+      <a href="anexos-tecnicos.html">Anexos Técnicos</a>
       <a class="sub" href="anexos-provision-datos.html">Anexos de Provisión de Datos</a>
       <a class="sub" href="anexos-consumo-datos.html">Anexos de Consumo de Datos</a>
       <a href="reglas-uso.html">Reglas de Uso</a>
@@ -42,67 +40,51 @@
 
   <main class="main">
     <section class="card">
+      <h1 class="h1">Anexos Técnicos</h1>
 
-      <h1>Anexos Técnicos</h1>
-
-      <p class="intro-text">
+      <p class="lead">
         En esta sección se encuentran los Anexos Técnicos correspondientes al Convenio de Adhesión del Nodo Laboral y Previsional.
       </p>
 
-      <!-- LISTA BONITA (sin tablas, sin repetición) -->
       <div class="tech-list">
 
         <article class="tech-item">
-          <div class="tech-head">
-            <div>
-              <div class="tech-badge">Anexo 1</div>
-              <p class="tech-desc">
-                Incorporación a la Plataforma de Interoperabilidad del Sector Trabajo y Previsión Social en calidad de Proveedor de Datos (alta proveedor).
-              </p>
-            </div>
+          <div class="tech-badge">Anexo 1</div>
+          <div class="tech-title">Incorporación a la Plataforma de Interoperabilidad</div>
+          <div class="tech-desc">
+            Incorporación a la Plataforma de Interoperabilidad del Sector Trabajo y Previsión Social en calidad de Proveedor de Datos (alta proveedor).
           </div>
         </article>
 
         <article class="tech-item">
-          <div class="tech-head">
-            <div>
-              <div class="tech-badge">Anexo 2</div>
-              <p class="tech-desc">
-                Datos habilitados por Proveedor, que considera las autorizaciones, condiciones y restricciones para la provisión de información.
-              </p>
-            </div>
+          <div class="tech-badge">Anexo 2</div>
+          <div class="tech-title">Datos habilitados por Proveedor</div>
+          <div class="tech-desc">
+            Datos habilitados por Proveedor, que considera las autorizaciones, condiciones y restricciones para la provisión de información.
           </div>
         </article>
 
         <article class="tech-item">
-          <div class="tech-head">
-            <div>
-              <div class="tech-badge">Anexo 3</div>
-              <p class="tech-desc">
-                Solicitud de Consumo de Datos, que define el procedimiento y los requerimientos necesarios para el acceso a la información disponible.
-              </p>
-            </div>
+          <div class="tech-badge">Anexo 3</div>
+          <div class="tech-title">Solicitud de Consumo de Datos</div>
+          <div class="tech-desc">
+            Solicitud de Consumo de Datos, que define el procedimiento y los requerimientos necesarios para el acceso a la información disponible.
           </div>
         </article>
 
         <article class="tech-item">
-          <div class="tech-head">
-            <div>
-              <div class="tech-badge">Anexo 4</div>
-              <p class="tech-desc">
-                Datos disponibles para Consumidor, que describe los conjuntos de datos accesibles y sus características generales.
-              </p>
-            </div>
+          <div class="tech-badge">Anexo 4</div>
+          <div class="tech-title">Datos disponibles para Consumidor</div>
+          <div class="tech-desc">
+            Datos disponibles para Consumidor, que describe los conjuntos de datos accesibles y sus características generales.
           </div>
         </article>
 
       </div>
-
     </section>
   </main>
-
 </div>
 
-<script src="../assets/app.js?v=3"></script>
+<script src="../assets/app.js?v=99"></script>
 </body>
 </html>
