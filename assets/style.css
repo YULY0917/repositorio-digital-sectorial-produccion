@@ -1,49 +1,567 @@
-/* =========================================================
-   FIX MENU CELULAR (NO toca desktop)
-   - Sidebar más angosto y con borde redondeado
-   - Links con tamaño/padding normal
-   - Subitems con indent correcto
-   ========================================================= */
-@media (max-width: 640px){
+/* ===============================
+   REPOSITORIO DIGITAL SECTORIAL
+   Style final estable (NO rompe tablas)
+   =============================== */
 
-  /* Sidebar (menú) como panel */
-  .sidebar{
-    width: 86vw !important;          /* antes ocupaba demasiado */
-    max-width: 340px !important;
-    border-top-right-radius: 18px;
-    border-bottom-right-radius: 18px;
-    padding: 14px 12px !important;
+:root{
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#5b677a;
+  --line:#d9dee8;
+
+  --blue:#1f76bd;
+  --blue-dark:#175f98;
+  --blue-soft:#4b8fc9;
+
+  --shadow:0 10px 28px rgba(15,23,42,.08);
+
+  --radius:22px;
+  --radius-sm:14px;
+
+  --topbar-h:86px;
+  --sidebar-w:320px;
+
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ===== Reset básico (no agresivo) ===== */
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.45;
+}
+
+/* Evitar que estilos globales destruyan tablas */
+table{ border-collapse:separate; border-spacing:0; }
+
+/* Links */
+a{ color:inherit; text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+/* ================= TOPBAR ================= */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  height:var(--topbar-h);
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 22px;
+}
+
+/* Botón hamburguesa: SOLO móvil */
+.burger{
+  appearance:none;
+  border:1px solid var(--line);
+  background:#fff;
+  height:40px;
+  width:44px;
+  border-radius:12px;
+  display:none; /* desktop off */
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(15,23,42,.06);
+}
+.burger:active{ transform:scale(.98); }
+.burger span{
+  font-size:20px;
+  line-height:1;
+}
+
+/* Brand */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-width: 260px;
+}
+
+.brand img{
+  height:56px;            /* logo desktop */
+  width:auto;
+  display:block;
+  object-fit:contain;
+}
+.brand .title,
+.brand .brand-title{
+  font-weight:800;
+  font-size:22px;
+  letter-spacing:.2px;
+  color:var(--text);
+  white-space:nowrap;
+}
+
+/* Spacer (en páginas que lo traen) */
+.spacer{ flex:1; }
+
+/* ================= BUSCADOR ================= */
+.searchwrap{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  position:relative;
+}
+
+.searchwrap .icon{
+  font-size:18px;
+  color:#64748b;
+}
+
+/* input de búsqueda */
+.searchwrap input[type="search"],
+.searchwrap input[type="text"],
+#search{
+  width:min(520px, 46vw);
+  height:44px;
+  padding:0 44px 0 14px;
+  border-radius:999px;
+  border:1px solid #cfd6e4;
+  outline:none;
+  background:#fff;
+  color:var(--text);
+  font-size:15px;
+  box-shadow:0 8px 18px rgba(15,23,42,.06);
+}
+.searchwrap input:focus{
+  border-color:#8bb7e0;
+  box-shadow:0 10px 22px rgba(31,118,189,.15);
+}
+
+/* Si tienes botón X dentro del input en algunas versiones */
+.searchwrap .clear-btn{
+  position:absolute;
+  right:10px;
+  height:30px;
+  width:30px;
+  border:none;
+  background:#fff;
+  border-radius:999px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#64748b;
+}
+
+/* Resultados (si tu buscador los genera) */
+.search-results,
+#search-results{
+  position:absolute;
+  top:54px;
+  right:0;
+  width:min(560px, 78vw);
+  max-height: 320px;
+  overflow:auto;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:10px;
+  display:none;
+}
+.search-results.is-open,
+#search-results.is-open{ display:block; }
+
+.search-results .sr-title,
+#search-results .sr-title{
+  font-weight:800;
+  font-size:14px;
+  color:var(--muted);
+  padding:8px 10px;
+}
+.search-results a,
+#search-results a{
+  display:block;
+  padding:10px 10px;
+  border-radius:12px;
+  color:var(--text);
+  text-decoration:none;
+}
+.search-results a:hover,
+#search-results a:hover{
+  background:#f1f5fb;
+}
+
+/* ================= LAYOUT ================= */
+.shell{
+  display:flex;
+  min-height:calc(100vh - var(--topbar-h));
+}
+
+/* Sidebar */
+.sidebar{
+  width:var(--sidebar-w);
+  background:var(--blue);
+  color:#fff;
+  padding:18px 14px;
+}
+
+/* Menú */
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.menu a{
+  display:block;
+  padding:16px 16px;
+  border-radius:16px;
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* Activo */
+.menu a.active{
+  background:rgba(255,255,255,.22);
+}
+
+/* Subitems: indent fijo */
+.menu a.sub{
+  font-weight:700;
+  opacity:.98;
+  padding-left:40px;
+}
+
+/* Hover */
+.menu a:hover{
+  background:rgba(255,255,255,.18);
+  text-decoration:none;
+}
+
+/* Main */
+.main{
+  flex:1;
+  padding:26px 26px 42px;
+}
+
+/* Card */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:26px 26px;
+}
+
+/* Headings */
+.card h1,
+.card .h1{
+  margin:0 0 12px 0;
+  font-size:44px;
+  letter-spacing:-.6px;
+}
+.card p,
+.card .lead{
+  margin:0;
+  margin-top:10px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.55;
+}
+
+/* Separación bonita entre título y párrafos */
+.intro-text{ margin-top:14px !important; }
+
+/* ================= ANEXOS TÉCNICOS (TARJETAS) ================= */
+/* (Tu HTML usa .anexo-list/.anexo-item pero faltaban estilos) */
+.anexo-list{
+  margin-top:18px;
+  display:grid;
+  gap:12px;
+}
+.anexo-item{
+  border:1px solid #e6ecf5;
+  border-radius:18px;
+  padding:16px 18px;
+  background:#fff;
+}
+.anexo-tag{
+  display:inline-block;
+  font-weight:900;
+  font-size:13px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#eef6ff;
+  color:#0b4f86;
+  margin-bottom:10px;
+}
+.anexo-desc{
+  color:#334155;
+  font-size:16px;
+  line-height:1.55;
+}
+
+/* ================= BOTONES ================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  height:44px;
+  padding:0 18px;
+  border-radius:14px;
+  font-weight:800;
+  background:var(--blue);
+  color:#fff !important;
+  text-decoration:none !important;
+  border:0;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.btn:hover{ background:var(--blue-dark); }
+.btn:active{ transform:scale(.99); }
+.btn .ico{ font-size:16px; }
+
+/* ================= TABLAS (COMPATIBLE) ================= */
+/* Contenedor opcional (si usas .table-wrap) */
+.table-wrap{
+  margin-top:18px;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* ✅ CLAVE: .doc-table puede ser:
+   - <table class="doc-table"> ... (tu caso en Convenio)
+   - <div class="doc-table"><table>... (caso antiguo)
+   Esto deja ambos funcionando y recupera bordes. */
+.doc-table{
+  width:100%;
+  margin-top:18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff;
+}
+
+/* Si doc-table es TABLE, esto aplica perfecto.
+   Si doc-table es DIV contenedor, esto aplica al table interno. */
+.doc-table,
+.doc-table table{
+  width:100%;
+  border-spacing:0;
+}
+
+/* Encabezado */
+.doc-table thead th,
+.doc-table table thead th{
+  background:#f4f7fb;
+  border-bottom:1px solid var(--line);
+  padding:16px 18px;
+  font-size:13px;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:#1f2937;
+}
+
+/* Celdas */
+.doc-table tbody td,
+.doc-table table tbody td{
+  padding:18px;
+  border-bottom:1px solid #edf1f7;
+  vertical-align:middle;
+  font-size:16px;
+  color:var(--text);
+}
+
+.doc-table tbody tr:last-child td,
+.doc-table table tbody tr:last-child td{ border-bottom:none; }
+
+/* Centrar columnas desde la 2 en adelante */
+.doc-table th:nth-child(n+2),
+.doc-table td:nth-child(n+2){
+  text-align:center;
+}
+
+/* Tabla matriz OAEs (si la usas) */
+.matrix-table{
+  width:100%;
+  margin-top:18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff;
+}
+.matrix-table,
+.matrix-table table{
+  width:100%;
+  border-spacing:0;
+}
+.matrix-table thead th{
+  background:#f4f7fb;
+  border-bottom:1px solid var(--line);
+  padding:16px 14px;
+  font-size:13px;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:#1f2937;
+}
+.matrix-table tbody td{
+  padding:18px 14px;
+  border-bottom:1px solid #edf1f7;
+  vertical-align:middle;
+  font-size:15px;
+}
+.matrix-table tbody tr:last-child td{ border-bottom:none; }
+.matrix-table th:nth-child(1),
+.matrix-table td:nth-child(1){
+  text-align:left;
+  font-weight:800;
+}
+.matrix-table th:nth-child(n+2),
+.matrix-table td:nth-child(n+2){
+  text-align:center;
+}
+
+.dash{ color:#94a3b8; font-weight:700; }
+
+/* ================= OVERLAY + MOBILE MENU ================= */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.40);
+  opacity:0;
+  pointer-events:none;
+  transition:.2s ease;
+  z-index:40;
+}
+
+body.menu-open .overlay{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 980px){
+  :root{ --sidebar-w: 300px; }
+
+  .burger{ display:flex; }
+
+  .brand img{ height:48px; }
+  .brand .title,
+  .brand .brand-title{ font-size:18px; }
+
+  .searchwrap input[type="search"],
+  .searchwrap input[type="text"],
+  #search{
+    width:min(520px, 58vw);
   }
 
-  /* Menú: que no se vea "gigante" */
+  /* Sidebar off-canvas */
+  .sidebar{
+    position:fixed;
+    top:var(--topbar-h);
+    left:0;
+    height:calc(100vh - var(--topbar-h));
+    transform:translateX(-105%);
+    transition:.22s ease;
+    z-index:45;
+  }
+
+  body.menu-open .sidebar{
+    transform:translateX(0);
+  }
+
+  .shell{ display:block; }
+  .main{ padding:18px; }
+
+  .card h1, .card .h1{ font-size:34px; }
+  .card p, .card .lead{ font-size:16px; }
+}
+
+/* ✅ CELULAR: header en 2 filas + menú NO gigante */
+@media (max-width: 640px){
+
+  /* Header en 2 filas: (fila 1 logo + burger) / (fila 2 buscador) */
+  .topbar{
+    flex-wrap:wrap;
+    height:auto;
+    padding:12px 14px;
+    gap:10px;
+  }
+
+  .burger{ order:1; }
+
+  .brand{
+    order:2;
+    flex:1 1 auto;
+    min-width:0;
+  }
+
+  .brand img{
+    height:clamp(44px, 12vw, 56px);
+  }
+
+  /* Buscador abajo y full width */
+  .searchwrap{
+    order:3;
+    width:100%;
+    margin-left:0;
+  }
+  .searchwrap input[type="search"],
+  .searchwrap input[type="text"],
+  #search{
+    width:100%;
+  }
+
+  /* Resultados full width */
+  .search-results,
+  #search-results{
+    left:0;
+    right:0;
+    width:100%;
+  }
+
+  /* ✅ FIX MENÚ CELULAR (lo que te salía gigante en azul) */
+  .sidebar{
+    width:86vw;
+    max-width:340px;
+    padding:14px 12px;
+    border-top-right-radius:18px;
+    border-bottom-right-radius:18px;
+  }
+
   .menu{
-    gap: 8px !important;
-    margin-top: 6px;
+    gap:8px;
+    margin-top:6px;
   }
 
   .menu a{
-    font-size: 16px !important;
-    padding: 12px 12px !important;
-    border-radius: 14px !important;
-    line-height: 1.25 !important;
-    text-align: left !important;     /* evita apariencia de botones centrados */
-    white-space: normal !important;  /* permite 2 líneas si es necesario */
+    font-size:16px;
+    padding:12px 12px;
+    border-radius:14px;
+    line-height:1.25;
+    text-align:left;
+    white-space:normal;
   }
 
-  /* Subitems: indent más suave (no tipo "botón enorme") */
   .menu a.sub{
-    padding-left: 26px !important;
-    font-size: 15px !important;
-    opacity: .98;
+    padding-left:26px;
+    font-size:15px;
   }
 
-  /* Activo: menos "pastilla gigante" */
   .menu a.active{
-    background: rgba(255,255,255,.18) !important;
+    background:rgba(255,255,255,.18);
   }
 
-  /* Overlay más oscuro para que se note el panel */
-  body.menu-open .overlay{
-    opacity: 1 !important;
-  }
+  /* tablas: que no se “aplasten” */
+  .doc-table{ min-width:720px; }
 }
+
+/* Pantallas muy chicas */
+@media (max-width: 520px){
+  .brand{ min-width: 0; }
+  .brand .title,
+  .brand .brand-title{ display:none; } /* solo logo */
+}
+
