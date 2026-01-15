@@ -1,6 +1,7 @@
 /* ===============================
    REPOSITORIO DIGITAL SECTORIAL
-   Style estable (NO rompe tablas)
+   STYLE FINAL ESTABLE
+   (Desktop + Mobile OK)
    =============================== */
 
 :root{
@@ -16,7 +17,6 @@
   --shadow:0 10px 28px rgba(15,23,42,.08);
 
   --radius:22px;
-  --radius-sm:14px;
 
   --topbar-h:86px;
   --sidebar-w:320px;
@@ -24,9 +24,10 @@
   --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* ===== Reset básico (no agresivo) ===== */
+/* ===== Reset controlado ===== */
 *{ box-sizing:border-box; }
 html, body{ height:100%; }
+
 body{
   margin:0;
   font-family:var(--font);
@@ -35,7 +36,7 @@ body{
   line-height:1.45;
 }
 
-/* Evitar que estilos globales destruyan tablas */
+/* Evitar romper tablas */
 table{ border-collapse:separate; border-spacing:0; }
 
 /* Links */
@@ -47,34 +48,26 @@ a:hover{ text-decoration:underline; }
   position:sticky;
   top:0;
   z-index:50;
-  height:var(--topbar-h);
   background:#fff;
   border-bottom:1px solid var(--line);
   display:flex;
   align-items:center;
   gap:14px;
   padding:14px 22px;
+  height:var(--topbar-h);
 }
 
-/* Botón hamburguesa: SOLO móvil */
+/* Burger */
 .burger{
-  appearance:none;
-  border:1px solid var(--line);
-  background:#fff;
+  display:none;
   height:40px;
   width:44px;
   border-radius:12px;
-  display:none; /* desktop off */
-  align-items:center;
-  justify-content:center;
+  border:1px solid var(--line);
+  background:#fff;
   cursor:pointer;
-  box-shadow:0 4px 10px rgba(15,23,42,.06);
 }
-.burger:active{ transform:scale(.98); }
-.burger span{
-  font-size:20px;
-  line-height:1;
-}
+.burger span{ font-size:20px; }
 
 /* Brand */
 .brand{
@@ -85,23 +78,16 @@ a:hover{ text-decoration:underline; }
 }
 
 .brand img{
-  height:64px;            /* ✅ Logo grande en desktop */
+  height:64px;
   width:auto;
   display:block;
-  object-fit:contain;
 }
 
-.brand .title,
-.brand .brand-title{
+.brand-title{
   font-weight:800;
-  font-size:20px;         /* institucional */
-  letter-spacing:.2px;
-  color:var(--text);
+  font-size:20px;
   white-space:nowrap;
 }
-
-/* Spacer (si alguna página lo trae) */
-.spacer{ flex:1; }
 
 /* ================= BUSCADOR ================= */
 .searchwrap{
@@ -112,55 +98,37 @@ a:hover{ text-decoration:underline; }
   position:relative;
 }
 
-/* icono lupa */
-.searchwrap .search-icon{
+.search-icon{
   font-size:18px;
   color:#64748b;
 }
 
-/* input de búsqueda */
-.searchwrap input[type="search"],
-.searchwrap input[type="text"],
 #search{
-  width:min(520px, 46vw);
   height:44px;
+  width:min(520px, 46vw);
   padding:0 44px 0 14px;
   border-radius:999px;
   border:1px solid #cfd6e4;
-  outline:none;
-  background:#fff;
-  color:var(--text);
   font-size:15px;
-  box-shadow:0 8px 18px rgba(15,23,42,.06);
-}
-.searchwrap input:focus{
-  border-color:#8bb7e0;
-  box-shadow:0 10px 22px rgba(31,118,189,.15);
 }
 
-/* botón X (tu HTML usa .search-clear) */
-.searchwrap .search-clear{
+.search-clear{
   position:absolute;
   right:10px;
-  height:30px;
-  width:30px;
+  height:28px;
+  width:28px;
+  border-radius:999px;
   border:1px solid #e2e8f0;
   background:#fff;
-  border-radius:999px;
   cursor:pointer;
-  display:none; /* lo muestra JS cuando hay texto */
-  align-items:center;
-  justify-content:center;
-  color:#64748b;
+  display:none;
 }
 
-/* Resultados (tu HTML usa #searchResults y .search-results) */
-.search-results,
 #searchResults{
   position:absolute;
   top:54px;
   right:0;
-  width:min(560px, 78vw);
+  width:min(560px, 80vw);
   max-height:320px;
   overflow:auto;
   background:#fff;
@@ -168,28 +136,25 @@ a:hover{ text-decoration:underline; }
   border-radius:16px;
   box-shadow:var(--shadow);
   padding:10px;
-  display:none; /* JS lo cambia a block */
+  display:none;
 }
 
-/* Cabecera + items del buscador */
 #searchResults .sr-head{
-  font-weight:800;
+  font-weight:700;
   font-size:13px;
-  color:#475569;
-  padding:8px 10px 10px;
+  padding:8px;
   border-bottom:1px solid #eef2f7;
-  margin-bottom:8px;
 }
+
 #searchResults a{
   display:block;
-  padding:10px 10px;
+  padding:10px;
   border-radius:12px;
-  color:var(--text);
-  text-decoration:none;
 }
 #searchResults a:hover{ background:#f1f5fb; }
-#searchResults .sr-title{ font-weight:800; font-size:14px; }
-#searchResults .sr-sub{ font-size:12px; color:#64748b; margin-top:2px; }
+
+.sr-title{ font-weight:700; }
+.sr-sub{ font-size:12px; color:#64748b; }
 
 /* ================= LAYOUT ================= */
 .shell{
@@ -205,7 +170,7 @@ a:hover{ text-decoration:underline; }
   padding:18px 14px;
 }
 
-/* Menú */
+/* Menu */
 .menu{
   display:flex;
   flex-direction:column;
@@ -213,279 +178,175 @@ a:hover{ text-decoration:underline; }
 }
 
 .menu a{
-  display:block;
-  padding:16px 16px;
-  border-radius:16px;
+  padding:14px 16px;
+  border-radius:14px;
+  font-weight:700;
   color:#fff;
-  font-weight:700;
-  text-decoration:none;
 }
 
-/* Activo */
-.menu a.active{
-  background:rgba(255,255,255,.22);
-}
-
-/* Subitems: indent estable */
-.menu a.sub{
-  font-weight:700;
-  opacity:.98;
-  padding-left:40px;
-}
-
-/* Hover */
-.menu a:hover{
-  background:rgba(255,255,255,.18);
-  text-decoration:none;
-}
+.menu a.active{ background:rgba(255,255,255,.22); }
+.menu a.sub{ padding-left:40px; }
+.menu a:hover{ background:rgba(255,255,255,.18); }
 
 /* Main */
 .main{
   flex:1;
-  padding:26px 26px 42px;
+  padding:26px;
 }
 
 /* Card */
 .card{
-  background:var(--card);
+  background:#fff;
   border-radius:var(--radius);
   box-shadow:var(--shadow);
-  padding:26px 26px;
+  padding:26px;
 }
 
-/* Headings (✅ institucional, no gigante) */
 .card h1,
 .card .h1{
-  margin:0 0 12px 0;
   font-size:32px;
-  letter-spacing:-.3px;
-}
-.card p,
-.card .lead{
-  margin:0;
-  margin-top:10px;
-  color:var(--muted);
-  font-size:16px;
-  line-height:1.55;
+  margin:0 0 12px 0;
 }
 
-/* ================= LISTA ANEXOS (Anexos Técnicos) ================= */
-.anexo-list{
-  margin-top:18px;
-  display:grid;
-  gap:12px;
-}
-.anexo-item{
-  border:1px solid #e6ecf5;
-  border-radius:16px;
-  padding:14px 16px;
-  background:#fff;
-}
-.anexo-tag{
-  display:inline-block;
-  font-weight:900;
-  font-size:13px;
-  padding:6px 10px;
-  border-radius:999px;
-  background:#eef6ff;
-  color:#0b4f86;
-  margin-bottom:8px;
-}
-.anexo-desc{
-  color:#334155;
-  font-size:15px;
-  line-height:1.5;
+.card p,
+.card .lead{
+  font-size:16px;
+  color:var(--muted);
+  margin-top:8px;
 }
 
 /* ================= BOTONES ================= */
 .btn{
   display:inline-flex;
   align-items:center;
-  justify-content:center;
-  gap:10px;
+  gap:8px;
   height:44px;
   padding:0 18px;
   border-radius:14px;
-  font-weight:800;
   background:var(--blue);
   color:#fff !important;
-  text-decoration:none !important;
-  border:0;
-  cursor:pointer;
-  white-space:nowrap;
+  font-weight:800;
 }
 .btn:hover{ background:var(--blue-dark); }
-.btn:active{ transform:scale(.99); }
-.btn .ico{ font-size:16px; }
 
 /* ================= TABLAS ================= */
-.table-wrap{ margin-top:18px; overflow:auto; }
+.table-wrap{
+  margin-top:18px;
+  overflow:auto;
+}
 
-/* ✅ FIX: tu tabla ES <table class="doc-table">, no .doc-table table */
 .doc-table{
   width:100%;
+  min-width:720px;
   border:1px solid var(--line);
   border-radius:18px;
-  overflow:hidden;
   background:#fff;
-  border-spacing:0;
-  min-width:720px; /* ayuda en móvil para no aplastar columnas */
 }
 
 .doc-table thead th{
   background:#f4f7fb;
-  border-bottom:1px solid var(--line);
-  padding:16px 18px;
+  padding:14px;
   font-size:13px;
-  letter-spacing:.6px;
   text-transform:uppercase;
-  color:#1f2937;
 }
 
 .doc-table tbody td{
-  padding:18px;
+  padding:16px;
   border-bottom:1px solid #edf1f7;
-  vertical-align:middle;
-  font-size:15px;
-  color:var(--text);
 }
 
 .doc-table tbody tr:last-child td{ border-bottom:none; }
 
-.doc-table th:nth-child(n+2),
-.doc-table td:nth-child(n+2){
-  text-align:center;
-}
-
-.cell-left{ text-align:left !important; }
-.cell-center{ text-align:center !important; }
+.cell-left{ text-align:left; }
+.cell-center{ text-align:center; }
 .oae-name{ font-weight:800; }
-.dash{ color:#94a3b8; font-weight:700; }
+.dash{ color:#94a3b8; }
 
-/* ================= OVERLAY + MOBILE MENU ================= */
+/* ================= OVERLAY ================= */
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(15,23,42,.40);
+  background:rgba(15,23,42,.4);
   opacity:0;
   pointer-events:none;
-  transition:.2s ease;
-  z-index:40;
+  transition:.2s;
 }
 
-/* compatible con tu JS (overlay.show) y body.menu-open */
-.overlay.show,
 body.menu-open .overlay{
   opacity:1;
   pointer-events:auto;
 }
 
-/* ================= RESPONSIVE (tablet/móvil) ================= */
-@media (max-width: 980px){
-  :root{ --sidebar-w: 300px; }
-
+/* ================= RESPONSIVE ================= */
+@media (max-width:980px){
   .burger{ display:flex; }
 
-  .brand img{ height:56px; }
-  .brand .title,
-  .brand .brand-title{ font-size:16px; }
-
-  .searchwrap input[type="search"],
-  .searchwrap input[type="text"],
-  #search{
-    width:min(520px, 58vw);
-  }
-
-  /* Sidebar off-canvas */
   .sidebar{
     position:fixed;
-    top:var(--topbar-h);
+    top:0;
     left:0;
-    height:calc(100vh - var(--topbar-h));
+    height:100vh;
     transform:translateX(-105%);
-    transition:.22s ease;
+    transition:.25s;
     z-index:45;
   }
 
-  body.menu-open .sidebar,
-  .sidebar.open{
-    transform:translateX(0);
-  }
+  body.menu-open .sidebar{ transform:translateX(0); }
 
   .shell{ display:block; }
-  .main{ padding:18px; }
-
-  .card h1, .card .h1{ font-size:28px; }
-  .card p, .card .lead{ font-size:15px; }
 }
 
-/* =========================================
-   FIX CELULAR: TOPBAR EN 2 FILAS + BUSCADOR FULL
-   ========================================= */
-@media (max-width: 640px){
+/* ===== CELULAR REAL ===== */
+@media (max-width:640px){
 
-  /* Topbar: permite 2 filas (fila 1: burger+logo / fila 2: buscador) */
   .topbar{
     flex-wrap:wrap;
-    height:auto;                 /* ✅ deja de forzar altura */
-    padding:12px 14px;
+    height:auto;
     gap:10px;
+    padding:12px 14px;
   }
 
-  /* Orden: burger + logo arriba */
   .burger{ order:1; }
 
   .brand{
     order:2;
-    min-width:0;
     flex:1;
+    min-width:0;
   }
 
   .brand img{
-    height:54px;                 /* ✅ logo bien en celular */
+    height:clamp(42px, 12vw, 56px);
   }
 
-  /* Buscador abajo, ancho completo */
+  .brand-title{
+    font-size:clamp(14px, 3.6vw, 16px);
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
   .searchwrap{
     order:3;
     width:100%;
     margin-left:0;
   }
 
-  #search,
-  .searchwrap input[type="search"],
-  .searchwrap input[type="text"]{
+  #search{
     width:100%;
-    max-width:none;
   }
 
-  /* Resultados del buscador: ancho completo */
-  #searchResults,
-  .search-results{
+  #searchResults{
     left:0;
     right:0;
     width:100%;
   }
 
-  /* Contenido más cómodo */
   .main{ padding:14px; }
   .card{ padding:18px; }
 
-  .card h1, .card .h1{ font-size:26px; }
-  .card p, .card .lead{ font-size:15px; }
-
-  /* Tablas: scroll horizontal limpio en celular */
-  .table-wrap{
-    overflow:auto;
-    -webkit-overflow-scrolling:touch;
-  }
-  .doc-table{ min-width: 720px; }
+  .card h1{ font-size:26px; }
 }
 
-/* Sidebar móvil: que no dependa de una altura fija de topbar */
-@media (max-width: 980px){
-  .sidebar{
-    top:0;
-    height:100vh;
-  }
+/* ===== CELULAR MUY CHICO ===== */
+@media (max-width:420px){
+  .brand-title{ display:none; }
 }
