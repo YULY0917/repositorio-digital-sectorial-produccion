@@ -7,132 +7,129 @@
 }
 
 :root{
+  /* Colores */
   --bg:#f2f5f8;
   --ink:#0b1a33;
-  --muted:#526079;
-  --card:#ffffff;
-  --line:#e6eaf0;
-  --brand:#1e73be;
-  --brand-2:#165e9b;
+  --muted:#5b6b82;
+  --white:#ffffff;
+  --line:#d7dee9;
+
+  /* Marca */
+  --brand:#1e73be;         /* azul sidebar */
+  --brand-dark:#0b1a33;
+
+  /* Botones */
+  --btn:#1e73be;
+  --btn-hover:#155c97;
+
+  /* Layout */
+  --radius:16px;
   --shadow:0 10px 30px rgba(0,0,0,.08);
-  --radius:14px;
+
+  /* Tipografía (✅ más chica y ordenada) */
+  --fs-base:16px;
+  --fs-lead:18px;
+  --fs-h1:44px;
 }
 
 body{
   background:var(--bg);
   color:var(--ink);
+  font-size:var(--fs-base);
 }
 
-/* ================= TOPBAR ================= */
+/* ================= TOPBAR (BLANCA) ================= */
 .topbar{
   position:sticky;
   top:0;
   z-index:50;
-  height:78px;
-  background:#fff;
+  height:76px;
+  background:var(--white);
   border-bottom:1px solid var(--line);
   display:flex;
   align-items:center;
-  padding:0 18px;
   gap:14px;
+  padding:0 18px;
 }
 
-/* Hamburguesa: SOLO móvil */
+/* Hamburguesa (solo móvil) */
 .burger{
-  width:42px;
-  height:42px;
+  display:none; /* desktop */
+  width:40px;
+  height:40px;
   border:1px solid var(--line);
   background:#fff;
   border-radius:10px;
-  display:none;
+  cursor:pointer;
   align-items:center;
   justify-content:center;
-  cursor:pointer;
-}
-
-.burger:active{ transform:scale(.98); }
-
-.burger span{
-  font-size:20px;
-  line-height:1;
+  font-size:18px;
   color:var(--ink);
 }
 
-/* Marca */
+/* Marca (logo + título) */
 .brand{
   display:flex;
   align-items:center;
-  gap:14px;
-  min-width:260px;
+  gap:12px;
+  min-width:280px;
 }
 
 .brand img{
-  width:62px;
-  height:62px;
+  /* ✅ logo más grande sin salirse */
+  width:76px;
+  height:76px;
   object-fit:contain;
   display:block;
 }
 
 .brand-title{
-  font-size:24px;
+  font-size:22px;
   font-weight:800;
   letter-spacing:-.3px;
   color:var(--ink);
   white-space:nowrap;
 }
 
-/* Buscador */
+.spacer{ flex:1; }
+
+/* ================= BUSCADOR ================= */
 .searchwrap{
-  margin-left:auto;
+  position:relative;
   display:flex;
   align-items:center;
   gap:10px;
-  position:relative;
+  background:#fff;
+  border:1px solid var(--line);
+  padding:10px 12px;
+  border-radius:999px;
+  min-width:320px;
+  max-width:520px;
 }
 
-.search-icon{
+.searchwrap .icon{
+  opacity:.75;
   font-size:18px;
-  opacity:.65;
 }
 
 .searchwrap input{
-  width:min(520px, 52vw);
-  height:44px;
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:999px;
-  padding:0 44px 0 16px;
+  width:100%;
+  border:none;
   outline:none;
   font-size:16px;
+  color:var(--ink);
 }
 
-.searchwrap input:focus{
-  border-color:#b7c7db;
-  box-shadow:0 0 0 4px rgba(30,115,190,.12);
+.searchwrap input::placeholder{
+  color:#7b8798;
 }
 
-.search-clear{
-  position:absolute;
-  right:12px;
-  width:28px;
-  height:28px;
-  border:none;
-  background:#fff;
-  border-radius:50%;
-  cursor:pointer;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
-  line-height:1;
-  opacity:.65;
-}
-
+/* Caja de resultados del buscador (si tu JS usa .search-results) */
 .search-results{
   position:absolute;
-  top:54px;
   right:0;
-  width:min(640px, 92vw);
+  top:52px;
+  width:min(520px, calc(100vw - 36px));
   background:#fff;
   border:1px solid var(--line);
   border-radius:14px;
@@ -141,288 +138,284 @@ body{
   display:none;
 }
 
+.search-results.active{ display:block; }
+
 .search-results .sr-head{
   padding:10px 14px;
-  font-size:13px;
-  color:var(--muted);
-  background:#f7f9fc;
+  font-weight:800;
   border-bottom:1px solid var(--line);
+  background:#f7f9fc;
 }
 
-.search-results a{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  padding:12px 14px;
+.search-results ul{
+  list-style:none;
+  max-height:360px;
+  overflow:auto;
+}
+
+.search-results li a{
+  display:block;
+  padding:10px 14px;
   text-decoration:none;
   color:var(--ink);
-  border-bottom:1px solid #f1f4f8;
+  border-bottom:1px solid #eef2f8;
 }
 
-.search-results a:hover{
-  background:#f7fbff;
-}
-
-.search-results a:last-child{
-  border-bottom:none;
-}
-
-.search-results .sr-title{
-  font-weight:700;
-}
+.search-results li a:hover{ background:#f3f7ff; }
 
 .search-results .sr-sub{
-  font-size:13px;
+  display:block;
+  margin-top:2px;
+  font-size:12px;
   color:var(--muted);
 }
 
 /* ================= LAYOUT ================= */
 .shell{
   display:flex;
-  min-height:calc(100vh - 78px);
+  min-height:calc(100vh - 76px);
 }
 
 /* ================= SIDEBAR ================= */
 .sidebar{
   width:300px;
   background:var(--brand);
-  padding:22px 18px;
+  padding:18px;
 }
 
 .menu{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:8px;
 }
 
 .menu a{
   color:#fff;
   text-decoration:none;
-  padding:14px 14px;
+  padding:14px 16px;
   border-radius:12px;
   transition:background .15s ease;
-  font-weight:600;
+  font-weight:700;
 }
 
-.menu a:hover{
-  background:rgba(255,255,255,.12);
-}
+.menu a:hover{ background:rgba(255,255,255,.14); }
 
-.menu a.active{
-  background:rgba(255,255,255,.22);
-}
+.menu a.active{ background:rgba(255,255,255,.22); }
 
 .menu a.sub{
-  margin-left:10px;
-  padding-left:18px;
-  font-weight:600;
+  margin-left:18px;
+  font-weight:700;
   opacity:.95;
 }
 
-/* ================= CONTENT ================= */
+/* ================= CONTENIDO ================= */
 .main{
   flex:1;
-  padding:26px;
+  padding:24px;
 }
 
 .card{
-  background:var(--card);
-  border-radius:20px;
-  padding:34px;
+  background:#fff;
+  border-radius:var(--radius);
+  padding:28px;
   box-shadow:var(--shadow);
 }
 
 .h1{
-  font-size:56px;
-  letter-spacing:-1px;
-  line-height:1.02;
-  margin-bottom:14px;
+  font-size:var(--fs-h1);
+  letter-spacing:-.8px;
+  line-height:1.05;
+  margin-bottom:12px;
 }
 
 .lead{
   color:var(--muted);
-  font-size:20px;
+  font-size:var(--fs-lead);
   line-height:1.6;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
-/* ================= TABLES ================= */
-.table-wrap{
-  margin-top:18px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  overflow:hidden;
-  background:#fff;
-}
-
-.doc-table{
-  width:100%;
-  border-collapse:separate;
-  border-spacing:0;
-}
-
-.doc-table thead th{
-  background:#f6f9fd;
-  border-bottom:1px solid var(--line);
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:.6px;
-  color:var(--ink);
-  padding:16px 16px;
-}
-
-.doc-table tbody td{
-  padding:18px 16px;
-  border-bottom:1px solid #eef2f7;
-  vertical-align:middle;
-}
-
-.doc-table tbody tr:last-child td{
-  border-bottom:none;
-}
-
-.cell-left{ text-align:left; }
-.cell-center{ text-align:center; }
-.cell-right{ text-align:right; }
-
-.oae-name{
-  font-weight:800;
-  letter-spacing:.2px;
-  text-transform:uppercase;
-}
-
-.dash{
-  color:#9aa6b2;
-  font-weight:700;
-}
-
-/* Botón Abrir/Descargar */
+/* ================= BOTONES (ABRIR / DESCARGAR) ================= */
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:10px;
-  padding:10px 16px;
-  border-radius:12px;
-  background:var(--brand);
+  background:var(--btn);
   color:#fff;
+  padding:12px 18px;
+  border-radius:12px;
   text-decoration:none;
   font-weight:800;
-  font-size:14px;
-  border:1px solid rgba(0,0,0,0);
+  border:none;
+  cursor:pointer;
   white-space:nowrap;
-  min-width:130px;
+  min-width:120px;
 }
 
-.btn:hover{
-  background:var(--brand-2);
+.btn:hover{ background:var(--btn-hover); }
+
+.btn .ico{ font-size:16px; }
+
+/* ================= TABLAS (GENERAL) ================= */
+.table-wrap{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
 }
 
-.btn .ico{
-  font-size:16px;
+.table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
 }
 
-/* ================= ANEXOS TÉCNICOS (sin tablas, bonito) ================= */
+.table thead th{
+  background:#f7f9fc;
+  border-bottom:1px solid var(--line);
+  padding:16px 14px;
+  font-weight:900;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  color:var(--ink);
+}
+
+.table tbody td{
+  padding:18px 14px;
+  border-bottom:1px solid #eef2f8;
+  vertical-align:middle;
+}
+
+.table tbody tr:last-child td{ border-bottom:none; }
+
+/* Convenio / Reglas (2 columnas) */
+.table.table-2col thead th:nth-child(1),
+.table.table-2col tbody td:nth-child(1){
+  width:70%;
+  text-align:left;
+}
+
+.table.table-2col thead th:nth-child(2),
+.table.table-2col tbody td:nth-child(2){
+  width:30%;
+  text-align:center;
+}
+
+/* Provisión / Consumo (5 columnas) */
+.table.table-5col thead th:nth-child(1),
+.table.table-5col tbody td:nth-child(1){
+  width:40%;
+  text-align:left;
+  font-weight:800;
+}
+
+.table.table-5col thead th:nth-child(n+2),
+.table.table-5col tbody td:nth-child(n+2){
+  width:15%;
+  text-align:center;
+}
+
+.dash{
+  color:#7b8798;
+  font-weight:800;
+}
+
+/* ================= ANEXOS TÉCNICOS (BONITO, SIN TABLAS) ================= */
 .anexo-list{
   display:flex;
   flex-direction:column;
-  gap:16px;
-  margin-top:22px;
+  gap:14px;
+  margin-top:18px;
 }
 
 .anexo-item{
   border:1px solid var(--line);
-  border-radius:16px;
-  padding:18px 18px;
   background:#fff;
+  border-radius:14px;
+  padding:18px 18px;
 }
 
 .anexo-tag{
+  /* ✅ NO parece botón */
   display:inline-block;
   font-weight:900;
-  font-size:13px;
-  letter-spacing:.7px;
+  font-size:12px;
+  letter-spacing:.6px;
   text-transform:uppercase;
-  color:var(--brand);
+  color:#1e6bb8;
+  background:transparent;
+  border:none;
+  padding:0;
   margin-bottom:8px;
 }
 
 .anexo-title{
+  /* ✅ sin “negrita exagerada” */
   font-size:22px;
-  font-weight:900;
-  margin-bottom:8px;
+  font-weight:750;
+  color:var(--ink);
+  margin-bottom:6px;
 }
 
 .anexo-desc{
   color:var(--muted);
-  line-height:1.6;
+  font-size:16px;
+  line-height:1.55;
 }
 
-/* ================= OVERLAY (móvil) ================= */
+/* ================= OVERLAY + MÓVIL ================= */
 .overlay{
+  display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.38);
-  display:none;
-  z-index:60;
+  background:rgba(0,0,0,.35);
+  z-index:40;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ===== Responsive ===== */
 @media (max-width: 980px){
-  .h1{ font-size:42px; }
-
-  .brand-title{
-    font-size:18px;
-    white-space:nowrap;
-  }
-  .brand img{
-    width:52px;
-    height:52px;
+  :root{
+    --fs-h1:34px;
+    --fs-lead:16px;
+    --fs-base:15px;
   }
 
-  .burger{ display:inline-flex; }
+  .searchwrap{ min-width:260px; }
+  .sidebar{ width:280px; }
+}
+
+/* Drawer en móvil */
+@media (max-width: 860px){
+  .burger{ display:flex; }
 
   .sidebar{
     position:fixed;
-    top:78px;
-    left:0;
-    height:calc(100vh - 78px);
-    transform:translateX(-105%);
-    transition:transform .18s ease;
-    z-index:70;
-    width:290px;
+    left:-320px;
+    top:76px;
+    height:calc(100vh - 76px);
+    width:300px;
+    z-index:45;
+    transition:left .2s ease;
   }
 
-  .sidebar.open{
-    transform:translateX(0);
-  }
+  body.menu-open .sidebar{ left:0; }
+  body.menu-open .overlay{ display:block; }
 
-  .overlay.show{ display:block; }
-
+  .shell{ display:block; }
   .main{ padding:18px; }
-  .card{ padding:22px; }
 
-  .searchwrap input{
-    width:min(420px, 62vw);
-  }
+  /* ✅ tablas no se “rompen” en celular */
+  .table-wrap{ overflow:auto; }
+  .table{ min-width:920px; }
 
-  /* Tablas: permiten scroll horizontal en móvil sin romper */
-  .table-wrap{
-    overflow:auto;
-  }
-  .doc-table{
-    min-width:820px;
-  }
+  .brand-title{ font-size:16px; }
+  .brand img{ width:64px; height:64px; }
 }
 
 @media (max-width: 520px){
-  .brand{
-    min-width:auto;
-  }
-  .brand-title{
-    display:none; /* en pantallas muy pequeñas, para que no explote */
-  }
-  .searchwrap input{
-    width:62vw;
-  }
+  .brand-title{ display:none; }
+  .brand img{ width:58px; height:58px; }
+  .searchwrap{ min-width:200px; }
 }
