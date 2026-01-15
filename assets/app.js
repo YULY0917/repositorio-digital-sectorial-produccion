@@ -7,22 +7,25 @@
   const clearBtn = document.querySelector(".search-clear");
   const resultsBox = document.getElementById("searchResults");
 
-  // ====== Menú móvil ======
+  // ====== Menú móvil (✅ estable) ======
   function openMenu() {
-    if (!sidebar) return;
-    sidebar.classList.add("open");
+    document.body.classList.add("menu-open");
+    if (sidebar) sidebar.classList.add("open");
     if (overlay) overlay.classList.add("show");
   }
+
   function closeMenu() {
-    if (!sidebar) return;
-    sidebar.classList.remove("open");
+    document.body.classList.remove("menu-open");
+    if (sidebar) sidebar.classList.remove("open");
     if (overlay) overlay.classList.remove("show");
   }
 
-  if (burger) burger.addEventListener("click", () => {
-    if (sidebar.classList.contains("open")) closeMenu();
-    else openMenu();
-  });
+  if (burger) {
+    burger.addEventListener("click", () => {
+      if (document.body.classList.contains("menu-open")) closeMenu();
+      else openMenu();
+    });
+  }
 
   if (overlay) overlay.addEventListener("click", closeMenu);
 
@@ -37,9 +40,9 @@
   // Agrega aquí todo lo que quieres que el buscador encuentre (páginas + PDFs)
   const DOCS = [
     // Páginas
-    { title: "Convenio de Adhesión", section: "Página", url: "convenio.html", keywords: "convenio adhesión" },
-    { title: "Anexos Técnicos", section: "Página", url: "anexos-tecnicos.html", keywords: "anexos técnicos anexo 1 anexo 2 anexo 3 anexo 4" },
-    { title: "Anexos de Provisión de Datos", section: "Página", url: "anexos-provision-datos.html", keywords: "provisión provision datos anexo 1 anexo 2 sp dt ips suseso" },
+    { title: "Convenio de Adhesión", section: "Página", url: "convenio.html", keywords: "convenio adhesion" },
+    { title: "Anexos Técnicos", section: "Página", url: "anexos-tecnicos.html", keywords: "anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4" },
+    { title: "Anexos de Provisión de Datos", section: "Página", url: "anexos-provision-datos.html", keywords: "provision datos anexo 1 anexo 2 sp dt ips suseso" },
     { title: "Anexos de Consumo de Datos", section: "Página", url: "anexos-consumo-datos.html", keywords: "consumo datos anexo 3 anexo 4 sp dt ips suseso" },
     { title: "Reglas de Uso", section: "Página", url: "reglas-uso.html", keywords: "reglas uso" },
 
@@ -51,27 +54,27 @@
     { title: "SP - Anexo 1 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/SP_Anexo1.pdf", keywords: "sp superintendencia pensiones anexo 1 provision" },
     { title: "SP - Anexo 2 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/SP_Anexo2.pdf", keywords: "sp superintendencia pensiones anexo 2 provision" },
 
-    { title: "DT - Anexo 1 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/DT_Anexo1.pdf", keywords: "dt dirección trabajo anexo 1 provision" },
-    { title: "DT - Anexo 2 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/DT_Anexo2.pdf", keywords: "dt dirección trabajo anexo 2 provision" },
+    { title: "DT - Anexo 1 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/DT_Anexo1.pdf", keywords: "dt direccion trabajo anexo 1 provision" },
+    { title: "DT - Anexo 2 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/DT_Anexo2.pdf", keywords: "dt direccion trabajo anexo 2 provision" },
 
     { title: "SUSESO - Anexo 1 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/SUSESO_Anexo1.pdf", keywords: "suseso seguridad social anexo 1 provision" },
     { title: "SUSESO - Anexo 2 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/SUSESO_Anexo2.pdf", keywords: "suseso seguridad social anexo 2 provision" },
 
-    { title: "IPS - Anexo 1 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/IPS_Anexo1.pdf", keywords: "ips instituto previsión social anexo 1 provision" },
-    { title: "IPS - Anexo 2 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/IPS_Anexo2.pdf", keywords: "ips instituto previsión social anexo 2 provision" },
+    { title: "IPS - Anexo 1 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/IPS_Anexo1.pdf", keywords: "ips instituto prevision social anexo 1 provision" },
+    { title: "IPS - Anexo 2 (Provisión de Datos)", section: "Provisión de Datos", url: "../docs/IPS_Anexo2.pdf", keywords: "ips instituto prevision social anexo 2 provision" },
 
     // Consumo (Anexo 3 y 4)
     { title: "SP - Anexo 3 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/SP_Anexo3.pdf", keywords: "sp superintendencia pensiones anexo 3 consumo" },
     { title: "SP - Anexo 4 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/SP_Anexo4.pdf", keywords: "sp superintendencia pensiones anexo 4 consumo" },
 
-    { title: "DT - Anexo 3 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/DT_Anexo3.pdf", keywords: "dt dirección trabajo anexo 3 consumo" },
-    { title: "DT - Anexo 4 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/DT_Anexo4.pdf", keywords: "dt dirección trabajo anexo 4 consumo" },
+    { title: "DT - Anexo 3 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/DT_Anexo3.pdf", keywords: "dt direccion trabajo anexo 3 consumo" },
+    { title: "DT - Anexo 4 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/DT_Anexo4.pdf", keywords: "dt direccion trabajo anexo 4 consumo" },
 
     { title: "SUSESO - Anexo 3 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/SUSESO_Anexo3.pdf", keywords: "suseso seguridad social anexo 3 consumo" },
     { title: "SUSESO - Anexo 4 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/SUSESO_Anexo4.pdf", keywords: "suseso seguridad social anexo 4 consumo" },
 
-    { title: "IPS - Anexo 3 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/IPS_Anexo3.pdf", keywords: "ips instituto previsión social anexo 3 consumo" },
-    { title: "IPS - Anexo 4 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/IPS_Anexo4.pdf", keywords: "ips instituto previsión social anexo 4 consumo" }
+    { title: "IPS - Anexo 3 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/IPS_Anexo3.pdf", keywords: "ips instituto prevision social anexo 3 consumo" },
+    { title: "IPS - Anexo 4 (Consumo de Datos)", section: "Consumo de Datos", url: "../docs/IPS_Anexo4.pdf", keywords: "ips instituto prevision social anexo 4 consumo" }
   ];
 
   function norm(s){
@@ -88,9 +91,6 @@
   function resolveUrl(url){
     // Si ya viene como ../docs/... lo dejamos.
     if (url.startsWith("../docs/")) return url;
-
-    // Si estamos en /paginas/, los links a páginas son directos (convenio.html, etc)
-    // Si algún día lo llamas desde index.html, igual funcionará porque index no tiene buscador global aquí.
     return url;
   }
 
