@@ -1,15 +1,9 @@
-/* =========================================================
-   RESET / BASE
-========================================================= */
+/* ================= RESET ================= */
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-}
-
-html, body{
-  height:100%;
+  font-family:system-ui, Arial, sans-serif;
 }
 
 body{
@@ -17,450 +11,319 @@ body{
   color:#0b1a33;
 }
 
-a{
-  color:#1f6fd1;
-  text-decoration:none;
-}
-a:hover{ text-decoration:underline; }
+a{ color:inherit; }
 
-/* =========================================================
-   TOPBAR (BLANCA / TEXTO NEGRO)
-========================================================= */
+/* ================= TOPBAR (BLANCA) ================= */
 .topbar{
-  height:64px;
-  background:#ffffff;
-  color:#0b1a33;
+  position:sticky;
+  top:0;
+  z-index:50;
+  height:72px;
+  background:#fff;
   border-bottom:1px solid rgba(0,0,0,.08);
   display:flex;
   align-items:center;
-  padding:0 16px;
-  gap:12px;
-  position:sticky;
-  top:0;
-  z-index:1000;
+  gap:16px;
+  padding:0 18px;
 }
 
-/* Hamburguesa (solo móvil) */
+/* Botón hamburguesa */
 .burger{
-  display:none !important;
+  display:none;
   background:transparent;
-  border:0;
-  cursor:pointer;
-  font-size:22px;
-  line-height:1;
-  padding:8px 10px;
+  border:1px solid rgba(0,0,0,.12);
   border-radius:10px;
+  padding:10px 12px;
+  cursor:pointer;
+  font-size:20px;
+  line-height:1;
 }
 
-/* Marca */
+/* Marca (logo + título) */
 .brand{
   display:flex;
   align-items:center;
   gap:12px;
-  min-width:0;
+  min-width:240px;
 }
 
 .brand img{
-  height:50px;          /* logo un poco más grande */
-  max-height:56px;      /* nunca se sale del topbar */
-  width:auto;
+  width:56px;
+  height:56px;
   object-fit:contain;
   display:block;
 }
 
-/* Compatibilidad: algunos HTML usan .brand-title, otros .title */
-.brand-title,
-.brand .title{
+.brand-title{
   font-weight:800;
   font-size:18px;
-  line-height:1.1;
+  color:#0b1a33;
   white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
 }
 
-/* separador si existe */
+/* Empuja buscador a la derecha */
 .spacer{ flex:1; }
 
-/* =========================================================
-   BUSCADOR + RESULTADOS (DROPDOWN BONITO)
-========================================================= */
+/* ================= BUSCADOR ================= */
 .searchwrap{
-  margin-left:auto;
   position:relative;
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:10px;
 }
 
 .searchwrap .icon{
-  opacity:.7;
+  font-size:18px;
+  opacity:.75;
 }
 
 .searchwrap input{
-  width:260px;
-  max-width:46vw;
+  width:320px;
+  max-width:42vw;
   padding:10px 12px;
-  border-radius:12px;
-  border:1px solid rgba(0,0,0,.18);
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.16);
   outline:none;
-  font-size:14px;
   background:#fff;
   color:#0b1a33;
 }
 
+.searchwrap input::placeholder{
+  color:rgba(11,26,51,.55);
+}
+
 .searchwrap input:focus{
-  border-color:rgba(31,111,209,.65);
+  border-color: rgba(31,111,209,.65);
   box-shadow:0 0 0 3px rgba(31,111,209,.15);
 }
 
-/* Panel de resultados */
-.search-results{
-  position:absolute;
-  top:calc(100% + 10px);
-  right:0;
-  left:auto;
-  width:min(520px, 92vw);
-  max-height:360px;
-  overflow:auto;
-  background:#fff;
-  border-radius:14px;
-  border:1px solid rgba(0,0,0,.12);
-  box-shadow:0 16px 38px rgba(0,0,0,.16);
-  padding:8px;
-  display:none;
-  z-index:9999;
-}
-
-.search-results.open{ display:block; }
-
-.search-results .sr-item{
-  display:block;
-  padding:10px 12px;
-  border-radius:12px;
-  color:#0b1a33 !important;
-  text-decoration:none !important;
-  border:1px solid transparent;
-}
-
-.search-results .sr-item:hover{
-  background:#f3f6fb;
-  border-color:rgba(0,0,0,.06);
-  text-decoration:none !important;
-}
-
-.search-results .sr-title{
-  font-weight:800;
-  font-size:13px;
-  line-height:1.2;
-}
-
-.search-results .sr-meta{
-  font-size:12px;
-  color:#64748b;
-  margin-top:4px;
-}
-
-.search-results .sr-empty{
-  padding:10px 12px;
-  color:#64748b;
-  font-size:13px;
-}
-
-/* =========================================================
-   LAYOUT (SIDEBAR + CONTENIDO)
-========================================================= */
+/* ================= LAYOUT ================= */
 .shell{
   display:flex;
-  min-height:calc(100vh - 64px);
+  min-height:calc(100vh - 72px);
 }
 
+/* ================= SIDEBAR ================= */
 .sidebar{
-  width:260px;
+  width:280px;
   background:#1e73be;
-  padding:18px;
+  padding:22px 18px;
   display:flex;
   flex-direction:column;
+  gap:12px;
 }
 
+/* Menú */
 .menu{
   display:flex;
   flex-direction:column;
-  gap:4px;
+  gap:6px;
 }
 
 .menu a{
   color:#fff;
   text-decoration:none;
-  padding:10px 14px;
-  border-radius:10px;
-  transition:background .15s ease;
+  padding:12px 14px;
+  border-radius:12px;
+  transition:background .15s ease, transform .15s ease;
 }
 
-.menu a:hover{ background:rgba(255,255,255,.15); }
+.menu a:hover{
+  background:rgba(255,255,255,.14);
+}
 
 .menu a.active{
-  background:rgba(255,255,255,.25);
-  font-weight:700;
+  background:rgba(255,255,255,.22);
+  font-weight:800;
 }
 
 .menu a.sub{
-  padding-left:32px;
-  font-size:.95em;
-  opacity:.95;
+  padding-left:34px;
+  opacity:.92;
 }
 
-/* overlay para móvil */
-.overlay{
-  display:none;
-}
-
+/* ================= CONTENIDO ================= */
 .main{
   flex:1;
-  padding:24px;
+  padding:26px;
 }
 
-/* =========================================================
-   CARD / TIPOGRAFÍA
-========================================================= */
 .card{
   background:#fff;
-  border-radius:16px;
-  padding:28px;
-  border:1px solid rgba(0,0,0,.08);
+  border-radius:18px;
+  padding:30px;
   box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-h1, .h1{
-  font-size:34px;
+.h1, h1{
+  font-size:44px;
+  font-weight:900;
+  letter-spacing:-0.02em;
   margin-bottom:12px;
 }
 
-p{
-  margin-top:10px;
-  color:#334155;
+.lead, .intro-text, p{
+  color:rgba(11,26,51,.78);
+  font-size:18px;
+  line-height:1.6;
 }
 
-.intro-text, .lead{
-  color:#475569;
-  margin-top:10px;
-  margin-bottom:18px;
+/* ================= TABLAS BONITAS ================= */
+.table-container{
+  margin-top:18px;
+  overflow-x:auto;
+  border-radius:16px;
+  border:1px solid rgba(0,0,0,.10);
+  background:#fff;
 }
 
-/* =========================================================
-   BOTONES (ABRIR / DESCARGAR) - UNIFICADOS
-========================================================= */
-.btn{
+.doc-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  min-width:720px;
+}
+
+.doc-table thead th{
+  background:#f3f6fb;
+  border-bottom:1px solid rgba(0,0,0,.10);
+  padding:16px 18px;
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:#0b1a33;
+  white-space:nowrap;
+}
+
+.doc-table tbody td{
+  padding:18px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  vertical-align:middle;
+  font-size:15px;
+  color:#0b1a33;
+}
+
+.doc-table tbody tr:last-child td{
+  border-bottom:none;
+}
+
+/* Alineación por columnas (para tablas OAE) */
+.doc-table th:nth-child(1),
+.doc-table td:nth-child(1){
+  text-align:left;
+  width:46%;
+  font-weight:800;
+}
+
+.doc-table th:nth-child(n+2),
+.doc-table td:nth-child(n+2){
+  text-align:center;
+  width:auto;
+}
+
+/* Botón */
+.btn-primary{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:8px;
   padding:10px 16px;
-  background:#1f6fd1;
-  color:#fff !important;
   border-radius:12px;
+  background:#1e73be;
+  color:#fff !important;
+  text-decoration:none !important;
   font-weight:800;
-  font-size:14px;
-  text-decoration:none !important;
-  border:0;
-  cursor:pointer;
-  white-space:nowrap;
+  border:1px solid rgba(0,0,0,.06);
+  min-width:120px;
 }
 
-.btn:hover{
-  background:#1859a8;
+.btn-primary:hover{
+  filter:brightness(.95);
 }
 
-.btn:active{
-  transform:translateY(1px);
-}
-
-.btn.disabled,
-.btn[aria-disabled="true"]{
-  background:#e2e8f0;
-  color:#64748b !important;
-  cursor:default;
-}
-
-/* =========================================================
-   TABLAS (ARREGLA “DESCONFIGURADO” EN TODOS LOS MENÚS)
-   - Funciona con tablas con o sin clases específicas.
-========================================================= */
-
-/* contenedor con scroll en móvil */
-.table-wrap{
-  width:100%;
-  overflow-x:auto;
-}
-
-/* TABLA “GENÉRICA” dentro de .card (para que NUNCA se rompa) */
-.card table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-/* Si tu tabla tiene clase .table, .doc-table, .matrix-table, .docs-table -> también */
-table.table,
-table.doc-table,
-table.matrix-table,
-table.docs-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-/* encabezados */
-.card table thead,
-table.table thead,
-table.doc-table thead,
-table.matrix-table thead,
-table.docs-table thead{
-  background:#f4f7fb;
-}
-
-.card table th,
-table.table th,
-table.doc-table th,
-table.matrix-table th,
-table.docs-table th{
-  padding:14px 14px;
-  font-size:13px;
-  font-weight:900;
-  text-transform:uppercase;
-  border-bottom:1px solid rgba(0,0,0,.10);
+/* Celda acción */
+.action-cell{
   text-align:center;
-  white-space:nowrap;
 }
 
-/* celdas */
-.card table td,
-table.table td,
-table.doc-table td,
-table.matrix-table td,
-table.docs-table td{
-  padding:16px 14px;
-  border-bottom:1px solid rgba(0,0,0,.06);
-  text-align:center;
-  vertical-align:middle;
+/* ================= ANEXOS TÉCNICOS (SIN TABLAS) ================= */
+.tech-list{
+  margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
 }
 
-/* primera columna (OAE / Documento) alineada a la izquierda */
-.card table th:first-child,
-.card table td:first-child,
-table.table th:first-child,
-table.table td:first-child,
-table.doc-table th:first-child,
-table.doc-table td:first-child,
-table.matrix-table th:first-child,
-table.matrix-table td:first-child,
-table.docs-table th:first-child,
-table.docs-table td:first-child{
-  text-align:left;
-  font-weight:800;
-}
-
-/* Enlaces dentro de tabla NO deben verse como “lista azul” */
-.card table a{
-  text-decoration:none !important;
-}
-
-/* Si en tabla hay links “Abrir” sin clase -> forzamos estilo botón */
-.card table a.open-link,
-.card table a.download-link{
-  text-decoration:none !important;
-}
-
-/* =========================================================
-   ANEXOS TÉCNICOS (SIN TABLAS) - CARDS BONITOS
-========================================================= */
-.anexos-grid{
-  display:grid;
-  gap:18px;
-}
-
-.anexo-card{
+.tech-item{
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:18px;
+  padding:18px 18px 16px;
   background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:16px;
-  padding:18px 18px;
+  box-shadow:0 8px 22px rgba(0,0,0,.06);
 }
 
-.anexo-label{
-  /* Esto NO debe parecer botón */
+.tech-badge{
   display:block;
   padding:0;
-  border:0;
+  margin-bottom:8px;
+  border:none;
   background:transparent;
-  color:#1f6fd1;
   font-weight:900;
-  text-transform:uppercase;
   font-size:13px;
-  margin-bottom:6px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#1e73be;
 }
 
-.anexo-title{
-  font-size:20px;
-  font-weight:900;
-  margin-bottom:6px;
+.tech-title{
+  font-size:26px;
+  font-weight:950;
+  color:#0b1a33;
+  margin-bottom:8px;
 }
 
-.anexo-desc{
-  color:#475569;
-  font-size:15px;
+.tech-desc{
+  font-size:17px;
+  color:rgba(11,26,51,.78);
+  line-height:1.55;
 }
 
-/* =========================================================
-   RESPONSIVE (MÓVIL)
-========================================================= */
+/* ================= MÓVIL ================= */
+.overlay{
+  display:none;
+}
+
 @media (max-width: 900px){
-  .sidebar{
-    width:220px;
-  }
-  .searchwrap input{
-    width:190px;
-  }
+  .searchwrap input{ width:210px; }
 }
 
 @media (max-width: 768px){
-  .burger{
-    display:inline-flex !important;
-    align-items:center;
-    justify-content:center;
-  }
+  .burger{ display:inline-flex; }
 
-  /* menú lateral tipo drawer */
   .sidebar{
     position:fixed;
-    top:64px;
-    left:0;
-    bottom:0;
-    width:260px;
-    transform:translateX(-100%);
-    transition:transform .25s ease;
-    z-index:1200;
-  }
-
-  body.menu-open .sidebar{
-    transform:translateX(0);
+    top:72px;
+    left:-320px;
+    height:calc(100vh - 72px);
+    width:300px;
+    z-index:80;
+    transition:left .2s ease;
   }
 
   .overlay{
     display:none;
-  }
-  body.menu-open .overlay{
-    display:block;
     position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.45);
-    z-index:1100;
+    inset:72px 0 0 0;
+    background:rgba(0,0,0,.35);
+    z-index:70;
   }
 
-  .main{
-    padding:18px 14px;
-  }
+  body.menu-open .sidebar{ left:0; }
+  body.menu-open .overlay{ display:block; }
 
-  /* el panel del buscador que no se vaya fuera */
-  .search-results{
-    width:min(520px, 94vw);
-  }
+  .main{ padding:18px; }
+  .h1, h1{ font-size:34px; }
+
+  .doc-table{ min-width:860px; } /* scroll horizontal en móvil */
 }
-
