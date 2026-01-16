@@ -18,7 +18,7 @@
 
   <div class="searchwrap">
     <span class="icon">🔎</span>
-    <input id="search" type="search" placeholder="Buscar (ej: IPS, DT, SUSESO, SP)" />
+    <input id="search" type="search" placeholder="Buscar (ej: IPS, DT, SUSESO, SP, anexo 2)" />
     <button class="search-clear clear-btn" type="button" aria-label="Limpiar búsqueda" style="display:none;">×</button>
     <div id="searchResults" class="search-results"></div>
   </div>
@@ -29,14 +29,22 @@
 <div class="shell">
   <aside class="sidebar">
     <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="paginas/convenio.html">Convenio de Adhesión</a>
-      <a href="paginas/datos-disponibles.html">Datos disponibles</a>
-      <a href="paginas/documentos-nodo.html">Documentos Nodo</a>
-      <a href="paginas/anexos-tecnicos.html">Anexos Técnicos</a>
-      <a class="sub" href="paginas/anexos-provision-datos.html">Anexos de Provisión de Datos</a>
-      <a class="sub" href="paginas/anexos-consumo-datos.html">Anexos de Consumo de Datos</a>
-      <a href="paginas/reglas-uso.html">Reglas de Uso</a>
+      <a href="index.html" data-keywords="inicio home">Inicio</a>
+
+      <a href="paginas/convenio.html" data-keywords="convenio adhesion">Convenio de Adhesión</a>
+
+      <a href="paginas/anexos-tecnicos.html" data-keywords="anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4">Anexos Técnicos</a>
+      <a class="sub" href="paginas/anexos-provision-datos.html" data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">
+        Anexos de Provisión de Datos
+      </a>
+      <a class="sub" href="paginas/anexos-consumo-datos.html" data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">
+        Anexos de Consumo de Datos
+      </a>
+
+      <a href="paginas/reglas-uso.html" data-keywords="reglas uso">Reglas de Uso</a>
+
+      <a href="paginas/datos-disponibles.html" data-keywords="datos disponibles sets ips dt suseso sp fase 1">Datos disponibles</a>
+      <a href="paginas/documentos-nodo.html" data-keywords="documentos nodo manual soporte procedimiento">Documentos Nodo</a>
     </nav>
   </aside>
 
