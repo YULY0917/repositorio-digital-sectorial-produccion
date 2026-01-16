@@ -1,6 +1,6 @@
 /* ===============================
    REPOSITORIO DIGITAL SECTORIAL
-   Style estable + mejoras UI (cards + menú fijo + móvil)
+   CSS ESTABLE + MOBILE OK
    =============================== */
 
 :root{
@@ -27,9 +27,7 @@
 /* ===== Reset básico (no agresivo) ===== */
 *{ box-sizing:border-box; }
 html, body{ height:100%; }
-
-/* Evita que “salte” el layout cuando aparece/desaparece la scrollbar */
-html{ scrollbar-gutter: stable; }
+html{ scrollbar-gutter: stable; } /* evita “saltos” por scrollbar */
 
 body{
   margin:0;
@@ -93,7 +91,7 @@ a:hover{ text-decoration:underline; }
 .brand .title,
 .brand .brand-title{
   font-weight:800;
-  font-size:20px; /* un poco menor */
+  font-size:20px;
   letter-spacing:.2px;
   color:var(--text);
   white-space:nowrap;
@@ -151,7 +149,7 @@ a:hover{ text-decoration:underline; }
   color:#64748b;
 }
 
-/* Resultados */
+/* Resultados buscador */
 .search-results,
 #search-results{
   position:absolute;
@@ -196,7 +194,7 @@ a:hover{ text-decoration:underline; }
   min-height:calc(100vh - var(--topbar-h));
 }
 
-/* Sidebar: fijo (sticky) en desktop para que NO se mueva */
+/* Sidebar: FIJO (sticky) en desktop */
 .sidebar{
   width:var(--sidebar-w);
   background:var(--blue);
@@ -224,8 +222,6 @@ a:hover{ text-decoration:underline; }
   text-decoration:none;
 }
 .menu a.active{ background:rgba(255,255,255,.22); }
-
-/* Subitems: indent fijo */
 .menu a.sub{
   font-weight:800;
   opacity:.98;
@@ -250,7 +246,7 @@ a:hover{ text-decoration:underline; }
   padding:26px 26px;
 }
 
-/* Headings: MÁS PEQUEÑOS (tu queja principal) */
+/* Headings (tamaño normal, NO gigante) */
 .card h1,
 .card .h1{
   margin:0 0 10px 0;
@@ -287,16 +283,23 @@ a:hover{ text-decoration:underline; }
 .btn:active{ transform:scale(.99); }
 .btn .ico{ font-size:16px; }
 
-/* ================= TABLAS ================= */
+/* ================= TABLAS (responsive OK) ================= */
 .doc-table{
   width:100%;
   margin-top:18px;
   border:1px solid var(--line);
   border-radius:18px;
-  overflow:hidden;
   background:#fff;
+  overflow:hidden;
 }
-.doc-table table{ width:100%; border-spacing:0; }
+.doc-table{
+  overflow-x:auto; /* móvil: scroll horizontal si hace falta */
+}
+.doc-table table{
+  width:100%;
+  min-width: 720px; /* evita que se aplaste en celular */
+  border-spacing:0;
+}
 .doc-table thead th{
   background:#f4f7fb;
   border-bottom:1px solid var(--line);
@@ -305,6 +308,7 @@ a:hover{ text-decoration:underline; }
   letter-spacing:.6px;
   text-transform:uppercase;
   color:#1f2937;
+  white-space:nowrap;
 }
 .doc-table tbody td{
   padding:18px;
@@ -315,17 +319,24 @@ a:hover{ text-decoration:underline; }
 }
 .doc-table tbody tr:last-child td{ border-bottom:none; }
 
-/* Centra columnas 2+ (por defecto) */
+/* Centra columnas 2+ (como ya tenías) */
 .doc-table th:nth-child(n+2),
-.doc-table td:nth-child(n+2){ text-align:center; }
+.doc-table td:nth-child(n+2){
+  text-align:center;
+}
 
-.dash{ color:#94a3b8; font-weight:700; }
+/* Quitar negrita en OAEs y en “Anexo …” dentro de tablas */
+.doc-table td b,
+.doc-table td strong{
+  font-weight:400 !important;
+}
 
-/* ================= TARJETAS (Anexos Técnicos “bonito”) ================= */
+/* ================= TARJETAS (Anexos Técnicos) ================= */
+/* UNA abajo de la otra (siempre) */
 .annex-grid{
   margin-top:18px;
   display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
+  grid-template-columns:1fr;
   gap:14px;
 }
 .annex-card{
@@ -337,27 +348,29 @@ a:hover{ text-decoration:underline; }
 }
 .annex-card .annex-top{
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:10px;
+  align-items:flex-start;
+  justify-content:flex-start;
+  gap:10px;
+  margin-bottom:8px;
 }
+
+/* “Anexo X” como texto (NO botón) */
 .annex-pill{
-  display:inline-flex;
-  align-items:center;
-  height:30px;
-  padding:0 12px;
-  border-radius:999px;
-  font-weight:900;
-  font-size:13px;
-  background:#eef6ff;
-  color:#0b3b6b;
-  border:1px solid #d7e9ff;
+  background:transparent;
+  border:0;
+  padding:0;
+  height:auto;
+  border-radius:0;
+  font-weight:500;
+  color:#64748b;
+  white-space:nowrap;
 }
+
 .annex-card h3{
   margin:0;
   font-size:16px;
   letter-spacing:-.2px;
+  font-weight:700; /* no exagerado */
 }
 .annex-card p{
   margin:8px 0 0 0;
@@ -392,9 +405,11 @@ body.menu-open .overlay{
 
   .searchwrap input[type="search"],
   .searchwrap input[type="text"],
-  #search{ width:min(520px, 58vw); }
+  #search{
+    width:min(520px, 58vw);
+  }
 
-  /* En móvil el sidebar pasa a fixed como ya lo tenías */
+  /* sidebar móvil tipo drawer */
   .sidebar{
     position:fixed;
     top:var(--topbar-h);
@@ -410,13 +425,17 @@ body.menu-open .overlay{
   .shell{ display:block; }
   .main{ padding:18px; }
 
+  .card{ padding:18px; }
   .card h1, .card .h1{ font-size:24px; }
   .card p, .card .lead{ font-size:15px; }
 
-  .annex-grid{ grid-template-columns:1fr; }
+  /* tablas aún más amigables en móvil */
+  .doc-table table{ min-width: 760px; }
 }
 
 @media (max-width: 520px){
+  :root{ --topbar-h: 78px; }
+
   .topbar{ padding:12px 14px; }
   .brand{ min-width: 0; }
   .brand .title,
@@ -424,16 +443,4 @@ body.menu-open .overlay{
 
   .searchwrap input[type="search"],
   #search{ width: 62vw; }
-}
-
-/* ==========================================================
-   FIXES específicos
-   ========================================================== */
-
-/* Anexos Técnicos: si alguna tabla usa doc-table-left, respeta left */
-.doc-table.doc-table-left th,
-.doc-table.doc-table-left td{ text-align:left !important; }
-.doc-table.doc-table-left td:first-child{
-  width:180px;
-  white-space:nowrap;
 }
