@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Anexos Técnicos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css?v=1001">
+  <link rel="stylesheet" href="../assets/style.css?v=1001">
 </head>
 <body>
 
@@ -12,15 +12,18 @@
   <button class="burger" type="button" aria-label="Abrir menú"><span>≡</span></button>
 
   <div class="brand">
-    <img src="assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
+    <img src="../assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
     <div class="brand-title">Repositorio Digital Sectorial</div>
   </div>
 
   <div class="searchwrap">
-    <span class="search-icon">🔎</span>
-    <input id="search" type="search" placeholder="Buscar (ej: anexo 2, consumo, SUSESO)" />
-    <button class="search-clear" type="button" aria-label="Limpiar búsqueda">×</button>
+    <span class="icon">🔎</span>
+    <input id="search" type="search" placeholder="Buscar (ej: IPS, DT, SUSESO, SP, anexo 2)" />
+    <button class="search-clear clear-btn" type="button" aria-label="Limpiar búsqueda" style="display:none;">×</button>
+
+    <!-- dejo ambos IDs para que funcione sí o sí -->
     <div id="searchResults" class="search-results"></div>
+    <div id="search-results" class="search-results" style="display:none;"></div>
   </div>
 </header>
 
@@ -28,25 +31,19 @@
 
 <div class="shell">
   <aside class="sidebar">
-
-    <div class="sidebrand">
-      <div class="sidebrand-logo">
-        <img src="assets/img/Logo.png" alt="Logo Nodo L&P">
-      </div>
-      <div class="sidebrand-title">Repositorio Digital Sectorial</div>
-    </div>
-
     <nav class="menu">
-      <a href="index.html" data-keywords="inicio home">Inicio</a>
-      <a href="convenio.html" data-keywords="convenio adhesión">Convenio de Adhesión</a>
-      <a href="datos-disponibles.html" data-keywords="datos disponibles sets catalogo ips dt suseso sp fase 1">Datos disponibles</a>
-      <a href="documentos-nodo.html" data-keywords="documentos nodo manuales procedimientos presentaciones soporte">Documentos Nodo</a>
-      <a href="anexos-tecnicos.html" data-keywords="anexos técnicos">Anexos Técnicos</a>
-      <a class="sub" href="anexos-provision-datos.html" data-keywords="anexos provisión datos entrega">Anexos de Provisión de Datos</a>
-      <a class="sub" href="anexos-consumo-datos.html" data-keywords="anexos consumo datos consulta">Anexos de Consumo de Datos</a>
-      <a href="reglas-uso.html" data-keywords="reglas uso">Reglas de Uso</a>
-    </nav>
+      <a href="../index.html">Inicio</a>
+      <a href="convenio.html">Convenio de Adhesión</a>
 
+      <a href="datos-disponibles.html">Datos disponibles</a>
+      <a href="documentos-nodo.html">Documentos Nodo</a>
+
+      <a href="anexos-tecnicos.html">Anexos Técnicos</a>
+      <a class="sub" href="anexos-provision-datos.html">Anexos de Provisión de Datos</a>
+      <a class="sub" href="anexos-consumo-datos.html">Anexos de Consumo de Datos</a>
+
+      <a href="reglas-uso.html">Reglas de Uso</a>
+    </nav>
   </aside>
 
   <main class="main">
@@ -56,40 +53,39 @@
         En esta sección se encuentran los Anexos Técnicos correspondientes al Convenio de Adhesión del Nodo Laboral y Previsional.
       </p>
 
-      <div class="anexo-list">
-        <div class="anexo-item">
-          <div class="anexo-tag">Anexo 1</div>
-          <div class="anexo-desc">
-            Incorporación a la Plataforma de Interoperabilidad del Sector Trabajo y Previsión Social en calidad de Proveedor de Datos (alta proveedor).
-          </div>
-        </div>
-
-        <div class="anexo-item">
-          <div class="anexo-tag">Anexo 2</div>
-          <div class="anexo-desc">
-            Datos habilitados por Proveedor, que considera las autorizaciones, condiciones y restricciones para la provisión de información.
-          </div>
-        </div>
-
-        <div class="anexo-item">
-          <div class="anexo-tag">Anexo 3</div>
-          <div class="anexo-desc">
-            Solicitud de Consumo de Datos, que define el procedimiento y los requerimientos necesarios para el acceso a la información disponible.
-          </div>
-        </div>
-
-        <div class="anexo-item">
-          <div class="anexo-tag">Anexo 4</div>
-          <div class="anexo-desc">
-            Datos disponibles para Consumidor, que describe los conjuntos de datos accesibles y sus características generales.
-          </div>
-        </div>
+      <div class="doc-table">
+        <table>
+          <thead>
+            <tr>
+              <th>ANEXO</th>
+              <th>DESCRIPCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Anexo 1</b></td>
+              <td>Incorporación a la Plataforma de Interoperabilidad del Sector Trabajo y Previsión Social en calidad de Proveedor de Datos (alta proveedor).</td>
+            </tr>
+            <tr>
+              <td><b>Anexo 2</b></td>
+              <td>Datos habilitados por Proveedor, que considera las autorizaciones, condiciones y restricciones para la provisión de información.</td>
+            </tr>
+            <tr>
+              <td><b>Anexo 3</b></td>
+              <td>Solicitud de Consumo de Datos, que define el procedimiento y los requerimientos necesarios para el acceso a la información disponible.</td>
+            </tr>
+            <tr>
+              <td><b>Anexo 4</b></td>
+              <td>Datos disponibles para Consumidor, que describe los conjuntos de datos accesibles y sus características generales.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </section>
   </main>
 </div>
 
-<script src="app.js?v=1001"></script>
+<script src="../assets/app.js?v=1001"></script>
 </body>
 </html>
