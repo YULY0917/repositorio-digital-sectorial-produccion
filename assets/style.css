@@ -1,31 +1,41 @@
+/* ===============================
+   REPOSITORIO DIGITAL SECTORIAL
+   STYLE ESTABLE (BUSCADOR + MÓVIL OK)
+   =============================== */
+
 :root{
   --bg:#f6f8fb;
-  --card:#fff;
+  --card:#ffffff;
   --text:#0f172a;
-  --muted:#56657a;
+  --muted:#5b677a;
   --line:#d9dee8;
 
   --blue:#1f76bd;
   --blue-dark:#175f98;
 
   --shadow:0 10px 28px rgba(15,23,42,.08);
-  --radius:22px;
 
+  --radius:22px;
   --topbar-h:86px;
   --sidebar-w:320px;
 
   --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
+/* Reset controlado */
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
+html, body{ height:100%; }
+
 body{
   margin:0;
   font-family:var(--font);
-  background:var(--bg);
   color:var(--text);
+  background:var(--bg);
   line-height:1.45;
 }
+
+/* No romper tablas */
+table{ border-collapse:separate; border-spacing:0; }
 
 a{ color:inherit; text-decoration:none; }
 a:hover{ text-decoration:underline; }
@@ -46,14 +56,19 @@ a:hover{ text-decoration:underline; }
 
 /* Burger (solo móvil) */
 .burger{
-  display:none;
+  appearance:none;
+  border:1px solid var(--line);
+  background:#fff;
   height:40px;
   width:44px;
   border-radius:12px;
-  border:1px solid var(--line);
-  background:#fff;
+  display:none;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
+  box-shadow:0 4px 10px rgba(15,23,42,.06);
 }
+.burger:active{ transform:scale(.98); }
 .burger span{ font-size:20px; line-height:1; }
 
 /* Brand */
@@ -63,15 +78,20 @@ a:hover{ text-decoration:underline; }
   gap:14px;
   min-width:260px;
 }
+
 .brand img{
   height:56px;
   width:auto;
   display:block;
   object-fit:contain;
 }
-.brand-title{
+
+.brand .title,
+.brand .brand-title{
   font-weight:800;
   font-size:22px;
+  letter-spacing:.2px;
+  color:var(--text);
   white-space:nowrap;
 }
 
@@ -83,44 +103,65 @@ a:hover{ text-decoration:underline; }
   gap:10px;
   position:relative;
 }
-.search-icon{ color:#64748b; font-size:18px; }
 
-#search{
-  height:44px;
+.search-icon,
+.searchwrap .icon{
+  font-size:18px;
+  color:#64748b;
+}
+
+/* input */
+#search,
+.searchwrap input[type="search"],
+.searchwrap input[type="text"]{
   width:min(520px, 46vw);
+  height:44px;
   padding:0 44px 0 14px;
   border-radius:999px;
   border:1px solid #cfd6e4;
   outline:none;
-  font-size:15px;
   background:#fff;
+  color:var(--text);
+  font-size:15px;
   box-shadow:0 8px 18px rgba(15,23,42,.06);
 }
-#search:focus{
+
+#search:focus,
+.searchwrap input:focus{
   border-color:#8bb7e0;
   box-shadow:0 10px 22px rgba(31,118,189,.15);
 }
 
-.search-clear{
+/* Botón limpiar (tu HTML usa .search-clear) */
+.search-clear,
+.searchwrap .clear-btn{
   position:absolute;
   right:10px;
   height:30px;
   width:30px;
-  border-radius:999px;
   border:1px solid #e2e8f0;
   background:#fff;
+  border-radius:999px;
   cursor:pointer;
-  display:none; /* JS la activa */
+  display:none; /* JS lo muestra */
   align-items:center;
   justify-content:center;
   color:#64748b;
+  line-height:1;
+}
+.search-clear:hover,
+.searchwrap .clear-btn:hover{
+  background:#f8fafc;
 }
 
-#searchResults{
+/* Resultados */
+.search-results,
+#searchResults,
+#search-results{
   position:absolute;
   top:54px;
   right:0;
-  width:min(560px, 80vw);
+  width:min(560px, 78vw);
   max-height:320px;
   overflow:auto;
   background:#fff;
@@ -131,7 +172,15 @@ a:hover{ text-decoration:underline; }
   display:none;
 }
 
-#searchResults .sr-head{
+.search-results.is-open,
+#searchResults.is-open,
+#search-results.is-open{
+  display:block;
+}
+
+.search-results .sr-head,
+#searchResults .sr-head,
+#search-results .sr-head{
   font-weight:800;
   font-size:13px;
   color:#475569;
@@ -139,18 +188,42 @@ a:hover{ text-decoration:underline; }
   border-bottom:1px solid #eef2f7;
   margin-bottom:8px;
 }
-#searchResults a{
+
+.search-results a,
+#searchResults a,
+#search-results a{
   display:block;
   padding:10px 10px;
   border-radius:12px;
   text-decoration:none;
+  color:var(--text);
 }
-#searchResults a:hover{ background:#f1f5fb; }
-#searchResults .sr-title{ font-weight:800; font-size:14px; }
-#searchResults .sr-sub{ font-size:12px; color:#64748b; margin-top:2px; }
+.search-results a:hover,
+#searchResults a:hover,
+#search-results a:hover{
+  background:#f1f5fb;
+}
+
+.search-results .sr-title,
+#searchResults .sr-title,
+#search-results .sr-title{
+  font-weight:800;
+  font-size:14px;
+}
+
+.search-results .sr-sub,
+#searchResults .sr-sub,
+#search-results .sr-sub{
+  font-size:12px;
+  color:#64748b;
+  margin-top:2px;
+}
 
 /* ================= LAYOUT ================= */
-.shell{ display:flex; min-height:calc(100vh - var(--topbar-h)); }
+.shell{
+  display:flex;
+  min-height:calc(100vh - var(--topbar-h));
+}
 
 .sidebar{
   width:var(--sidebar-w);
@@ -174,9 +247,10 @@ a:hover{ text-decoration:underline; }
   text-decoration:none;
   line-height:1.25;
 }
-.menu a:hover{ background:rgba(255,255,255,.18); }
+
+.menu a:hover{ background:rgba(255,255,255,.18); text-decoration:none; }
 .menu a.active{ background:rgba(255,255,255,.22); }
-.menu a.sub{ padding-left:40px; }
+.menu a.sub{ opacity:.98; padding-left:40px; }
 
 .main{ flex:1; padding:26px 26px 42px; }
 
@@ -187,45 +261,17 @@ a:hover{ text-decoration:underline; }
   padding:26px;
 }
 
-.h1, .card h1{
+.card h1, .card .h1{
   margin:0 0 12px 0;
   font-size:44px;
   letter-spacing:-.6px;
 }
 
-.lead, .card p{
+.card p, .card .lead{
   margin:0;
   margin-top:10px;
   color:var(--muted);
   font-size:18px;
-  line-height:1.55;
-}
-
-/* ================= ANEXOS TÉCNICOS (tarjetas) ================= */
-.anexo-list{
-  margin-top:18px;
-  display:grid;
-  gap:12px;
-}
-.anexo-item{
-  border:1px solid #e6ecf5;
-  border-radius:18px;
-  padding:16px 18px;
-  background:#fff;
-}
-.anexo-tag{
-  display:inline-block;
-  font-weight:900;
-  font-size:13px;
-  padding:6px 10px;
-  border-radius:999px;
-  background:#eef6ff;
-  color:#0b4f86;
-  margin-bottom:10px;
-}
-.anexo-desc{
-  color:#334155;
-  font-size:16px;
   line-height:1.55;
 }
 
@@ -247,17 +293,19 @@ a:hover{ text-decoration:underline; }
   white-space:nowrap;
 }
 .btn:hover{ background:var(--blue-dark); }
-.ico{ font-size:16px; }
+.btn .ico{ font-size:16px; }
 
-/* ================= TABLAS (BORDES OK SIEMPRE) ================= */
+/* ================= TABLAS ================= */
 .table-wrap{
   margin-top:18px;
   overflow:auto;
   -webkit-overflow-scrolling:touch;
 }
 
+/* Tus páginas usan <table class="doc-table"> */
 .doc-table{
   width:100%;
+  margin-top:18px;
   border:1px solid var(--line);
   border-radius:18px;
   overflow:hidden;
@@ -280,6 +328,7 @@ a:hover{ text-decoration:underline; }
   border-bottom:1px solid #edf1f7;
   vertical-align:middle;
   font-size:16px;
+  color:var(--text);
 }
 
 .doc-table tbody tr:last-child td{ border-bottom:none; }
@@ -292,7 +341,7 @@ a:hover{ text-decoration:underline; }
 .oae-name{ font-weight:800; }
 .dash{ color:#94a3b8; font-weight:700; }
 
-/* ================= OVERLAY + MENU MOVIL ================= */
+/* ================= OVERLAY ================= */
 .overlay{
   position:fixed;
   inset:0;
@@ -302,40 +351,60 @@ a:hover{ text-decoration:underline; }
   transition:.2s ease;
   z-index:40;
 }
-body.menu-open .overlay{
+
+/* ✅ Soportar AMBAS formas (por si quedara algo viejo) */
+body.menu-open .overlay,
+.overlay.show{
   opacity:1;
   pointer-events:auto;
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 980px){
+@media (max-width:980px){
+  :root{ --sidebar-w:300px; }
+
   .burger{ display:flex; }
 
+  .brand img{ height:48px; }
+  .brand .title, .brand .brand-title{ font-size:18px; }
+
+  #search,
+  .searchwrap input[type="search"],
+  .searchwrap input[type="text"]{
+    width:min(520px, 58vw);
+  }
+
+  /* Sidebar off-canvas */
   .sidebar{
     position:fixed;
-    top:0;
+    top:var(--topbar-h);
     left:0;
-    height:100vh;
+    height:calc(100vh - var(--topbar-h));
     transform:translateX(-105%);
     transition:.22s ease;
     z-index:45;
   }
-  body.menu-open .sidebar{ transform:translateX(0); }
+
+  /* ✅ Soportar AMBAS formas (menu-open y .open) */
+  body.menu-open .sidebar,
+  .sidebar.open{
+    transform:translateX(0);
+  }
 
   .shell{ display:block; }
   .main{ padding:18px; }
 
-  .h1, .card h1{ font-size:34px; }
-  .lead, .card p{ font-size:16px; }
+  .card h1, .card .h1{ font-size:34px; }
+  .card p, .card .lead{ font-size:16px; }
 }
 
-/* CELULAR: header en 2 filas + menú NO gigante */
-@media (max-width: 640px){
+/* ✅ CELULAR REAL: header en 2 filas + buscador full width */
+@media (max-width:640px){
   .topbar{
     flex-wrap:wrap;
     height:auto;
-    padding:12px 14px;
     gap:10px;
+    padding:12px 14px;
   }
 
   .burger{ order:1; }
@@ -346,22 +415,31 @@ body.menu-open .overlay{
     min-width:0;
   }
 
-  .brand img{ height:clamp(44px, 12vw, 56px); }
+  .brand img{
+    height:clamp(44px, 12vw, 56px);
+  }
 
   .searchwrap{
     order:3;
     width:100%;
     margin-left:0;
   }
-  #search{ width:100%; }
 
-  #searchResults{
+  #search,
+  .searchwrap input[type="search"],
+  .searchwrap input[type="text"]{
+    width:100%;
+  }
+
+  .search-results,
+  #searchResults,
+  #search-results{
     left:0;
     right:0;
     width:100%;
   }
 
-  /* Menú lateral como panel (no “pantalla azul gigante”) */
+  /* Menú móvil NO gigante */
   .sidebar{
     width:86vw;
     max-width:340px;
@@ -379,10 +457,10 @@ body.menu-open .overlay{
   }
   .menu a.sub{ padding-left:26px; font-size:15px; }
 
-  /* Tablas: no se aplastan */
+  /* tablas no se aplastan */
   .doc-table{ min-width:720px; }
 }
 
-@media (max-width: 520px){
-  .brand-title{ display:none; }
+@media (max-width:520px){
+  .brand .title, .brand .brand-title{ display:none; } /* solo logo */
 }
