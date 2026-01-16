@@ -1,11 +1,7 @@
-/* =========================================================
-   REPOSITORIO DIGITAL SECTORIAL – STYLE FINAL ESTABLE
-   - Menú móvil estable (no tapa Inicio/Convenio)
-   - Botones bonitos
-   - Anexos técnicos en tarjetas
-   - Títulos más pequeños
-   - Buscador OK en móvil + FIX solo escritorio
-   ========================================================= */
+/* ===============================
+   REPOSITORIO DIGITAL SECTORIAL
+   Style final estable (NO rompe tablas)
+   =============================== */
 
 :root{
   --bg:#f6f8fb;
@@ -16,9 +12,9 @@
 
   --blue:#1f76bd;
   --blue-dark:#175f98;
+  --blue-soft:#4b8fc9;
 
   --shadow:0 10px 28px rgba(15,23,42,.08);
-  --shadow-sm:0 6px 16px rgba(15,23,42,.10);
 
   --radius:22px;
   --radius-sm:14px;
@@ -29,21 +25,21 @@
   --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* ================= RESET CONTROLADO ================= */
+/* ===== Reset básico (no agresivo) ===== */
 *{ box-sizing:border-box; }
 html, body{ height:100%; }
-
 body{
   margin:0;
   font-family:var(--font);
-  background:var(--bg);
   color:var(--text);
+  background:var(--bg);
   line-height:1.45;
 }
 
-/* Evitar que estilos globales rompan tablas */
+/* Evitar que estilos globales destruyan tablas */
 table{ border-collapse:separate; border-spacing:0; }
 
+/* Links */
 a{ color:inherit; text-decoration:none; }
 a:hover{ text-decoration:underline; }
 
@@ -61,7 +57,7 @@ a:hover{ text-decoration:underline; }
   padding:14px 22px;
 }
 
-/* Burger (solo móvil) */
+/* Botón hamburguesa: SOLO móvil */
 .burger{
   appearance:none;
   border:1px solid var(--line);
@@ -69,35 +65,44 @@ a:hover{ text-decoration:underline; }
   height:40px;
   width:44px;
   border-radius:12px;
-  display:none;
+  display:none; /* desktop off */
   align-items:center;
   justify-content:center;
   cursor:pointer;
   box-shadow:0 4px 10px rgba(15,23,42,.06);
 }
 .burger:active{ transform:scale(.98); }
-.burger span{ font-size:20px; line-height:1; }
+.burger span{
+  font-size:20px;
+  line-height:1;
+}
 
 /* Brand */
 .brand{
   display:flex;
   align-items:center;
   gap:14px;
-  min-width:260px;
+  min-width: 260px;
 }
+
+/* Algunas páginas usan .brand-logo/.brand-title y otras .title */
 .brand img{
-  height:56px;
+  height:56px;            /* 👈 Logo más grande */
   width:auto;
   display:block;
   object-fit:contain;
 }
-.brand-title{
+.brand .title,
+.brand .brand-title{
   font-weight:800;
-  font-size:20px;
+  font-size:22px;
   letter-spacing:.2px;
   color:var(--text);
   white-space:nowrap;
 }
+
+/* Spacer (en páginas que lo traen) */
+.spacer{ flex:1; }
 
 /* ================= BUSCADOR ================= */
 .searchwrap{
@@ -107,8 +112,15 @@ a:hover{ text-decoration:underline; }
   gap:10px;
   position:relative;
 }
-.search-icon{ font-size:18px; color:#64748b; }
 
+.searchwrap .icon{
+  font-size:18px;
+  color:#64748b;
+}
+
+/* input de búsqueda */
+.searchwrap input[type="search"],
+.searchwrap input[type="text"],
 #search{
   width:min(520px, 46vw);
   height:44px;
@@ -121,37 +133,35 @@ a:hover{ text-decoration:underline; }
   font-size:15px;
   box-shadow:0 8px 18px rgba(15,23,42,.06);
 }
-#search:focus{
+.searchwrap input:focus{
   border-color:#8bb7e0;
   box-shadow:0 10px 22px rgba(31,118,189,.15);
 }
 
-/* Botón X */
-.search-clear{
+/* Si tienes botón X dentro del input en algunas versiones */
+.searchwrap .clear-btn{
   position:absolute;
   right:10px;
   height:30px;
   width:30px;
-  border:1px solid #e2e8f0;
+  border:none;
   background:#fff;
   border-radius:999px;
   cursor:pointer;
-  display:none; /* JS lo muestra */
+  display:flex;
   align-items:center;
   justify-content:center;
   color:#64748b;
-  line-height:1;
 }
-.search-clear:hover{ background:#f8fafc; }
 
-/* Resultados */
+/* Resultados (si tu buscador los genera) */
 .search-results,
-#searchResults{
+#search-results{
   position:absolute;
   top:54px;
   right:0;
-  width:min(560px, 80vw);
-  max-height:320px;
+  width:min(560px, 78vw);
+  max-height: 320px;
   overflow:auto;
   background:#fff;
   border:1px solid var(--line);
@@ -161,32 +171,27 @@ a:hover{ text-decoration:underline; }
   display:none;
 }
 .search-results.is-open,
-#searchResults.is-open{ display:block; }
+#search-results.is-open{ display:block; }
 
-#searchResults .sr-head,
-.search-results .sr-head{
+.search-results .sr-title,
+#search-results .sr-title{
   font-weight:800;
-  font-size:13px;
-  color:#475569;
-  padding:8px 10px 10px;
-  border-bottom:1px solid #eef2f7;
-  margin-bottom:8px;
+  font-size:14px;
+  color:var(--muted);
+  padding:8px 10px;
 }
-#searchResults a,
-.search-results a{
+.search-results a,
+#search-results a{
   display:block;
   padding:10px 10px;
   border-radius:12px;
-  text-decoration:none;
   color:var(--text);
+  text-decoration:none;
 }
-#searchResults a:hover,
-.search-results a:hover{ background:#f1f5fb; }
-
-#searchResults .sr-title,
-.search-results .sr-title{ font-weight:800; font-size:14px; }
-#searchResults .sr-sub,
-.search-results .sr-sub{ font-size:12px; color:#64748b; margin-top:2px; }
+.search-results a:hover,
+#search-results a:hover{
+  background:#f1f5fb;
+}
 
 /* ================= LAYOUT ================= */
 .shell{
@@ -194,7 +199,7 @@ a:hover{ text-decoration:underline; }
   min-height:calc(100vh - var(--topbar-h));
 }
 
-/* Sidebar desktop */
+/* Sidebar */
 .sidebar{
   width:var(--sidebar-w);
   background:var(--blue);
@@ -202,11 +207,13 @@ a:hover{ text-decoration:underline; }
   padding:18px 14px;
 }
 
+/* Menú */
 .menu{
   display:flex;
   flex-direction:column;
   gap:10px;
 }
+
 .menu a{
   display:block;
   padding:16px 16px;
@@ -214,18 +221,24 @@ a:hover{ text-decoration:underline; }
   color:#fff;
   font-weight:700;
   text-decoration:none;
-  line-height:1.25;
 }
-.menu a:hover{
-  background:rgba(255,255,255,.18);
-  text-decoration:none;
-}
+
+/* Activo */
 .menu a.active{
   background:rgba(255,255,255,.22);
 }
+
+/* Subitems: indent fijo (NO debe “subir/bajar de nivel”) */
 .menu a.sub{
-  padding-left:40px;
+  font-weight:700;
   opacity:.98;
+  padding-left:40px; /* 👈 indent estable */
+}
+
+/* Hover */
+.menu a:hover{
+  background:rgba(255,255,255,.18);
+  text-decoration:none;
 }
 
 /* Main */
@@ -242,53 +255,27 @@ a:hover{ text-decoration:underline; }
   padding:26px 26px;
 }
 
-/* ================= TIPOGRAFÍA (títulos más chicos) ================= */
-.h1,
-.card h1{
+/* Headings */
+.card h1,
+.card .h1{
   margin:0 0 12px 0;
-  font-size:34px;
-  letter-spacing:-.4px;
+  font-size:44px;
+  letter-spacing:-.6px;
 }
-
-.lead,
-.card p{
+.card p,
+.card .lead{
   margin:0;
   margin-top:10px;
   color:var(--muted);
-  font-size:16px;
-  line-height:1.6;
-}
-
-/* ================= ANEXOS TÉCNICOS (TARJETAS) ================= */
-.anexo-list{
-  margin-top:18px;
-  display:grid;
-  gap:12px;
-}
-.anexo-item{
-  background:#fff;
-  border:1px solid #e6ecf5;
-  border-radius:18px;
-  padding:16px 18px;
-  box-shadow:0 6px 14px rgba(15,23,42,.05);
-}
-.anexo-tag{
-  display:inline-block;
-  font-weight:900;
-  font-size:13px;
-  padding:6px 10px;
-  border-radius:999px;
-  background:#eef6ff;
-  color:#0b4f86;
-  margin-bottom:10px;
-}
-.anexo-desc{
-  color:#334155;
-  font-size:15px;
+  font-size:18px;
   line-height:1.55;
 }
 
-/* ================= BOTONES (bonitos) ================= */
+/* Separación bonita entre título y párrafos */
+.intro-text{ margin-top:14px !important; }
+
+/* ================= BOTONES ================= */
+/* Usar SIEMPRE esta clase en links de Abrir/Descargar */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -304,23 +291,12 @@ a:hover{ text-decoration:underline; }
   border:0;
   cursor:pointer;
   white-space:nowrap;
-  box-shadow:var(--shadow-sm);
-  transition:transform .08s ease, background .15s ease, box-shadow .15s ease;
 }
-.btn:hover{
-  background:var(--blue-dark);
-  box-shadow:0 10px 22px rgba(31,118,189,.22);
-}
+.btn:hover{ background:var(--blue-dark); }
 .btn:active{ transform:scale(.99); }
 .btn .ico{ font-size:16px; }
 
-/* ================= TABLAS (con bordes) ================= */
-.table-wrap{
-  margin-top:18px;
-  overflow:auto;
-  -webkit-overflow-scrolling:touch;
-}
-
+/* ================= TABLAS (SCOPED) ================= */
 .doc-table{
   width:100%;
   margin-top:18px;
@@ -328,9 +304,11 @@ a:hover{ text-decoration:underline; }
   border-radius:18px;
   overflow:hidden;
   background:#fff;
+}
+.doc-table table{
+  width:100%;
   border-spacing:0;
 }
-
 .doc-table thead th{
   background:#f4f7fb;
   border-bottom:1px solid var(--line);
@@ -340,26 +318,59 @@ a:hover{ text-decoration:underline; }
   text-transform:uppercase;
   color:#1f2937;
 }
-
 .doc-table tbody td{
   padding:18px;
   border-bottom:1px solid #edf1f7;
   vertical-align:middle;
-  font-size:15px;
+  font-size:16px;
   color:var(--text);
 }
-
 .doc-table tbody tr:last-child td{ border-bottom:none; }
-
 .doc-table th:nth-child(n+2),
-.doc-table td:nth-child(n+2){ text-align:center; }
+.doc-table td:nth-child(n+2){
+  text-align:center;
+}
 
-.cell-left{ text-align:left !important; }
-.cell-center{ text-align:center !important; }
-.oae-name{ font-weight:800; }
+.matrix-table{
+  width:100%;
+  margin-top:18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff;
+}
+.matrix-table table{
+  width:100%;
+  border-spacing:0;
+}
+.matrix-table thead th{
+  background:#f4f7fb;
+  border-bottom:1px solid var(--line);
+  padding:16px 14px;
+  font-size:13px;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:#1f2937;
+}
+.matrix-table tbody td{
+  padding:18px 14px;
+  border-bottom:1px solid #edf1f7;
+  vertical-align:middle;
+  font-size:15px;
+}
+.matrix-table tbody tr:last-child td{ border-bottom:none; }
+.matrix-table th:nth-child(1),
+.matrix-table td:nth-child(1){
+  text-align:left;
+  font-weight:800;
+}
+.matrix-table th:nth-child(n+2),
+.matrix-table td:nth-child(n+2){
+  text-align:center;
+}
 .dash{ color:#94a3b8; font-weight:700; }
 
-/* ================= OVERLAY ================= */
+/* ================= OVERLAY + MOBILE MENU ================= */
 .overlay{
   position:fixed;
   inset:0;
@@ -367,8 +378,9 @@ a:hover{ text-decoration:underline; }
   opacity:0;
   pointer-events:none;
   transition:.2s ease;
-  z-index:70;
+  z-index:40;
 }
+
 body.menu-open .overlay{
   opacity:1;
   pointer-events:auto;
@@ -376,125 +388,41 @@ body.menu-open .overlay{
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 980px){
+  :root{ --sidebar-w: 300px; }
   .burger{ display:flex; }
-
   .brand img{ height:48px; }
-  .brand-title{ font-size:18px; }
+  .brand .title,
+  .brand .brand-title{ font-size:18px; }
 
-  #search{ width:min(520px, 58vw); }
-
-  /* Sidebar off-canvas: FIX definitivo (NO tapa Inicio/Convenio) */
-  .sidebar{
-    position:fixed;
-    top:0 !important;                 /* no depende del alto variable del header */
-    left:0;
-    height:100vh !important;
-    transform:translateX(-105%);
-    transition:.22s ease;
-    z-index:80 !important;            /* por encima del topbar (50) */
-    padding-top:calc(env(safe-area-inset-top) + 16px);
+  .searchwrap input[type="search"],
+  .searchwrap input[type="text"],
+  #search{
+    width:min(520px, 58vw);
   }
 
+  .sidebar{
+    position:fixed;
+    top:var(--topbar-h);
+    left:0;
+    height:calc(100vh - var(--topbar-h));
+    transform:translateX(-105%);
+    transition:.22s ease;
+    z-index:45;
+  }
   body.menu-open .sidebar{
     transform:translateX(0);
   }
-
   .shell{ display:block; }
   .main{ padding:18px; }
-
-  .h1, .card h1{ font-size:30px; }
-  .lead, .card p{ font-size:15px; }
-}
-
-@media (max-width: 640px){
-  /* Header en 2 filas: logo arriba y buscador abajo */
-  .topbar{
-    flex-wrap:wrap;
-    height:auto;
-    padding:12px 14px;
-    gap:10px;
-  }
-
-  .brand{
-    flex:1 1 auto;
-    min-width:0;
-  }
-
-  .brand img{ height:clamp(44px, 12vw, 56px); }
-
-  .searchwrap{
-    width:100%;
-    margin-left:0;
-  }
-  #search{ width:100%; }
-
-  .search-results,
-  #searchResults{
-    left:0;
-    right:0;
-    width:100%;
-  }
-
-  .sidebar{
-    width:86vw;
-    max-width:340px;
-    border-top-right-radius:18px;
-    border-bottom-right-radius:18px;
-    padding-left:12px;
-    padding-right:12px;
-  }
-
-  .menu{
-    gap:8px;
-    margin-top:6px;
-  }
-
-  .menu a{
-    font-size:16px;
-    padding:12px 12px;
-    border-radius:14px;
-    white-space:normal;
-  }
-  .menu a.sub{
-    padding-left:26px;
-    font-size:15px;
-  }
-
-  /* Tablas: no se aplastan */
-  .doc-table{ min-width:720px; }
-
-  .h1, .card h1{ font-size:26px; }
+  .card h1, .card .h1{ font-size:34px; }
+  .card p, .card .lead{ font-size:16px; }
 }
 
 @media (max-width: 520px){
-  .brand-title{ display:none; }
-}
-
-/* =========================================================
-   FIX BUSCADOR SOLO ESCRITORIO (NO toca móvil)
-   ========================================================= */
-@media (min-width: 641px){
-  .topbar{
-    align-items:center;
-    padding-right:26px;
-  }
-
-  .searchwrap{
-    margin-left:auto !important;
-    width:auto !important;
-    max-width:620px !important;
-    flex:0 1 620px !important;
-    justify-content:flex-end !important;
-  }
-
-  #search{
-    width:520px !important;
-    max-width:520px !important;
-    min-width:360px !important;
-  }
-
-  #searchResults{
-    width:520px !important;
-    right:0 !important;
-  }
+  .topbar{ padding:12px 14px; }
+  .brand{ min-width: 0; }
+  .brand .title,
+  .brand .brand-title{ display:none; }
+  .searchwrap input[type="search"],
+  #search{ width: 62vw; }
 }
