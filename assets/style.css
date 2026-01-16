@@ -1,6 +1,6 @@
 /* ===============================
    REPOSITORIO DIGITAL SECTORIAL
-   CSS ESTABLE + MOBILE OK
+   Style estable (no rompe tablas)
    =============================== */
 
 :root{
@@ -12,6 +12,7 @@
 
   --blue:#1f76bd;
   --blue-dark:#175f98;
+  --blue-soft:#4b8fc9;
 
   --shadow:0 10px 28px rgba(15,23,42,.08);
 
@@ -27,8 +28,6 @@
 /* ===== Reset básico (no agresivo) ===== */
 *{ box-sizing:border-box; }
 html, body{ height:100%; }
-html{ scrollbar-gutter: stable; } /* evita “saltos” por scrollbar */
-
 body{
   margin:0;
   font-family:var(--font);
@@ -48,7 +47,7 @@ a:hover{ text-decoration:underline; }
 .topbar{
   position:sticky;
   top:0;
-  z-index:60;
+  z-index:50;
   height:var(--topbar-h);
   background:#fff;
   border-bottom:1px solid var(--line);
@@ -73,7 +72,10 @@ a:hover{ text-decoration:underline; }
   box-shadow:0 4px 10px rgba(15,23,42,.06);
 }
 .burger:active{ transform:scale(.98); }
-.burger span{ font-size:20px; line-height:1; }
+.burger span{
+  font-size:20px;
+  line-height:1;
+}
 
 /* Brand */
 .brand{
@@ -82,6 +84,7 @@ a:hover{ text-decoration:underline; }
   gap:14px;
   min-width: 260px;
 }
+
 .brand img{
   height:56px;
   width:auto;
@@ -91,11 +94,14 @@ a:hover{ text-decoration:underline; }
 .brand .title,
 .brand .brand-title{
   font-weight:800;
-  font-size:20px;
+  font-size:22px;
   letter-spacing:.2px;
   color:var(--text);
   white-space:nowrap;
 }
+
+/* Spacer */
+.spacer{ flex:1; }
 
 /* ================= BUSCADOR ================= */
 .searchwrap{
@@ -149,7 +155,7 @@ a:hover{ text-decoration:underline; }
   color:#64748b;
 }
 
-/* Resultados buscador */
+/* Resultados */
 .search-results,
 #search-results{
   position:absolute;
@@ -182,11 +188,11 @@ a:hover{ text-decoration:underline; }
   border-radius:12px;
   color:var(--text);
   text-decoration:none;
-  text-align:left;
 }
 .search-results a:hover,
-#search-results a:hover{ background:#f1f5fb; }
-.search-results small{ color:#64748b; }
+#search-results a:hover{
+  background:#f1f5fb;
+}
 
 /* ================= LAYOUT ================= */
 .shell{
@@ -194,17 +200,12 @@ a:hover{ text-decoration:underline; }
   min-height:calc(100vh - var(--topbar-h));
 }
 
-/* Sidebar: FIJO (sticky) en desktop */
+/* Sidebar */
 .sidebar{
   width:var(--sidebar-w);
   background:var(--blue);
   color:#fff;
   padding:18px 14px;
-
-  position:sticky;
-  top:var(--topbar-h);
-  height:calc(100vh - var(--topbar-h));
-  overflow:auto;
 }
 
 /* Menú */
@@ -213,6 +214,7 @@ a:hover{ text-decoration:underline; }
   flex-direction:column;
   gap:10px;
 }
+
 .menu a{
   display:block;
   padding:16px 16px;
@@ -221,12 +223,20 @@ a:hover{ text-decoration:underline; }
   font-weight:800;
   text-decoration:none;
 }
-.menu a.active{ background:rgba(255,255,255,.22); }
+
+/* Activo */
+.menu a.active{
+  background:rgba(255,255,255,.22);
+}
+
+/* Subitems: indent fijo */
 .menu a.sub{
   font-weight:800;
   opacity:.98;
   padding-left:40px;
 }
+
+/* Hover */
 .menu a:hover{
   background:rgba(255,255,255,.18);
   text-decoration:none;
@@ -246,20 +256,20 @@ a:hover{ text-decoration:underline; }
   padding:26px 26px;
 }
 
-/* Headings (tamaño normal, NO gigante) */
+/* Headings */
 .card h1,
 .card .h1{
-  margin:0 0 10px 0;
-  font-size:30px;
-  letter-spacing:-.4px;
+  margin:0 0 12px 0;
+  font-size:44px;
+  letter-spacing:-.6px;
 }
 .card p,
 .card .lead{
   margin:0;
   margin-top:10px;
   color:var(--muted);
-  font-size:16px;
-  line-height:1.6;
+  font-size:18px;
+  line-height:1.55;
 }
 
 /* ================= BOTONES ================= */
@@ -283,21 +293,17 @@ a:hover{ text-decoration:underline; }
 .btn:active{ transform:scale(.99); }
 .btn .ico{ font-size:16px; }
 
-/* ================= TABLAS (responsive OK) ================= */
+/* ================= TABLAS ================= */
 .doc-table{
   width:100%;
   margin-top:18px;
   border:1px solid var(--line);
   border-radius:18px;
-  background:#fff;
   overflow:hidden;
-}
-.doc-table{
-  overflow-x:auto; /* móvil: scroll horizontal si hace falta */
+  background:#fff;
 }
 .doc-table table{
   width:100%;
-  min-width: 720px; /* evita que se aplaste en celular */
   border-spacing:0;
 }
 .doc-table thead th{
@@ -308,76 +314,60 @@ a:hover{ text-decoration:underline; }
   letter-spacing:.6px;
   text-transform:uppercase;
   color:#1f2937;
-  white-space:nowrap;
 }
 .doc-table tbody td{
   padding:18px;
   border-bottom:1px solid #edf1f7;
   vertical-align:middle;
-  font-size:15px;
+  font-size:16px;
   color:var(--text);
 }
 .doc-table tbody tr:last-child td{ border-bottom:none; }
 
-/* Centra columnas 2+ (como ya tenías) */
+/* 👇 ESTA REGLA CENTRA COLUMNAS 2+ (la dejamos, y hacemos override SOLO en anexos técnicos) */
 .doc-table th:nth-child(n+2),
 .doc-table td:nth-child(n+2){
   text-align:center;
 }
 
-/* Quitar negrita en OAEs y en “Anexo …” dentro de tablas */
-.doc-table td b,
-.doc-table td strong{
-  font-weight:400 !important;
-}
-
-/* ================= TARJETAS (Anexos Técnicos) ================= */
-/* UNA abajo de la otra (siempre) */
-.annex-grid{
+.matrix-table{
+  width:100%;
   margin-top:18px;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
-}
-.annex-card{
   border:1px solid var(--line);
   border-radius:18px;
+  overflow:hidden;
   background:#fff;
-  padding:16px 16px;
-  box-shadow:0 8px 18px rgba(15,23,42,.06);
 }
-.annex-card .annex-top{
-  display:flex;
-  align-items:flex-start;
-  justify-content:flex-start;
-  gap:10px;
-  margin-bottom:8px;
+.matrix-table table{
+  width:100%;
+  border-spacing:0;
 }
-
-/* “Anexo X” como texto (NO botón) */
-.annex-pill{
-  background:transparent;
-  border:0;
-  padding:0;
-  height:auto;
-  border-radius:0;
+.matrix-table thead th{
+  background:#f4f7fb;
+  border-bottom:1px solid var(--line);
+  padding:16px 14px;
+  font-size:13px;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:#1f2937;
+}
+.matrix-table tbody td{
+  padding:18px 14px;
+  border-bottom:1px solid #edf1f7;
+  vertical-align:middle;
+  font-size:15px;
+}
+.matrix-table tbody tr:last-child td{ border-bottom:none; }
+.matrix-table th:nth-child(1),
+.matrix-table td:nth-child(1){
+  text-align:left;
   font-weight:800;
-  color:#000000;
-  white-space:nowrap;
 }
-
-.annex-card h3{
-  margin:0;
-  font-size:16px;
-  letter-spacing:-.2px;
-  font-weight:700; /* no exagerado */
+.matrix-table th:nth-child(n+2),
+.matrix-table td:nth-child(n+2){
+  text-align:center;
 }
-.annex-card p{
-  margin:8px 0 0 0;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.55;
-}
+.dash{ color:#94a3b8; font-weight:700; }
 
 /* ================= OVERLAY + MOBILE MENU ================= */
 .overlay{
@@ -387,8 +377,9 @@ a:hover{ text-decoration:underline; }
   opacity:0;
   pointer-events:none;
   transition:.2s ease;
-  z-index:55;
+  z-index:40;
 }
+
 body.menu-open .overlay{
   opacity:1;
   pointer-events:auto;
@@ -397,11 +388,10 @@ body.menu-open .overlay{
 /* ================= RESPONSIVE ================= */
 @media (max-width: 980px){
   :root{ --sidebar-w: 300px; }
-
   .burger{ display:flex; }
   .brand img{ height:48px; }
   .brand .title,
-  .brand .brand-title{ font-size:16px; }
+  .brand .brand-title{ font-size:18px; }
 
   .searchwrap input[type="search"],
   .searchwrap input[type="text"],
@@ -409,7 +399,6 @@ body.menu-open .overlay{
     width:min(520px, 58vw);
   }
 
-  /* sidebar móvil tipo drawer */
   .sidebar{
     position:fixed;
     top:var(--topbar-h);
@@ -417,30 +406,78 @@ body.menu-open .overlay{
     height:calc(100vh - var(--topbar-h));
     transform:translateX(-105%);
     transition:.22s ease;
-    z-index:58;
-    overflow:auto;
+    z-index:45;
   }
-  body.menu-open .sidebar{ transform:translateX(0); }
-
+  body.menu-open .sidebar{
+    transform:translateX(0);
+  }
   .shell{ display:block; }
   .main{ padding:18px; }
-
-  .card{ padding:18px; }
-  .card h1, .card .h1{ font-size:24px; }
-  .card p, .card .lead{ font-size:15px; }
-
-  /* tablas aún más amigables en móvil */
-  .doc-table table{ min-width: 760px; }
+  .card h1, .card .h1{ font-size:34px; }
+  .card p, .card .lead{ font-size:16px; }
 }
 
 @media (max-width: 520px){
-  :root{ --topbar-h: 78px; }
-
   .topbar{ padding:12px 14px; }
   .brand{ min-width: 0; }
   .brand .title,
   .brand .brand-title{ display:none; }
-
   .searchwrap input[type="search"],
   #search{ width: 62vw; }
+}
+
+/* ==========================================================
+   FIXES que pediste (NO rompen el resto)
+   ========================================================== */
+
+/* 1) Anexos Técnicos: NO centrado */
+.doc-table.doc-table-left th,
+.doc-table.doc-table-left td{
+  text-align:left !important;
+}
+.doc-table.doc-table-left td:first-child{
+  width:180px;
+  white-space:nowrap;
+}
+
+/* 2) Títulos demasiado grandes */
+.card h1,
+.card .h1{
+  font-size:36px !important;
+}
+@media (max-width: 980px){
+  .card h1,
+  .card .h1{
+    font-size:30px !important;
+  }
+}
+
+/* 3) Resultados del buscador alineados a la izquierda */
+.search-results a{
+  text-align:left !important;
+}
+.search-results small{
+  color:#64748b;
+}
+
+/* ================= VERSIONAMIENTO (SIDEBAR) ================= */
+.site-version{
+  margin-top:26px;
+  padding:12px 14px;
+  border-radius:16px;
+  background:rgba(255,255,255,.18);
+  text-align:center;
+  color:#fff;
+}
+
+.site-version .version-title{
+  font-size:12px;
+  opacity:.92;
+  margin-bottom:6px;
+}
+
+.site-version .version-date{
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.4px;
 }
