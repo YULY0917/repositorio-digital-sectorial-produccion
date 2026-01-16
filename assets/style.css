@@ -1,5 +1,10 @@
 /* =========================================================
-   REPOSITORIO DIGITAL SECTORIAL – STYLE FINAL ESTABLE
+   REPOSITORIO DIGITAL SECTORIAL – STYLE (ESTABLE)
+   - Botones .btn bonitos
+   - Anexos Técnicos en tarjetas
+   - Títulos más chicos
+   - Menú móvil no tapa Inicio/Convenio
+   - Buscador bien
    ========================================================= */
 
 :root{
@@ -13,7 +18,10 @@
   --blue-dark:#175f98;
 
   --shadow:0 10px 28px rgba(15,23,42,.08);
+  --shadow-sm:0 6px 16px rgba(15,23,42,.10);
+
   --radius:22px;
+  --radius-sm:14px;
 
   --topbar-h:86px;
   --sidebar-w:320px;
@@ -33,6 +41,7 @@ body{
   line-height:1.45;
 }
 
+/* Evitar que estilos globales rompan tablas */
 table{ border-collapse:separate; border-spacing:0; }
 
 a{ color:inherit; text-decoration:none; }
@@ -52,17 +61,22 @@ a:hover{ text-decoration:underline; }
   padding:14px 22px;
 }
 
-/* Burger */
+/* Burger (solo móvil) */
 .burger{
-  display:none;
+  appearance:none;
+  border:1px solid var(--line);
+  background:#fff;
   height:40px;
   width:44px;
   border-radius:12px;
-  border:1px solid var(--line);
-  background:#fff;
+  display:none;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
+  box-shadow:0 4px 10px rgba(15,23,42,.06);
 }
-.burger span{ font-size:20px; }
+.burger:active{ transform:scale(.98); }
+.burger span{ font-size:20px; line-height:1; }
 
 /* Brand */
 .brand{
@@ -74,11 +88,14 @@ a:hover{ text-decoration:underline; }
 .brand img{
   height:56px;
   width:auto;
+  display:block;
   object-fit:contain;
 }
 .brand-title{
   font-weight:800;
-  font-size:22px;
+  font-size:20px;
+  letter-spacing:.2px;
+  color:var(--text);
   white-space:nowrap;
 }
 
@@ -93,34 +110,42 @@ a:hover{ text-decoration:underline; }
 .search-icon{ font-size:18px; color:#64748b; }
 
 #search{
-  height:44px;
   width:min(520px, 46vw);
+  height:44px;
   padding:0 44px 0 14px;
   border-radius:999px;
   border:1px solid #cfd6e4;
+  outline:none;
   background:#fff;
+  color:var(--text);
   font-size:15px;
   box-shadow:0 8px 18px rgba(15,23,42,.06);
 }
 #search:focus{
-  outline:none;
   border-color:#8bb7e0;
   box-shadow:0 10px 22px rgba(31,118,189,.15);
 }
 
+/* Botón X (tu HTML usa .search-clear) */
 .search-clear{
   position:absolute;
   right:10px;
   height:30px;
   width:30px;
-  border-radius:999px;
   border:1px solid #e2e8f0;
   background:#fff;
+  border-radius:999px;
   cursor:pointer;
-  display:none;
+  display:none; /* JS lo muestra */
+  align-items:center;
+  justify-content:center;
+  color:#64748b;
+  line-height:1;
 }
+.search-clear:hover{ background:#f8fafc; }
 
-/* Resultados buscador */
+/* Resultados (tu HTML usa #searchResults y class="search-results") */
+.search-results,
 #searchResults{
   position:absolute;
   top:54px;
@@ -135,9 +160,11 @@ a:hover{ text-decoration:underline; }
   padding:10px;
   display:none;
 }
+.search-results.is-open,
 #searchResults.is-open{ display:block; }
 
-#searchResults .sr-head{
+#searchResults .sr-head,
+.search-results .sr-head{
   font-weight:800;
   font-size:13px;
   color:#475569;
@@ -145,14 +172,21 @@ a:hover{ text-decoration:underline; }
   border-bottom:1px solid #eef2f7;
   margin-bottom:8px;
 }
-#searchResults a{
+#searchResults a,
+.search-results a{
   display:block;
-  padding:10px;
+  padding:10px 10px;
   border-radius:12px;
+  text-decoration:none;
+  color:var(--text);
 }
-#searchResults a:hover{ background:#f1f5fb; }
-.sr-title{ font-weight:800; font-size:14px; }
-.sr-sub{ font-size:12px; color:#64748b; }
+#searchResults a:hover,
+.search-results a:hover{ background:#f1f5fb; }
+
+#searchResults .sr-title,
+.search-results .sr-title{ font-weight:800; font-size:14px; }
+#searchResults .sr-sub,
+.search-results .sr-sub{ font-size:12px; color:#64748b; margin-top:2px; }
 
 /* ================= LAYOUT ================= */
 .shell{
@@ -160,6 +194,7 @@ a:hover{ text-decoration:underline; }
   min-height:calc(100vh - var(--topbar-h));
 }
 
+/* Sidebar desktop */
 .sidebar{
   width:var(--sidebar-w);
   background:var(--blue);
@@ -172,74 +207,170 @@ a:hover{ text-decoration:underline; }
   flex-direction:column;
   gap:10px;
 }
-.menu a{
-  padding:16px;
-  border-radius:16px;
-  font-weight:700;
-  color:#fff;
-}
-.menu a:hover{ background:rgba(255,255,255,.18); }
-.menu a.active{ background:rgba(255,255,255,.22); }
-.menu a.sub{ padding-left:40px; }
 
+.menu a{
+  display:block;
+  padding:16px 16px;
+  border-radius:16px;
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  line-height:1.25;
+}
+.menu a:hover{
+  background:rgba(255,255,255,.18);
+  text-decoration:none;
+}
+.menu a.active{
+  background:rgba(255,255,255,.22);
+}
+.menu a.sub{
+  padding-left:40px;
+  opacity:.98;
+}
+
+/* Main */
 .main{
   flex:1;
   padding:26px 26px 42px;
 }
 
+/* Card */
 .card{
   background:var(--card);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
-  padding:26px;
-}
-.card h1{
-  margin:0 0 12px;
-  font-size:44px;
-}
-.card p{
-  margin-top:10px;
-  font-size:18px;
-  color:var(--muted);
+  padding:26px 26px;
 }
 
-/* ================= TABLAS ================= */
+/* ================= TIPOGRAFÍA (títulos más chicos) ================= */
+.h1,
+.card h1{
+  margin:0 0 12px 0;
+  font-size:34px;          /* antes muy grande */
+  letter-spacing:-.4px;
+}
+
+.lead,
+.card p{
+  margin:0;
+  margin-top:10px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.6;
+}
+
+/* ================= ANEXOS TÉCNICOS (TARJETAS) ================= */
+.anexo-list{
+  margin-top:18px;
+  display:grid;
+  gap:12px;
+}
+
+.anexo-item{
+  background:#fff;
+  border:1px solid #e6ecf5;
+  border-radius:18px;
+  padding:16px 18px;
+  box-shadow:0 6px 14px rgba(15,23,42,.05);
+}
+
+.anexo-tag{
+  display:inline-block;
+  font-weight:900;
+  font-size:13px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#eef6ff;
+  color:#0b4f86;
+  margin-bottom:10px;
+}
+
+.anexo-desc{
+  color:#334155;
+  font-size:15px;
+  line-height:1.55;
+}
+
+/* ================= BOTONES (bonitos) ================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  height:44px;
+  padding:0 18px;
+  border-radius:14px;
+  font-weight:800;
+  background:var(--blue);
+  color:#fff !important;
+  text-decoration:none !important;
+  border:0;
+  cursor:pointer;
+  white-space:nowrap;
+  box-shadow:var(--shadow-sm);
+  transition:transform .08s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn:hover{
+  background:var(--blue-dark);
+  box-shadow:0 10px 22px rgba(31,118,189,.22);
+}
+.btn:active{ transform:scale(.99); }
+.btn .ico{ font-size:16px; }
+
+/* ================= TABLAS (con bordes) ================= */
 .table-wrap{
   margin-top:18px;
   overflow:auto;
+  -webkit-overflow-scrolling:touch;
 }
+
 .doc-table{
   width:100%;
+  margin-top:18px;
   border:1px solid var(--line);
   border-radius:18px;
   overflow:hidden;
   background:#fff;
+  border-spacing:0;
 }
+
 .doc-table thead th{
   background:#f4f7fb;
-  padding:16px;
-  font-size:13px;
-  text-transform:uppercase;
   border-bottom:1px solid var(--line);
+  padding:16px 18px;
+  font-size:13px;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:#1f2937;
 }
+
 .doc-table tbody td{
   padding:18px;
   border-bottom:1px solid #edf1f7;
+  vertical-align:middle;
+  font-size:15px;
+  color:var(--text);
 }
+
 .doc-table tbody tr:last-child td{ border-bottom:none; }
 
-.cell-left{ text-align:left; }
-.cell-center{ text-align:center; }
+.doc-table th:nth-child(n+2),
+.doc-table td:nth-child(n+2){ text-align:center; }
+
+.cell-left{ text-align:left !important; }
+.cell-center{ text-align:center !important; }
 .oae-name{ font-weight:800; }
+.dash{ color:#94a3b8; font-weight:700; }
 
 /* ================= OVERLAY ================= */
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(15,23,42,.4);
+  background:rgba(15,23,42,.40);
   opacity:0;
   pointer-events:none;
-  transition:.2s;
+  transition:.2s ease;
   z-index:70;
 }
 body.menu-open .overlay{
@@ -248,18 +379,23 @@ body.menu-open .overlay{
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width:980px){
+@media (max-width: 980px){
   .burger{ display:flex; }
 
-  /* MENÚ MÓVIL – FIX DEFINITIVO */
+  .brand img{ height:48px; }
+  .brand-title{ font-size:18px; }
+
+  #search{ width:min(520px, 58vw); }
+
+  /* Sidebar off-canvas: FIX definitivo (NO tapa Inicio/Convenio) */
   .sidebar{
     position:fixed;
-    top:0;
+    top:0 !important;                 /* 🔑 no depende del alto variable del header */
     left:0;
-    height:100vh;
+    height:100vh !important;
     transform:translateX(-105%);
-    transition:.25s ease;
-    z-index:80; /* 🔑 por encima del topbar */
+    transition:.22s ease;
+    z-index:80 !important;            /* 🔑 por encima del topbar (50) */
     padding-top:calc(env(safe-area-inset-top) + 16px);
   }
 
@@ -269,19 +405,26 @@ body.menu-open .overlay{
 
   .shell{ display:block; }
   .main{ padding:18px; }
-  .card h1{ font-size:34px; }
-  .card p{ font-size:16px; }
+
+  .h1, .card h1{ font-size:30px; }
+  .lead, .card p{ font-size:15px; }
 }
 
-/* ================= CELULAR ================= */
-@media (max-width:640px){
+@media (max-width: 640px){
+  /* Header en 2 filas: logo arriba y buscador abajo */
   .topbar{
     flex-wrap:wrap;
     height:auto;
     padding:12px 14px;
+    gap:10px;
   }
 
-  .brand-title{ font-size:18px; }
+  .brand{
+    flex:1 1 auto;
+    min-width:0;
+  }
+
+  .brand img{ height:clamp(44px, 12vw, 56px); }
 
   .searchwrap{
     width:100%;
@@ -289,6 +432,7 @@ body.menu-open .overlay{
   }
   #search{ width:100%; }
 
+  .search-results,
   #searchResults{
     left:0;
     right:0;
@@ -300,20 +444,32 @@ body.menu-open .overlay{
     max-width:340px;
     border-top-right-radius:18px;
     border-bottom-right-radius:18px;
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .menu{
+    gap:8px;
+    margin-top:6px;
   }
 
   .menu a{
     font-size:16px;
-    padding:12px;
+    padding:12px 12px;
+    border-radius:14px;
+    white-space:normal;
   }
   .menu a.sub{
     padding-left:26px;
     font-size:15px;
   }
 
+  /* Tablas: no se aplastan */
   .doc-table{ min-width:720px; }
+
+  .h1, .card h1{ font-size:26px; }
 }
 
-@media (max-width:520px){
+@media (max-width: 520px){
   .brand-title{ display:none; }
 }
