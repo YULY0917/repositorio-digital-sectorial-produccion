@@ -46,7 +46,7 @@
       box = document.createElement("div");
       box.className = "site-version";
       box.innerHTML = `
-        <div class="version-title">Última actualización</div>
+        <div class="version-title">Última Actualización</div>
         <div class="version-date" id="siteVersion">Cargando…</div>
       `;
       sidebar.appendChild(box);
@@ -135,8 +135,8 @@
     { title:"Datos disponibles", section:"Página", url: PAGE_PREFIX + "datos-disponibles.html", keywords:"datos disponibles catalogo sets" },
     { title:"Documentos Nodo", section:"Página", url: PAGE_PREFIX + "documentos-nodo.html", keywords:"documentos nodo reportes presentaciones" },
 
-    { title:"Lanzamiento – Nodo Laboral y Previsional (V3)", section:"PDF", url: DOC_PREFIX + "251214_Lanzamiento_NODO_L%26P_V3.pdf", keywords:"lanzamiento nodo v3 pdf" },
-    { title:"Reporte de Avance OAEs (13-01-2026)", section:"PDF", url: DOC_PREFIX + "260113_Reporte_de_Avance_OAEs.pdf", keywords:"reporte avance oaes 2026 pdf" }
+    { title:"Lanzamiento – Nodo Laboral y Previsional ", section:"PDF", url: DOC_PREFIX + "251214_Lanzamiento_NODO_LP_V3.pdf", keywords:"lanzamiento nodo pdf" },
+    { title:"Reporte de Avance OAEs ", section:"PDF", url: DOC_PREFIX + "260113_Reporte_de_Avance_OAEs.pdf", keywords:"reporte avance oaes 2026 pdf" }
   );
 
   ["SP","SUSESO","DT","IPS"].forEach(oae => {
