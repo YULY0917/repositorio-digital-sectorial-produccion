@@ -469,30 +469,4 @@ body.menu-open .overlay{
     margin-bottom: 56px !important;  /* la sube visualmente */
   }
 }
-/* =========================================================
-   FIX: menú móvil no debe "bajarse" / separarse entre páginas
-   ========================================================= */
-@media (max-width: 980px){
-
-  /* Asegura que el topbar sea la referencia correcta */
-  .topbar{
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 999 !important;
-  }
-
-  /* Sidebar SIEMPRE pegado debajo del topbar */
-  .sidebar{
-    top: var(--topbar-h) !important;
-    height: calc(100dvh - var(--topbar-h)) !important;  /* evita saltos en Safari */
-    margin-top: 0 !important;
-    border-radius: 0 !important;
-  }
-
-  /* Evita que algún contenedor agregue espacios “raros” */
-  .shell{
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}
 
