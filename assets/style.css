@@ -427,10 +427,18 @@ body.menu-open .overlay{
     line-height:1.55;
   }
 
- /* Forzar color de texto en páginas de contenido */
-.main p, 
-.main li,
-.main span {
+ /* ===========================
+   Mejora de color de texto
+   =========================== */
+
+.card-content p,
+.card-content li,
+.card-content span {
   color: #2F3A45 !important;
+}
+
+.card-content p strong,
+.card-content li strong {
+  color: #1F5FAA !important;
 }
 }
