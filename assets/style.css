@@ -443,4 +443,10 @@ body.menu-open .overlay{
   color: var(--blue-dark);
   font-weight: 700;
 }
+.card p,
+.card li,
+.card span{
+  color: #2F3A45 !important;
+}
+
 }
