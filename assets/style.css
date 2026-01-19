@@ -426,18 +426,21 @@ body.menu-open .overlay{
     font-size:14px;
     line-height:1.55;
   }
-
- /* ===========================
-   Mejora de color de texto
+}
+/* ===========================
+   TEXTO CONTENIDO (GLOBAL)
    =========================== */
-}
-.card-content p,
-.card-content li,
-.card-content span {
-  color: #2F3A45 !important;
+.card p,
+.card li,
+.card span{
+  color: #2F3A45;
+  line-height: 1.7;
 }
 
-.card-content p strong,
-.card-content li strong {
-  color: #1F5FAA !important;
+/* Destacados dentro del contenido */
+.card p strong,
+.card li strong{
+  color: var(--blue-dark);
+  font-weight: 700;
+}
 }
