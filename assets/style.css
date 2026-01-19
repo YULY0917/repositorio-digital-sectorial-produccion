@@ -466,6 +466,6 @@ body.menu-open .overlay{
 /* Ajuste fino: subir levemente "Última actualización" en móvil */
 @media (max-width: 980px){
   .site-version{
-    margin-bottom: 40px !important;  /* la sube visualmente */
+    margin-bottom: 64px !important;  /* la sube visualmente */
   }
 }
