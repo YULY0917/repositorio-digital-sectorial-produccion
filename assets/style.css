@@ -426,4 +426,22 @@ body.menu-open .overlay{
     font-size:14px;
     line-height:1.55;
   }
+
+   /* ===============================
+   TEXTO CONTENIDO INSTITUCIONAL
+   =============================== */
+
+.content-text,
+.section-text,
+.main p {
+  color: #2F3A45;        /* Gris institucional */
+  line-height: 1.7;
+}
+
+/* Frases destacadas dentro del texto */
+.content-text strong,
+.section-text strong {
+  color: #1F5FAA;        /* Azul institucional */
+  font-weight: 500;
+}
 }
