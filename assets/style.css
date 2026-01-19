@@ -430,7 +430,7 @@ body.menu-open .overlay{
  /* ===========================
    Mejora de color de texto
    =========================== */
-
+}
 .card-content p,
 .card-content li,
 .card-content span {
@@ -440,5 +440,4 @@ body.menu-open .overlay{
 .card-content p strong,
 .card-content li strong {
   color: #1F5FAA !important;
-}
 }
