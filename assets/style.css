@@ -624,110 +624,35 @@ body.menu-open .overlay{
   word-break: normal !important;
   overflow-wrap: break-word !important;
 }
+
 /* =========================================================
-   FIX FINAL (muy específico): menú por categorías en 1 columna
+   MENÚ JERÁRQUICO (estructura solicitada)
+   - No cambia tu contenido ni URLs
+   - Evita “dos columnas” en móviles y dentro de contenedores
    ========================================================= */
-@media (max-width: 980px){
 
-  /* fuerza que cualquier link del menú sea bloque */
-  .sidebar nav.menu.menu-mobile-blocks a{
-    display: block !important;
-    width: 100% !important;
-  }
+.menu a{ display:block; width:100%; } /* seguro: hace que los <a> nunca queden “inline” */
 
-  /* fuerza que el contenedor interno NO cree columnas */
-  .sidebar nav.menu.menu-mobile-blocks .menu-block-content{
-    display: block !important;
-    width: 100% !important;
-  }
-
-  /* cada link dentro del bloque: 1 por línea */
-  .sidebar nav.menu.menu-mobile-blocks .menu-block-content a{
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* elimina cualquier “layout raro” si existiera en otra regla */
-  .sidebar nav.menu.menu-mobile-blocks a{
-    float: none !important;
-    clear: both !important;
-  }
+.menu-group{ margin-top:14px; }
+.menu-title{
+  padding: 8px 16px;
+  font-weight: 900;
+  color:#fff;
+  opacity:.92;
 }
-/* =========================================================
-   FIX DEFINITIVO: menú móvil SIEMPRE en 1 columna (sin “dos columnas”)
-   - No cambia escritorio
-   - No rompe rutas ni buscador
-   ========================================================= */
 
+/* Hijos de “Anexos Técnicos” */
+.menu-children{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* En escritorio, el sub ya existe; mantenemos la sangría */
+.menu-children a.sub{ padding-left:40px; }
+
+/* En móvil: asegurar 1 columna dentro de cualquier contenedor */
 @media (max-width: 980px){
-
-  /* 1) El menú siempre en columna */
-  .sidebar .menu{
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 18px !important;
-  }
-
-  /* 2) Cualquier bloque/contenedor dentro del menú se comporta como “caja” */
-  .sidebar .menu > div{
-    display: flex !important;
-    flex-direction: column !important;
-    width: 86% !important;
-    max-width: 320px !important;
-    background: rgba(255,255,255,.14) !important; /* caja */
-    padding: 0 !important;
-    border-radius: 0 !important;
-  }
-
-  /* 3) Si dentro hay otro div (por ejemplo título + contenido), también en columna */
-  .sidebar .menu > div > div{
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
-
-  /* 4) TODOS los links del menú: 1 por línea, ancho completo */
-  .sidebar .menu a{
-    display: block !important;
-    width: 100% !important;
-    float: none !important;
-    clear: both !important;
-    text-align: left !important;
-
-    white-space: normal !important;
-    word-break: normal !important;
-    overflow-wrap: break-word !important;
-  }
-
-  /* 5) Link “Inicio” (el primero) más ancho como tu imagen */
-  .sidebar .menu > a:first-child{
-    width: 96% !important;
-    max-width: 360px !important;
-    background: rgba(255,255,255,.22) !important;
-    border-radius: 16px !important; /* si lo quieres igual que tu botón Inicio */
-  }
-
-  /* 6) Espaciado interno de la caja: si tienes título y contenido */
-  .sidebar .menu > div > .menu-block-title,
-  .sidebar .menu > div > .menu-block__title,
-  .sidebar .menu > div > .title{
-    padding: 12px 12px !important;
-    font-weight: 900 !important;
-  }
-
-  .sidebar .menu > div > .menu-block-content,
-  .sidebar .menu > div > .menu-block__content,
-  .sidebar .menu > div > .content{
-    padding: 12px 12px 14px !important;
-    gap: 12px !important;
-  }
-
-  /* 7) Evita que links internos se vean como “botón dentro de botón” */
-  .sidebar .menu > div a{
-    background: transparent !important;
-    border-radius: 0 !important;
-    padding: 6px 0 !important;
-  }
+  .menu-children{ width:100%; }
+  .menu-children a{ width:100%; }
 }
