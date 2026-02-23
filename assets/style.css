@@ -817,3 +817,14 @@ body.menu-open .overlay{
   background:rgba(255,255,255,.22);
   border-radius:16px;
 }
+/* ==========================================
+   ESPACIO ENTRE PADRE Y SUBMENÚ
+   ========================================== */
+
+.sidebar .menu .menu-block-content{
+  margin-top:8px;   /* espacio entre Documentos Legales y Convenio */
+}
+
+.sidebar .menu .menu-block-content a{
+  margin-bottom:6px; /* separación entre hijos */
+}
