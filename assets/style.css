@@ -575,3 +575,49 @@ body.menu-open .overlay{
   background: rgba(255,255,255,0.22) !important;
   border-radius: 16px;
 }
+/* =========================================================
+   FIX DEFINITIVO: NEGRITA SOLO EN INICIO + TITULOS
+   (Pegar al FINAL de assets/style.css)
+   ========================================================= */
+
+/* 1) TITULOS de bloque en negrita */
+.sidebar .menu .menu-block-title{
+  font-weight: 700 !important;
+}
+
+/* 2) INICIO (botón principal) en negrita */
+.sidebar .menu .menu-btn-primary{
+  font-weight: 700 !important;
+}
+
+/* 3) TODOS los enlaces (padres e hijos) sin negrita */
+.sidebar .menu a,
+.sidebar .menu .menu-block-content a,
+.sidebar .menu .menu-block-content > a,
+.sidebar .menu .menu-children a,
+.sidebar .menu .menu-children .menu-child{
+  font-weight: 400 !important;
+}
+
+/* 4) Jerarquía visual hijos (indent) */
+.sidebar .menu .menu-children{
+  margin-left: 14px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(255,255,255,0.25);
+}
+
+.sidebar .menu .menu-children a{
+  display: block;
+}
+
+/* 5) Activo uniforme (NO cambia negrita) */
+.sidebar .menu a.is-active,
+.sidebar .menu a.active,
+.sidebar .menu a[aria-current="page"],
+.sidebar .menu .menu-btn-primary.is-active,
+.sidebar .menu .menu-btn-primary[aria-current="page"]{
+  background: rgba(255,255,255,0.22) !important;
+  border-radius: 16px;
+}
