@@ -699,3 +699,34 @@ body.menu-open .overlay{
   filter:grayscale(10%);
   box-shadow:none;
 }
+/* ===========================
+   ANEXOS TÉCNICOS - CARDS (como captura)
+   =========================== */
+
+.anexos-cards{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin-top:18px;
+}
+
+.anexo-card{
+  background:#fff;
+  border:1px solid #d9dee8;
+  border-radius:18px;
+  padding:18px 18px;
+  box-shadow:none;
+}
+
+.anexo-card-title{
+  font-weight:800;
+  color:#111827;
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.anexo-card-text{
+  color:#2F3A45;
+  font-size:14.5px;
+  line-height:1.55;
+}
