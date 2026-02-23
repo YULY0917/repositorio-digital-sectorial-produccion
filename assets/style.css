@@ -532,3 +532,46 @@ body.menu-open .overlay{
 .menu a:hover {
   background: rgba(255,255,255,0.14);
 }
+/* ===========================
+   MENÚ: NEGRITA SOLO EN TÍTULOS + INICIO
+   + JERARQUÍA FIJA DE ANEXOS
+   =========================== */
+
+/* 1) Solo los títulos de bloque en negrita */
+.menu .menu-block-title {
+  font-weight: 700 !important;
+}
+
+/* 2) Inicio en negrita (botón principal) */
+.menu .menu-btn-primary {
+  font-weight: 700 !important;
+}
+
+/* 3) Todos los links normales (sin negrita) */
+.menu a {
+  font-weight: 400 !important;
+}
+
+/* 4) Hijos SIEMPRE indentados bajo Anexos Técnicos */
+.menu .menu-children {
+  margin-left: 14px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(255,255,255,0.25);
+}
+
+.menu .menu-children .menu-child {
+  display: block;
+  font-weight: 400 !important;
+}
+
+/* 5) Activo uniforme (para cualquier link, sin afectar niveles) */
+.menu a.is-active,
+.menu a.active,
+.menu a[aria-current="page"],
+.menu .menu-btn-primary.is-active,
+.menu .menu-btn-primary[aria-current="page"] {
+  background: rgba(255,255,255,0.22) !important;
+  border-radius: 16px;
+}
