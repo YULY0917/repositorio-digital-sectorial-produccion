@@ -4,8 +4,6 @@
   <meta charset="utf-8">
   <title>Documentos Nodo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CSS principal -->
   <link rel="stylesheet" href="../assets/style.css?v=1003">
 </head>
 <body>
@@ -22,18 +20,8 @@
 
   <div class="searchwrap">
     <span class="icon">🔎</span>
-    <input
-      id="search"
-      type="search"
-      placeholder="Buscar documentos del Nodo"
-    >
-    <button
-      class="search-clear clear-btn"
-      type="button"
-      aria-label="Limpiar búsqueda"
-      style="display:none;"
-    >×</button>
-
+    <input id="search" type="search" placeholder="Buscar documentos del Nodo">
+    <button class="search-clear clear-btn" type="button" aria-label="Limpiar búsqueda" style="display:none;">×</button>
     <div id="searchResults" class="search-results"></div>
   </div>
 </header>
@@ -41,97 +29,95 @@
 <div class="overlay"></div>
 
 <div class="shell">
-  <!-- ================= SIDEBAR ================= -->
   <aside class="sidebar">
-    <nav class="menu">
-      <a href="../index.html" data-keywords="inicio home">Inicio</a>
-      <a href="convenio.html" data-keywords="convenio adhesion">Convenio de Adhesión</a>
+    <nav class="menu menu-mobile-blocks">
+      <a href="../index.html" class="menu-btn-primary" data-keywords="inicio home">Inicio</a>
 
-      <a href="anexos-tecnicos.html" data-keywords="anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4">
-        Anexos Técnicos
-      </a>
-      <a class="sub" href="anexos-provision-datos.html" data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">
-        Anexos de Provisión de Datos
-      </a>
-      <a class="sub" href="anexos-consumo-datos.html" data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">
-        Anexos de Consumo de Datos
-      </a>
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Legales</div>
+        <div class="menu-block-content">
+          <a href="convenio.html" data-keywords="convenio adhesion">Convenio de Adhesión</a>
+        </div>
+      </div>
 
-      <a href="reglas-uso.html" data-keywords="reglas uso">Reglas de Uso</a>
-      <a href="datos-disponibles.html" data-keywords="datos disponibles sets ips dt suseso sp fase 1">
-        Datos disponibles
-      </a>
-      <a href="documentos-nodo.html" class="active" data-keywords="documentos nodo reportes presentaciones">
-        Documentos Nodo
-      </a>
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Técnicos</div>
+        <div class="menu-block-content">
+          <a href="anexos-tecnicos.html" data-keywords="anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4">Anexos Técnicos</a>
+          <a href="anexos-provision-datos.html" data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">Anexos de Provisión de Datos</a>
+          <a href="anexos-consumo-datos.html" data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">Anexos de Consumo de Datos</a>
+        </div>
+      </div>
+
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Operativos</div>
+        <div class="menu-block-content">
+          <a href="reglas-uso.html" data-keywords="reglas uso">Reglas de Uso</a>
+          <a href="datos-disponibles.html" data-keywords="datos disponibles sets ips dt suseso sp fase 1">Datos disponibles</a>
+        </div>
+      </div>
+
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Informativos</div>
+        <div class="menu-block-content">
+          <a href="documentos-nodo.html" class="active" data-keywords="documentos nodo reportes presentaciones">Documentos Nodo</a>
+        </div>
+      </div>
     </nav>
   </aside>
 
-  <!-- ================= CONTENIDO ================= -->
   <main class="main">
     <section class="card">
       <h1 class="h1">Documentos Nodo</h1>
       <div class="intro-content">
-      <p>
-        Esta sección reúne la documentación institucional relevante asociada al Nodo Laboral y Previsional, orientada a entregar una visión general de su puesta en marcha, evolución y estado de avance.
-      </p>
+        <p>
+          Esta sección reúne la documentación institucional relevante asociada al Nodo Laboral y Previsional, orientada a entregar una visión general de su puesta en marcha, evolución y estado de avance.
+        </p>
 
-      <p>
-        Los documentos aquí disponibles permiten comprender el contexto de creación del Nodo, sus objetivos, alcances y lineamientos iniciales, 
-        así como realizar seguimiento al progreso de las instituciones participantes, considerando hitos, avances y desafíos identificados durante su implementación.
-      </p>
+        <p>
+          Los documentos aquí disponibles permiten comprender el contexto de creación del Nodo, sus objetivos, alcances y lineamientos iniciales, 
+          así como realizar seguimiento al progreso de las instituciones participantes, considerando hitos, avances y desafíos identificados durante su implementación.
+        </p>
 
-      <p>
-        La información contenida en esta sección constituye un insumo de referencia para equipos técnicos, institucionales y de gestión, facilitando una comprensión transversal del desarrollo y consolidación del Nodo Laboral y Previsional.
-      </p>
+        <p>
+          La información contenida en esta sección constituye un insumo de referencia para equipos técnicos, institucionales y de gestión, facilitando una comprensión transversal del desarrollo y consolidación del Nodo Laboral y Previsional.
+        </p>
 
-      <!-- TABLA DOCUMENTOS -->
-      <div class="doc-table">
-        <table>
-          <thead>
-            <tr>
-              <th>DOCUMENTO</th>
-              <th>ACCIÓN</th>
-            </tr>
-          </thead>
+        <div class="doc-table">
+          <table>
+            <thead>
+              <tr>
+                <th>DOCUMENTO</th>
+                <th>ACCIÓN</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <tr>
-              <td>Lanzamiento – Nodo Laboral y Previsional</td>
-              <td>
-                <a
-                  class="btn"
-                  href="../docs/251214_Lanzamiento_NODO_LP_V3.pdf"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span class="ico">📄</span> Abrir
-                </a>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>Lanzamiento – Nodo Laboral y Previsional</td>
+                <td>
+                  <a class="btn" href="../docs/251214_Lanzamiento_NODO_LP_V3.pdf" target="_blank" rel="noopener">
+                    <span class="ico">📄</span> Abrir
+                  </a>
+                </td>
+              </tr>
 
-            <tr>
-              <td>Reporte de Avances OAEs – Nodo Laboral y Previsional</td>
-              <td>
-                <a
-                  class="btn"
-                  href="../docs/260113_Reporte_de_Avance_OAEs.pdf"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <span class="ico">📄</span> Abrir
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              <tr>
+                <td>Reporte de Avances OAEs – Nodo Laboral y Previsional</td>
+                <td>
+                  <a class="btn" href="../docs/260113_Reporte_de_Avance_OAEs.pdf" target="_blank" rel="noopener">
+                    <span class="ico">📄</span> Abrir
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
     </section>
   </main>
 </div>
 
-<!-- JS -->
 <script src="../assets/app.js?v=1003"></script>
 </body>
 </html>
