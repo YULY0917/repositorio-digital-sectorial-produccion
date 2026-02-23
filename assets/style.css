@@ -469,4 +469,79 @@ body.menu-open .overlay{
     margin-bottom: 56px !important;  /* la sube visualmente */
   }
 }
+/* =========================================================
+   MENÚ POR CATEGORÍAS (SIN DAÑAR ESCRITORIO)
+   - Escritorio: mantiene apariencia original
+   - Móvil: muestra bloques como la imagen
+   ========================================================= */
 
+/* ===== ESCRITORIO: no “romper” el look actual ===== */
+.menu-mobile-blocks .menu-block{
+  display: contents;          /* hace que los <a> fluyan como antes */
+}
+.menu-mobile-blocks .menu-block-title{
+  display: none;              /* en escritorio no mostramos títulos */
+}
+.menu-mobile-blocks .menu-block-content{
+  display: contents;
+}
+.menu-mobile-blocks .menu-btn-primary{
+  /* se comporta como un link normal del menú actual */
+}
+
+/* ===== MÓVIL: bloques centrados ===== */
+@media (max-width: 980px){
+
+  /* Convertimos el menú a layout centrado */
+  .menu.menu-mobile-blocks{
+    align-items: center;
+    gap: 22px;
+    padding-top: 16px !important; /* tu fix de “Inicio cortado” sigue ok */
+  }
+
+  /* INICIO destacado */
+  .menu.menu-mobile-blocks > a.menu-btn-primary{
+    width: 96%;
+    max-width: 360px;
+    background: rgba(255,255,255,.22);
+    border-radius: 0;
+    text-decoration: none;
+  }
+
+  /* Ahora sí, los bloques existen visualmente */
+  .menu-mobile-blocks .menu-block{
+    display: block;
+    width: 86%;
+    max-width: 300px;
+    background: rgba(255,255,255,.14);
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .menu-mobile-blocks .menu-block-title{
+    display: block;
+    padding: 12px 12px;
+    font-weight: 900;
+    text-transform: none;
+  }
+
+  .menu-mobile-blocks .menu-block-content{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 12px 14px;
+  }
+
+  /* Links dentro del bloque */
+  .menu-mobile-blocks .menu-block-content a{
+    padding: 6px 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important; /* para que no parezca 2do botón */
+  }
+
+  /* Activo visible */
+  .menu-mobile-blocks a.active{
+    outline: 2px solid rgba(255,255,255,.35);
+    outline-offset: 0;
+  }
+}
