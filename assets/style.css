@@ -729,3 +729,40 @@ body.menu-open .overlay{
   line-height:1.55;
   color:#2F3A45;
 }
+/* =========================================================
+   MENU COLAPSABLE: solo padres visibles, hijos al desplegar
+   (Pegar al final de assets/style.css)
+   ========================================================= */
+
+/* 1) Ocultar contenidos por defecto */
+.sidebar .menu .menu-block-content{
+  display:none;
+}
+
+/* 2) Mostrar solo cuando el bloque está abierto */
+.sidebar .menu .menu-block.is-open .menu-block-content{
+  display:block;
+}
+
+/* 3) Hacer que el título se vea clickeable (sin cambiar estilo base) */
+.sidebar .menu .menu-block-title{
+  cursor:pointer;
+  user-select:none;
+  position:relative;
+  padding-right:34px; /* espacio para el indicador */
+}
+
+/* 4) Indicador flecha (solo visual) */
+.sidebar .menu .menu-block-title::after{
+  content:"▸";
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  opacity:.85;
+}
+
+/* 5) Flecha cambia al abrir */
+.sidebar .menu .menu-block.is-open .menu-block-title::after{
+  content:"▾";
+}
