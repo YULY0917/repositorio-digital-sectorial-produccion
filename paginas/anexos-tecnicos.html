@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <title>Anexos Técnicos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css?v=3001">
+  <!-- CORREGIDO: estás en /paginas/, por eso es ../assets -->
+  <link rel="stylesheet" href="../assets/style.css?v=3001">
 </head>
 <body>
 
@@ -12,7 +13,8 @@
   <button class="burger" type="button" aria-label="Abrir menú"><span>≡</span></button>
 
   <div class="brand">
-    <img src="assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
+    <!-- CORREGIDO: estás en /paginas/, por eso es ../assets -->
+    <img src="../assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
     <div class="brand-title">Repositorio Digital Sectorial</div>
   </div>
 
@@ -29,11 +31,13 @@
   <aside class="sidebar">
     <nav class="menu menu-mobile-blocks">
 
-      <a href="index.html" class="menu-btn-primary" data-keywords="inicio home">Inicio</a>
+      <!-- CORREGIDO: desde /paginas/ vuelves a la raíz con ../ -->
+      <a href="../index.html" class="menu-btn-primary" data-keywords="inicio home">Inicio</a>
 
       <div class="menu-block">
         <div class="menu-block-title">Documentos Legales</div>
         <div class="menu-block-content">
+          <!-- CORRECTO: estás en /paginas/, por eso NO va "paginas/" -->
           <a href="convenio.html" data-keywords="convenio adhesion">Convenio de Adhesión</a>
         </div>
       </div>
@@ -45,12 +49,15 @@
             Anexos Técnicos
           </a>
 
+          <!-- HIJOS: siempre debajo (jerarquía correcta) -->
           <div class="menu-children">
-            <a href="anexos-provision-datos.html" class="menu-child" data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">
+            <a href="anexos-provision-datos.html" class="menu-child"
+               data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">
               Anexos de Provisión de Datos
             </a>
 
-            <a href="anexos-consumo-datos.html" class="menu-child" data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">
+            <a href="anexos-consumo-datos.html" class="menu-child"
+               data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">
               Anexos de Consumo de Datos
             </a>
           </div>
@@ -97,6 +104,7 @@
   </main>
 </div>
 
-<script src="assets/app.js?v=3001"></script>
+<!-- CORREGIDO: estás en /paginas/, por eso es ../assets -->
+<script src="../assets/app.js?v=3001"></script>
 </body>
 </html>
