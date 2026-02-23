@@ -329,3 +329,42 @@
   });
 
 })();
+/* =========================================================
+   MENU COLAPSABLE: muestra solo padres, hijos al desplegar
+   (Pegar al final de assets/app.js)
+   ========================================================= */
+(function () {
+  const blocks = document.querySelectorAll(".sidebar .menu .menu-block");
+  if (!blocks.length) return;
+
+  // Cierra todos
+  function closeAll() {
+    blocks.forEach(b => b.classList.remove("is-open"));
+  }
+
+  // Abre el bloque que contiene el link activo (si existe)
+  (function openActiveParent() {
+    const activeLink =
+      document.querySelector(".sidebar .menu a[aria-current='page']") ||
+      document.querySelector(".sidebar .menu a.is-active") ||
+      document.querySelector(".sidebar .menu a.active");
+
+    if (!activeLink) return;
+
+    const parentBlock = activeLink.closest(".menu-block");
+    if (parentBlock) parentBlock.classList.add("is-open");
+  })();
+
+  // Toggle al hacer click en el título padre
+  blocks.forEach(block => {
+    const title = block.querySelector(".menu-block-title");
+    if (!title) return;
+
+    title.addEventListener("click", () => {
+      const wasOpen = block.classList.contains("is-open");
+      closeAll(); // comportamiento acordeón (solo 1 abierto)
+      if (!wasOpen) block.classList.add("is-open");
+    });
+  });
+
+})();
