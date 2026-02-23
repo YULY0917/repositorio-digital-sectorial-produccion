@@ -221,3 +221,61 @@
   });
 
 })();
+/* ===========================
+   MENÚ ACTIVO UNIFORME (Inicio, Convenio, etc.)
+   Pegar al FINAL de assets/app.js
+   =========================== */
+(function () {
+  // Normaliza rutas tipo "paginas/convenio.html" (sin query, sin hash)
+  function normalize(href) {
+    if (!href) return "";
+    return href.split("#")[0].split("?")[0].trim();
+  }
+
+  // Marca activo comparando contra el archivo actual
+  var currentFile = normalize(window.location.pathname.split("/").pop() || "index.html");
+
+  // Encuentra TODOS los links del menú
+  var menuLinks = document.querySelectorAll(".sidebar .menu a[href]");
+
+  // Limpia activos antiguos (por si tu JS actual marca solo algunos)
+  menuLinks.forEach(function (a) {
+    a.classList.remove("is-active", "active");
+    a.removeAttribute("aria-current");
+  });
+
+  // Match exacto por filename (index.html, convenio.html, etc.)
+  var exactActive = null;
+  menuLinks.forEach(function (a) {
+    var hrefFile = normalize(a.getAttribute("href")).split("/").pop();
+    if (hrefFile === currentFile) exactActive = a;
+  });
+
+  // Si no hay match exacto, intenta match por pathname completo (por si estás en subcarpetas)
+  if (!exactActive) {
+    var currentPath = normalize(window.location.pathname);
+    menuLinks.forEach(function (a) {
+      var href = normalize(a.getAttribute("href"));
+      // si el href aparece dentro del path actual, lo consideramos candidato
+      if (href && currentPath.endsWith(href)) exactActive = a;
+    });
+  }
+
+  // Aplica activo al link encontrado
+  if (exactActive) {
+    exactActive.classList.add("is-active");
+    exactActive.setAttribute("aria-current", "page");
+  }
+
+  // EXTRA: si estás en Provisión o Consumo, también marca el padre "Anexos Técnicos"
+  // (Esto NO cambia tu estructura, solo añade activo al padre si corresponde)
+  var activeHref = exactActive ? normalize(exactActive.getAttribute("href")) : "";
+  if (activeHref.includes("anexos-provision-datos.html") || activeHref.includes("anexos-consumo-datos.html")) {
+    menuLinks.forEach(function (a) {
+      var href = normalize(a.getAttribute("href"));
+      if (href.includes("anexos-tecnicos.html")) {
+        a.classList.add("is-active");
+      }
+    });
+  }
+})();
