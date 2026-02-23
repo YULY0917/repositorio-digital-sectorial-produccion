@@ -496,3 +496,39 @@ body.menu-open .overlay{
 .menu-children a{
   padding-left:40px;
 }
+/* ===========================
+   AJUSTES MENÚ (PADRE/HIJO + ACTIVO UNIFORME)
+   Pegar al FINAL de assets/style.css
+   =========================== */
+
+/* 1) Padres en negrita */
+.menu .menu-parent {
+  font-weight: 700 !important;
+}
+
+/* 2) Hijos sin negrita + indentación jerárquica */
+.menu .menu-children {
+  margin-left: 14px;           /* sangría visual */
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(255,255,255,0.25);
+}
+
+.menu .menu-child {
+  font-weight: 400 !important; /* NO negrita */
+  display: block;
+}
+
+/* 3) Activo uniforme para CUALQUIER link del menú */
+.menu a.is-active,
+.menu a.active,
+.menu a[aria-current="page"] {
+  background: rgba(255,255,255,0.22) !important;
+  border-radius: 16px; /* forma tipo “píldora” */
+}
+
+/* (opcional) hover consistente */
+.menu a:hover {
+  background: rgba(255,255,255,0.14);
+}
