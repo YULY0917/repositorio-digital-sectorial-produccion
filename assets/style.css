@@ -601,3 +601,26 @@ body.menu-open .overlay{
     margin-bottom: 2px !important;
   }
 }
+/* =========================================================
+   FIX DEFINITIVO: Evita que los links del menú se pongan en 2 columnas
+   (porque por defecto los <a> son inline)
+   ========================================================= */
+
+/* Asegura 1 link por línea SIEMPRE */
+.sidebar .menu a{
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Si estás usando bloques con contenedores */
+.sidebar .menu .menu-block-content a{
+  display: block !important;
+  width: 100% !important;
+}
+
+/* (Opcional) para que el texto no se parta raro */
+.sidebar .menu a{
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
