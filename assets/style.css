@@ -766,3 +766,27 @@ body.menu-open .overlay{
 .sidebar .menu .menu-block.is-open .menu-block-title::after{
   content:"▾";
 }
+/* =========================================================
+   PADRES DEL MENÚ CON ESTILO BOTÓN (como Inicio)
+   ========================================================= */
+
+.sidebar nav.menu.menu-collapsible .menu-block-title{
+  display:block;
+  width:100%;
+  padding:16px;
+  border-radius:16px;
+  font-weight:700;
+  color:#fff;
+  background:transparent;
+  transition:background .15s ease;
+}
+
+/* Hover igual que los links */
+.sidebar nav.menu.menu-collapsible .menu-block-title:hover{
+  background:rgba(255,255,255,.18);
+}
+
+/* Estado abierto (igual que activo) */
+.sidebar nav.menu.menu-collapsible .menu-block.is-open .menu-block-title{
+  background:rgba(255,255,255,.22);
+}
