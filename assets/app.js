@@ -24,18 +24,58 @@
   });
 
   /* =========================
-     ITEM ACTIVO EN MENU
+     UTIL: NORMALIZAR URLS
+     - elimina query/hash
+     - elimina ./ inicial
+     - deja solo ruta limpia
      ========================= */
-  const current = location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".menu a").forEach(a => {
-    const href = (a.getAttribute("href") || "").split("/").pop();
-    if (href && href === current) a.classList.add("active");
-  });
+  function normalizeUrl(url) {
+    if (!url) return "";
+    let u = url.split("#")[0].split("?")[0].trim();
+    u = u.replace(/^\.\//, ""); // quita "./"
+    return u;
+  }
+
+  function isInPaginas() {
+    // más robusto que includes("/paginas/") cuando estás en GitHub Pages con subpath
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    return parts.includes("paginas");
+  }
+
+  /* =========================
+     ITEM ACTIVO EN MENU (ÚNICO)
+     ========================= */
+  (function setActiveMenu() {
+    const currentFile = (normalizeUrl(window.location.pathname).split("/").pop()) || "index.html";
+
+    const menuLinks = document.querySelectorAll(".sidebar .menu a[href]");
+    menuLinks.forEach(a => {
+      a.classList.remove("active", "is-active");
+      a.removeAttribute("aria-current");
+    });
+
+    let exactActive = null;
+    menuLinks.forEach(a => {
+      const hrefFile = normalizeUrl(a.getAttribute("href")).split("/").pop();
+      if (hrefFile && hrefFile === currentFile) exactActive = a;
+    });
+
+    if (exactActive) {
+      exactActive.classList.add("is-active");
+      exactActive.setAttribute("aria-current", "page");
+    }
+
+    // Si estás en provisión/consumo, también resalta el padre "Anexos Técnicos"
+    if (currentFile === "anexos-provision-datos.html" || currentFile === "anexos-consumo-datos.html") {
+      menuLinks.forEach(a => {
+        const hrefFile = normalizeUrl(a.getAttribute("href")).split("/").pop();
+        if (hrefFile === "anexos-tecnicos.html") a.classList.add("is-active");
+      });
+    }
+  })();
 
   /* =========================
      VERSIONAMIENTO (FECHA+HORA)
-     Fuente 1: assets/version.json (AUTOMATICO por GitHub Actions)
-     Fuente 2: GitHub API (fallback)
      ========================= */
   (function () {
     const sidebar = document.querySelector(".sidebar");
@@ -55,10 +95,9 @@
     const el = sidebar.querySelector("#siteVersion");
     if (!el) return;
 
-    const inPaginas = location.pathname.includes("/paginas/");
+    const inPaginas = isInPaginas();
     const VERSION_URL = (inPaginas ? "../" : "") + "assets/version.json?v=" + Date.now();
 
-    // 1) Preferido: version.json (SIN rate limits)
     fetch(VERSION_URL, { cache: "no-store" })
       .then(r => r.ok ? r.json() : Promise.reject())
       .then(v => {
@@ -69,7 +108,6 @@
         throw new Error("no label");
       })
       .catch(() => {
-        // 2) Fallback: GitHub API (puede rate-limitar)
         const owner  = "yuly0917";
         const repo   = "repositorio-digital-sectorial";
         const branch = "main";
@@ -102,7 +140,9 @@
   })();
 
   /* =========================
-     BUSCADOR GLOBAL
+     BUSCADOR GLOBAL (URLs SIN 404)
+     - Normaliza links del menú
+     - Genera páginas con prefijo correcto
      ========================= */
   const input =
     document.getElementById("search") ||
@@ -118,7 +158,10 @@
 
   if (!input || !resultsBox) return;
 
-  const inPaginas = location.pathname.includes("/paginas/");
+  const inPaginas = isInPaginas();
+
+  // Si estás en /paginas => las páginas se llaman "archivo.html"
+  // Si estás en raíz       => las páginas son "paginas/archivo.html"
   const PAGE_PREFIX = inPaginas ? "" : "paginas/";
   const DOC_PREFIX  = inPaginas ? "../docs/" : "docs/";
   const HOME_URL    = inPaginas ? "../index.html" : "index.html";
@@ -135,8 +178,8 @@
     { title:"Datos disponibles", section:"Página", url: PAGE_PREFIX + "datos-disponibles.html", keywords:"datos disponibles catalogo sets" },
     { title:"Documentos Nodo", section:"Página", url: PAGE_PREFIX + "documentos-nodo.html", keywords:"documentos nodo reportes presentaciones" },
 
-    { title:"Lanzamiento – Nodo Laboral y Previsional ", section:"PDF", url: DOC_PREFIX + "251214_Lanzamiento_NODO_LP_V3.pdf", keywords:"lanzamiento nodo pdf" },
-    { title:"Reporte de Avance OAEs ", section:"PDF", url: DOC_PREFIX + "260113_Reporte_de_Avance_OAEs.pdf", keywords:"reporte avance oaes 2026 pdf" }
+    { title:"Lanzamiento – Nodo Laboral y Previsional", section:"PDF", url: DOC_PREFIX + "251214_Lanzamiento_NODO_LP_V3.pdf", keywords:"lanzamiento nodo pdf" },
+    { title:"Reporte de Avance OAEs", section:"PDF", url: DOC_PREFIX + "260113_Reporte_de_Avance_OAEs.pdf", keywords:"reporte avance oaes 2026 pdf" }
   );
 
   ["SP","SUSESO","DT","IPS"].forEach(oae => {
@@ -150,9 +193,12 @@
     });
   });
 
+  // Agrega items del menú, pero NORMALIZADOS para que no queden "./paginas/..." mezclados
   document.querySelectorAll(".menu a").forEach(a => {
     const title = (a.textContent || "").trim();
-    const url = a.getAttribute("href");
+    const rawUrl = a.getAttribute("href");
+    const url = normalizeUrl(rawUrl);
+
     if (url && url !== "#") {
       DOCS.push({
         title,
@@ -163,8 +209,15 @@
     }
   });
 
+  // Quita duplicados por URL normalizada
   const seen = new Set();
-  const INDEX = DOCS.filter(d => d.url && !seen.has(d.url) && (seen.add(d.url), true));
+  const INDEX = DOCS.filter(d => {
+    const u = normalizeUrl(d.url);
+    if (!u || seen.has(u)) return false;
+    seen.add(u);
+    d.url = u;
+    return true;
+  });
 
   function norm(s){
     return (s || "")
@@ -220,62 +273,4 @@
     if (!e.target.closest(".searchwrap")) hideResults();
   });
 
-})();
-/* ===========================
-   MENÚ ACTIVO UNIFORME (Inicio, Convenio, etc.)
-   Pegar al FINAL de assets/app.js
-   =========================== */
-(function () {
-  // Normaliza rutas tipo "paginas/convenio.html" (sin query, sin hash)
-  function normalize(href) {
-    if (!href) return "";
-    return href.split("#")[0].split("?")[0].trim();
-  }
-
-  // Marca activo comparando contra el archivo actual
-  var currentFile = normalize(window.location.pathname.split("/").pop() || "index.html");
-
-  // Encuentra TODOS los links del menú
-  var menuLinks = document.querySelectorAll(".sidebar .menu a[href]");
-
-  // Limpia activos antiguos (por si tu JS actual marca solo algunos)
-  menuLinks.forEach(function (a) {
-    a.classList.remove("is-active", "active");
-    a.removeAttribute("aria-current");
-  });
-
-  // Match exacto por filename (index.html, convenio.html, etc.)
-  var exactActive = null;
-  menuLinks.forEach(function (a) {
-    var hrefFile = normalize(a.getAttribute("href")).split("/").pop();
-    if (hrefFile === currentFile) exactActive = a;
-  });
-
-  // Si no hay match exacto, intenta match por pathname completo (por si estás en subcarpetas)
-  if (!exactActive) {
-    var currentPath = normalize(window.location.pathname);
-    menuLinks.forEach(function (a) {
-      var href = normalize(a.getAttribute("href"));
-      // si el href aparece dentro del path actual, lo consideramos candidato
-      if (href && currentPath.endsWith(href)) exactActive = a;
-    });
-  }
-
-  // Aplica activo al link encontrado
-  if (exactActive) {
-    exactActive.classList.add("is-active");
-    exactActive.setAttribute("aria-current", "page");
-  }
-
-  // EXTRA: si estás en Provisión o Consumo, también marca el padre "Anexos Técnicos"
-  // (Esto NO cambia tu estructura, solo añade activo al padre si corresponde)
-  var activeHref = exactActive ? normalize(exactActive.getAttribute("href")) : "";
-  if (activeHref.includes("anexos-provision-datos.html") || activeHref.includes("anexos-consumo-datos.html")) {
-    menuLinks.forEach(function (a) {
-      var href = normalize(a.getAttribute("href"));
-      if (href.includes("anexos-tecnicos.html")) {
-        a.classList.add("is-active");
-      }
-    });
-  }
 })();
