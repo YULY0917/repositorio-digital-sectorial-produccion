@@ -46,25 +46,34 @@
       </div>
 
       <!-- ================= DOCUMENTOS TÉCNICOS ================= -->
-      <div class="menu-block">
-        <div class="menu-block-title">Documentos Técnicos</div>
-        <div class="menu-block-content">
-          <a href="paginas/anexos-tecnicos.html"
-             data-keywords="anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4">
-            Anexos Técnicos
-          </a>
+<div class="menu-block">
+  <div class="menu-block-title">Documentos Técnicos</div>
+  <div class="menu-block-content">
 
-          <a href="paginas/anexos-provision-datos.html"
-             data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">
-            Anexos de Provisión de Datos
-          </a>
+    <!-- PADRE -->
+    <a href="paginas/anexos-tecnicos.html"
+       class="menu-parent"
+       data-keywords="anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4">
+      Anexos Técnicos
+    </a>
 
-          <a href="paginas/anexos-consumo-datos.html"
-             data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">
-            Anexos de Consumo de Datos
-          </a>
-        </div>
-      </div>
+    <!-- HIJOS (jerárquicamente debajo) -->
+    <div class="menu-children">
+      <a href="paginas/anexos-provision-datos.html"
+         class="menu-child"
+         data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">
+        Anexos de Provisión de Datos
+      </a>
+
+      <a href="paginas/anexos-consumo-datos.html"
+         class="menu-child"
+         data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">
+        Anexos de Consumo de Datos
+      </a>
+    </div>
+
+  </div>
+</div>
 
       <!-- ================= DOCUMENTOS OPERATIVOS ================= -->
       <div class="menu-block">
