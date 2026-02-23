@@ -624,3 +624,33 @@ body.menu-open .overlay{
   word-break: normal !important;
   overflow-wrap: break-word !important;
 }
+/* =========================================================
+   FIX FINAL (muy específico): menú por categorías en 1 columna
+   ========================================================= */
+@media (max-width: 980px){
+
+  /* fuerza que cualquier link del menú sea bloque */
+  .sidebar nav.menu.menu-mobile-blocks a{
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* fuerza que el contenedor interno NO cree columnas */
+  .sidebar nav.menu.menu-mobile-blocks .menu-block-content{
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* cada link dentro del bloque: 1 por línea */
+  .sidebar nav.menu.menu-mobile-blocks .menu-block-content a{
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* elimina cualquier “layout raro” si existiera en otra regla */
+  .sidebar nav.menu.menu-mobile-blocks a{
+    float: none !important;
+    clear: both !important;
+  }
+}
