@@ -790,3 +790,51 @@ body.menu-open .overlay{
 .sidebar nav.menu.menu-collapsible .menu-block.is-open .menu-block-title{
   background:rgba(255,255,255,.22);
 }
+/* =========================================================
+   FIX FINAL: PADRES COMO BOTONES (Documentos Legales/Técnicos/…)
+   Debe ir al FINAL del style.css
+   ========================================================= */
+
+.sidebar nav.menu.menu-collapsible .menu-block-title{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+
+  width:100% !important;
+  padding:16px !important;
+  margin:0 !important;
+
+  border-radius:16px !important;
+
+  color:#fff !important;
+  font-weight:700 !important;
+  line-height:1.2 !important;
+
+  background:transparent !important;
+  cursor:pointer !important;
+  user-select:none !important;
+}
+
+/* Hover tipo botón igual que los links */
+.sidebar nav.menu.menu-collapsible .menu-block-title:hover{
+  background:rgba(255,255,255,.18) !important;
+}
+
+/* Abierto = “activo” */
+.sidebar nav.menu.menu-collapsible .menu-block.is-open > .menu-block-title{
+  background:rgba(255,255,255,.22) !important;
+}
+
+/* Flecha alineada como botón */
+.sidebar nav.menu.menu-collapsible .menu-block-title::after{
+  content:"▸" !important;
+  position:static !important;      /* importante: evita que quede “encogido” por absolute */
+  transform:none !important;
+  opacity:.9 !important;
+  margin-left:12px !important;
+}
+
+/* Flecha abierta */
+.sidebar nav.menu.menu-collapsible .menu-block.is-open > .menu-block-title::after{
+  content:"▾" !important;
+}
