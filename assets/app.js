@@ -1,5 +1,60 @@
 (function () {
   const body = document.body;
+    /* =========================
+     FIX 404 ANEXOS (GitHub Pages subpath + evitar /paginas/paginas/)
+     - Calcula la raíz real del sitio (incluye /repositorio-digital-sectorial/)
+     - Reescribe href del menú a URLs correctas
+     ========================= */
+  (function fixMenuHrefs() {
+    const path = window.location.pathname; // ej: /repositorio-digital-sectorial/paginas/anexos-tecnicos.html
+
+    // Raíz del sitio = todo antes de "/paginas/" si existe; si no, carpeta actual
+    let siteRoot = "/";
+    if (path.includes("/paginas/")) {
+      siteRoot = path.split("/paginas/")[0] + "/";
+    } else {
+      // en raíz (index.html o /repo/)
+      // si termina en .html -> quita el archivo; si termina en / -> queda igual
+      siteRoot = path.endsWith(".html") ? path.replace(/[^/]+$/, "") : (path.endsWith("/") ? path : path + "/");
+    }
+
+    // Normaliza para no duplicar slashes
+    siteRoot = siteRoot.replace(/\/{2,}/g, "/");
+
+    // Reescribe SOLO links internos del menú
+    document.querySelectorAll(".sidebar .menu a[href]").forEach(a => {
+      let href = (a.getAttribute("href") || "").trim();
+      if (!href || href === "#") return;
+
+      // No tocar links externos
+      if (/^(https?:)?\/\//i.test(href) || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+
+      // Quita ./ inicial
+      href = href.replace(/^\.\//, "");
+
+      // Caso 1: Inicio
+      if (href === "index.html" || href === "../index.html") {
+        a.setAttribute("href", siteRoot + "index.html");
+        return;
+      }
+
+      // Caso 2: Links que ya vienen como paginas/xxx.html (desde index)
+      if (href.startsWith("paginas/")) {
+        a.setAttribute("href", siteRoot + href);
+        return;
+      }
+
+      // Caso 3: Links dentro de /paginas/ (ej: "anexos-tecnicos.html")
+      // Los convertimos a siteRoot + "paginas/" + archivo.html
+      if (/\.html$/i.test(href) && !href.includes("/")) {
+        a.setAttribute("href", siteRoot + "paginas/" + href);
+        return;
+      }
+
+      // Caso 4: Cualquier otro relativo (por si acaso)
+      a.setAttribute("href", siteRoot + href);
+    });
+  })();
 
   /* =========================
      MENU MOVIL
