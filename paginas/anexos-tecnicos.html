@@ -4,7 +4,37 @@
   <meta charset="utf-8">
   <title>Anexos Técnicos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/style.css?v=3001">
+
+  <!-- Subo versión para romper cache -->
+  <link rel="stylesheet" href="../assets/style.css?v=9999">
+
+  <!-- FIX DEFINITIVO: estilos de tarjetas dentro del HTML (no depende del CSS externo) -->
+  <style>
+    .anexos-cards{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      margin-top:18px;
+    }
+    .anexo-card{
+      background:#ffffff;
+      border:1px solid #d9dee8;
+      border-radius:18px;
+      padding:20px;
+      box-shadow:0 8px 18px rgba(15,23,42,.06);
+    }
+    .anexo-card-title{
+      font-weight:800;
+      font-size:16px;
+      margin-bottom:10px;
+      color:#111827;
+    }
+    .anexo-card-text{
+      font-size:14.5px;
+      line-height:1.55;
+      color:#2F3A45;
+    }
+  </style>
 </head>
 <body>
 
@@ -94,9 +124,7 @@
           Los Anexos Técnicos son aprobados mediante los actos administrativos correspondientes, cuentan con control de versiones y forman parte integrante del Convenio, constituyéndose como el referente operativo que guía la correcta implementación, mantenimiento y evolución de los servicios de interoperabilidad del Nodo Laboral y Previsional.
         </p>
 
-        <!-- ===================== CARDS ANEXOS 1-4 ===================== -->
         <div class="anexos-cards">
-
           <article class="anexo-card">
             <div class="anexo-card-title">Anexo 1</div>
             <div class="anexo-card-text">
@@ -124,9 +152,7 @@
               Describe conjuntos de datos accesibles y sus características generales para consumo.
             </div>
           </article>
-
         </div>
-        <!-- =========================================================== -->
 
       </div>
     </section>
