@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Mesas Técnicas de Interoperabilidad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/style.css?v=1011">
+  <link rel="stylesheet" href="../assets/style.css?v=1012">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 
   <div class="searchwrap">
     <span class="icon">🔎</span>
-    <input id="search" type="search" placeholder="Buscar (ej: mesa técnica, interoperabilidad, acta)" />
+    <input id="search" type="search" placeholder="Buscar (ej: mesa técnica, interoperabilidad, acta, minuta)" />
     <button class="search-clear clear-btn" type="button" aria-label="Limpiar búsqueda" style="display:none;">×</button>
     <div id="searchResults" class="search-results"></div>
   </div>
@@ -28,7 +28,76 @@
 
 <div class="shell">
   <aside class="sidebar">
-    <!-- Aquí debes pegar el mismo sidebar estándar que usas en las demás páginas -->
+    <nav class="menu menu-mobile-blocks">
+
+      <a href="../index.html" class="menu-btn-primary" data-keywords="inicio home">Inicio</a>
+
+      <!-- DOCUMENTOS LEGALES -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Legales</div>
+        <div class="menu-block-content">
+
+          <a href="convenio.html" data-keywords="convenio adhesion">Convenio de Adhesión</a>
+
+          <a href="res-exenta-convenio.html" data-keywords="resolucion exenta convenio 748 2025">
+            Res. Exenta Convenio
+          </a>
+
+          <a href="anexos-tecnicos.html" data-keywords="anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4">
+            Anexos Técnicos
+          </a>
+
+          <div class="menu-children">
+            <a href="anexos-provision-datos.html" class="menu-child"
+               data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">
+              Anexos de Provisión de Datos
+            </a>
+
+            <a href="anexos-consumo-datos.html" class="menu-child"
+               data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">
+              Anexos de Consumo de Datos
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DOCUMENTOS TÉCNICOS (reservado) -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Técnicos</div>
+        <div class="menu-block-content">
+          <!-- Aquí subirás otros documentos técnicos -->
+        </div>
+      </div>
+
+      <!-- DOCUMENTOS OPERATIVOS -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Operativos</div>
+        <div class="menu-block-content">
+          <a href="reglas-uso.html" data-keywords="reglas uso">Reglas de Uso</a>
+          <a href="datos-disponibles.html" data-keywords="datos disponibles sets ips dt suseso sp fase 1">Datos disponibles</a>
+        </div>
+      </div>
+
+      <!-- DOCUMENTOS INFORMATIVOS -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Informativos</div>
+        <div class="menu-block-content">
+
+          <a href="documentos-nodo.html" data-keywords="documentos nodo manual soporte procedimiento">
+            Documentos Nodo
+          </a>
+
+          <a href="mesas-tecnicas-interoperabilidad.html"
+             class="active"
+             data-keywords="mesas tecnicas interoperabilidad reuniones actas minutas presentaciones">
+            Mesas Técnicas de Interoperabilidad
+          </a>
+
+        </div>
+      </div>
+
+    </nav>
   </aside>
 
   <main class="main">
@@ -37,51 +106,52 @@
 
       <div class="intro-content">
         <p>
-          Esta sección reúne la documentación asociada a las Mesas Técnicas de Interoperabilidad del Nodo Laboral y Previsional,
-          incluyendo actas, minutas, presentaciones y acuerdos adoptados entre las instituciones participantes.
+          Esta sección reúne materiales de sesiones, presentaciones, actas y minutas asociadas a las Mesas Técnicas de Interoperabilidad
+          del Nodo Laboral y Previsional, con el objetivo de mantener trazabilidad y disponibilidad de los acuerdos y lineamientos de trabajo.
         </p>
 
-        <p>
-          Su objetivo es resguardar la trazabilidad de las decisiones técnicas y de gobernanza
-          vinculadas a la implementación y evolución de la Plataforma.
-        </p>
-
-        <div class="doc-table" style="margin-top:30px;">
+        <div class="doc-table" style="margin-top:28px;">
           <table>
             <thead>
               <tr>
                 <th>DOCUMENTO</th>
+                <th>FECHA</th>
                 <th>ACCIÓN</th>
               </tr>
             </thead>
+
             <tbody>
               <tr>
-                <td>Acta Mesa Técnica N°1 – Nodo Laboral y Previsional</td>
                 <td>
-                  <a class="btn-pill" href="#" target="_blank">
-                    <span class="ico">📄</span> Abrir
+                  <b>Primera Mesa Técnica de Interoperabilidad (Mesa IoP)</b>
+                  <br>
+                  <small>Equipos técnicos de las 11 OAEs del Mintrab (presentación)</small>
+                </td>
+                <td>22-01-2026</td>
+                <td>
+                  <a class="btn-pill"
+                     href="../docs/ppt_1a_mesa_IoP.pdf"
+                     target="_blank"
+                     rel="noopener"
+                     title="Abrir presentación Primera Mesa Técnica de Interoperabilidad">
+                    <span class="ico">📄</span>Abrir
                   </a>
                 </td>
               </tr>
-
-              <tr>
-                <td>Minuta de Acuerdos – Mesa Técnica Interoperabilidad</td>
-                <td>
-                  <a class="btn-pill" href="#" target="_blank">
-                    <span class="ico">📄</span> Abrir
-                  </a>
-                </td>
-              </tr>
-
             </tbody>
           </table>
         </div>
+
+        <p style="margin-top:14px; font-size:14px; color:#555;">
+          Contenidos principales: rol de la Mesa IoP, avances del Nodo L&amp;P (corte 19-ene-2026),
+          plan 2026, consumo bajo proporcionalidad/minimización, trazabilidad y portales del Nodo. :contentReference[oaicite:1]{index=1}
+        </p>
 
       </div>
     </section>
   </main>
 </div>
 
-<script src="../assets/app.js?v=1011"></script>
+<script src="../assets/app.js?v=1012"></script>
 </body>
 </html>
