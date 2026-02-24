@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Convenio de Adhesión</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/style.css?v=1001">
+  <link rel="stylesheet" href="../assets/style.css?v=1008">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 
   <div class="searchwrap">
     <span class="icon">🔎</span>
-    <input id="search" type="search" placeholder="Buscar (ej: IPS, DT, SUSESO, SP, anexo 2)" />
+    <input id="search" type="search" placeholder="Buscar (ej: convenio, resolución, IPS, DT)" />
     <button class="search-clear clear-btn" type="button" aria-label="Limpiar búsqueda" style="display:none;">×</button>
     <div id="searchResults" class="search-results"></div>
   </div>
@@ -28,52 +28,68 @@
 
 <div class="shell">
   <aside class="sidebar">
-    <!-- ✅ SOLO CAMBIA EL MENÚ (estructura por categorías) -->
     <nav class="menu menu-mobile-blocks">
+
       <!-- INICIO -->
-      <a href="../index.html" class="menu-btn-primary" data-keywords="inicio home">Inicio</a>
+      <a href="../index.html" class="menu-btn-primary" data-keywords="inicio home">
+        Inicio
+      </a>
 
       <!-- DOCUMENTOS LEGALES -->
       <div class="menu-block">
         <div class="menu-block-title">Documentos Legales</div>
         <div class="menu-block-content">
-          <a href="convenio.html" class="active" data-keywords="convenio adhesion">Convenio de Adhesión</a>
+
+          <a href="convenio.html"
+             class="active"
+             data-keywords="convenio adhesion">
+            Convenio de Adhesión
+          </a>
+
+          <a href="res-exenta-convenio.html"
+             data-keywords="resolucion exenta convenio 748 2025">
+            Res. Exenta Convenio
+          </a>
+
         </div>
       </div>
 
-      <!-- ================= DOCUMENTOS TÉCNICOS ================= -->
-<div class="menu-block">
-  <div class="menu-block-title">Documentos Técnicos</div>
-  <div class="menu-block-content">
+      <!-- DOCUMENTOS TÉCNICOS -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Técnicos</div>
+        <div class="menu-block-content">
 
-    <a href="paginas/anexos-tecnicos.html"
-       data-keywords="anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4">
-      Anexos Técnicos
-    </a>
+          <a href="anexos-tecnicos.html"
+             data-keywords="anexos tecnicos anexo 1 anexo 2 anexo 3 anexo 4">
+            Anexos Técnicos
+          </a>
 
-    <div class="menu-children">
-      <a href="paginas/anexos-provision-datos.html"
-         class="menu-child"
-         data-keywords="provision datos proveedor anexo 1 anexo 2 ips dt suseso sp">
-        Anexos de Provisión de Datos
-      </a>
+          <div class="menu-children">
+            <a href="anexos-provision-datos.html"
+               class="menu-child"
+               data-keywords="provision datos proveedor ips dt suseso sp">
+              Anexos de Provisión de Datos
+            </a>
 
-      <a href="paginas/anexos-consumo-datos.html"
-         class="menu-child"
-         data-keywords="consumo datos consumidor anexo 3 anexo 4 ips dt suseso sp">
-        Anexos de Consumo de Datos
-      </a>
-    </div>
+            <a href="anexos-consumo-datos.html"
+               class="menu-child"
+               data-keywords="consumo datos consumidor ips dt suseso sp">
+              Anexos de Consumo de Datos
+            </a>
+          </div>
 
-  </div>
-</div>
+        </div>
+      </div>
 
       <!-- DOCUMENTOS OPERATIVOS -->
       <div class="menu-block">
         <div class="menu-block-title">Documentos Operativos</div>
         <div class="menu-block-content">
           <a href="reglas-uso.html" data-keywords="reglas uso">Reglas de Uso</a>
-          <a href="datos-disponibles.html" data-keywords="datos disponibles sets ips dt suseso sp fase 1">Datos disponibles</a>
+          <a href="datos-disponibles.html"
+             data-keywords="datos disponibles sets ips dt suseso sp fase 1">
+            Datos disponibles
+          </a>
         </div>
       </div>
 
@@ -81,9 +97,13 @@
       <div class="menu-block">
         <div class="menu-block-title">Documentos Informativos</div>
         <div class="menu-block-content">
-          <a href="documentos-nodo.html" data-keywords="documentos nodo manual soporte procedimiento">Documentos Nodo</a>
+          <a href="documentos-nodo.html"
+             data-keywords="documentos nodo manual soporte procedimiento">
+            Documentos Nodo
+          </a>
         </div>
       </div>
+
     </nav>
   </aside>
 
@@ -93,23 +113,25 @@
 
       <div class="intro-content">
         <p>
-          El Convenio de Adhesión es el instrumento que habilita y regula la participación de las instituciones en la Plataforma de Interoperabilidad del Sector Trabajo y Previsión Social. Mediante este acuerdo, 
-          las entidades establecen formalmente las condiciones bajo las cuales pueden integrarse al Nodo Laboral y Previsional, ya sea como proveedoras y/o consumidoras de información.
+          El Convenio de Adhesión es el instrumento que habilita y regula la participación de las instituciones en la Plataforma de Interoperabilidad del Sector Trabajo y Previsión Social.
+          Mediante este acuerdo, las entidades establecen formalmente las condiciones bajo las cuales pueden integrarse al Nodo Laboral y Previsional,
+          ya sea como proveedoras y/o consumidoras de información.
         </p>
 
         <p>
-          Este Convenio define el marco común que permite el intercambio de datos de manera segura, trazable y ajustada a derecho, estableciendo principios como la finalidad pública del uso de la información, 
-          la minimización de datos, la responsabilidad institucional, la protección de la información y la no transferencia de la titularidad de los datos.
+          Este Convenio define el marco común que permite el intercambio de datos de manera segura, trazable y ajustada a derecho,
+          estableciendo principios como la finalidad pública del uso de la información, la minimización de datos,
+          la responsabilidad institucional, la protección de la información y la no transferencia de la titularidad de los datos.
         </p>
 
         <p>
-          Asimismo, el Convenio fija las responsabilidades generales de las instituciones adheridas y de la Subsecretaría de Previsión Social en su rol de administradora del Nodo, 
+          Asimismo, el Convenio fija las responsabilidades generales de las instituciones adheridas y de la Subsecretaría de Previsión Social en su rol de administradora del Nodo,
           asegurando una gobernanza clara, mecanismos de control, verificación de cumplimiento y resguardo de la información compartida.
         </p>
 
         <p>
-          En términos prácticos, el Convenio es la base que da validez jurídica, orden institucional y confianza al funcionamiento de la Plataforma, permitiendo que los procesos de 
-          interoperabilidad se desarrollen de manera coordinada, transparente y conforme a la normativa vigente.
+          En términos prácticos, el Convenio es la base que da validez jurídica, orden institucional y confianza al funcionamiento de la Plataforma,
+          permitiendo que los procesos de interoperabilidad se desarrollen de manera coordinada, transparente y conforme a la normativa vigente.
         </p>
 
         <div class="doc-table">
@@ -124,7 +146,10 @@
               <tr>
                 <td>Convenio Sectorial Nodo Laboral y Previsional</td>
                 <td>
-                  <a class="btn" href="../docs/Convenio-Sectorial-Nodo.pdf" target="_blank" rel="noopener">
+                  <a class="btn-pill"
+                     href="../docs/Convenio-Sectorial-Nodo.pdf"
+                     target="_blank"
+                     rel="noopener">
                     <span class="ico">📄</span> Abrir
                   </a>
                 </td>
@@ -133,10 +158,11 @@
           </table>
         </div>
 
+      </div>
     </section>
   </main>
 </div>
 
-<script src="../assets/app.js?v=1001"></script>
+<script src="../assets/app.js?v=1008"></script>
 </body>
 </html>
