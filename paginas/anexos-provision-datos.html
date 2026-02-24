@@ -1,68 +1,174 @@
-<tbody>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Anexos de Provisión de Datos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/style.css?v=1004">
+</head>
+<body>
 
-  <!-- SP -->
-  <tr>
-    <td><b>SP</b></td>
-    <td><a class="btn-pill" href="../docs/SP_Anexo1.pdf" target="_blank" rel="noopener"><span class="ico">📄</span>Abrir</a></td>
-    <td><a class="btn-pill" href="../docs/SP_Anexo2.pdf" target="_blank" rel="noopener"><span class="ico">📄</span>Abrir</a></td>
-    <td>
-      <a class="btn-pill"
-         href="../docs/Res_Exenta_814_2025_Anexos_1_2.pdf"
-         target="_blank"
-         rel="noopener"
-         title="Resolución Exenta N° 814/2025 - Aprueba Anexos 1 y 2">
-         <span class="ico">📄</span>Abrir
-      </a>
-    </td>
-    <td class="dash">-</td>
-  </tr>
+<header class="topbar">
+  <button class="burger" type="button" aria-label="Abrir menú"><span>≡</span></button>
 
-  <!-- SUSESO -->
-  <tr>
-    <td><b>SUSESO</b></td>
-    <td><a class="btn-pill" href="../docs/SUSESO_Anexo1.pdf" target="_blank" rel="noopener"><span class="ico">📄</span>Abrir</a></td>
-    <td><a class="btn-pill" href="../docs/SUSESO_Anexo2.pdf" target="_blank" rel="noopener"><span class="ico">📄</span>Abrir</a></td>
-    <td>
-      <a class="btn-pill"
-         href="../docs/Res_Exenta_814_2025_Anexos_1_2.pdf"
-         target="_blank"
-         rel="noopener">
-         <span class="ico">📄</span>Abrir
-      </a>
-    </td>
-    <td class="dash">-</td>
-  </tr>
+  <div class="brand">
+    <img src="../assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
+    <div class="brand-title">Repositorio Digital Sectorial</div>
+  </div>
 
-  <!-- DT -->
-  <tr>
-    <td><b>DT</b></td>
-    <td><a class="btn-pill" href="../docs/DT_Anexo1.pdf" target="_blank" rel="noopener"><span class="ico">📄</span>Abrir</a></td>
-    <td><a class="btn-pill" href="../docs/DT_Anexo2.pdf" target="_blank" rel="noopener"><span class="ico">📄</span>Abrir</a></td>
-    <td>
-      <a class="btn-pill"
-         href="../docs/Res_Exenta_814_2025_Anexos_1_2.pdf"
-         target="_blank"
-         rel="noopener">
-         <span class="ico">📄</span>Abrir
-      </a>
-    </td>
-    <td class="dash">-</td>
-  </tr>
+  <div class="searchwrap">
+    <span class="icon">🔎</span>
+    <input id="search" type="search"
+           placeholder="Buscar (ej: IPS, DT, SUSESO, SP, anexo 2)" />
+    <button class="search-clear clear-btn"
+            type="button"
+            aria-label="Limpiar búsqueda"
+            style="display:none;">×</button>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</header>
 
-  <!-- IPS -->
-  <tr>
-    <td><b>IPS</b></td>
-    <td><a class="btn-pill" href="../docs/IPS_Anexo1.pdf" target="_blank" rel="noopener"><span class="ico">📄</span>Abrir</a></td>
-    <td><a class="btn-pill" href="../docs/IPS_Anexo2.pdf" target="_blank" rel="noopener"><span class="ico">📄</span>Abrir</a></td>
-    <td>
-      <a class="btn-pill"
-         href="../docs/Res_Exenta_814_2025_Anexos_1_2.pdf"
-         target="_blank"
-         rel="noopener">
-         <span class="ico">📄</span>Abrir
-      </a>
-    </td>
-    <td class="dash">-</td>
-  </tr>
+<div class="overlay"></div>
 
-</tbody>
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="menu menu-mobile-blocks">
+
+      <a href="../index.html"
+         class="menu-btn-primary"
+         data-keywords="inicio home">Inicio</a>
+
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Legales</div>
+        <div class="menu-block-content">
+          <a href="convenio.html"
+             data-keywords="convenio adhesion">
+             Convenio de Adhesión
+          </a>
+        </div>
+      </div>
+
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Técnicos</div>
+        <div class="menu-block-content">
+          <a href="anexos-tecnicos.html"
+             data-keywords="anexos tecnicos anexo 1 anexo 2">
+             Anexos Técnicos
+          </a>
+
+          <div class="menu-children">
+            <a href="anexos-provision-datos.html"
+               class="menu-child"
+               data-keywords="provision datos ips dt suseso sp resolucion exenta 814">
+               Anexos de Provisión de Datos
+            </a>
+
+            <a href="anexos-consumo-datos.html"
+               class="menu-child"
+               data-keywords="consumo datos ips dt suseso sp">
+               Anexos de Consumo de Datos
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Operativos</div>
+        <div class="menu-block-content">
+          <a href="reglas-uso.html"
+             data-keywords="reglas uso">
+             Reglas de Uso
+          </a>
+
+          <a href="datos-disponibles.html"
+             data-keywords="datos disponibles sets fase 1">
+             Datos disponibles
+          </a>
+        </div>
+      </div>
+
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Informativos</div>
+        <div class="menu-block-content">
+          <a href="documentos-nodo.html"
+             data-keywords="documentos nodo manual soporte">
+             Documentos Nodo
+          </a>
+        </div>
+      </div>
+
+    </nav>
+  </aside>
+
+  <main class="main">
+    <section class="card">
+      <h1 class="h1">Anexos de Provisión de Datos</h1>
+
+      <div class="intro-content">
+        <p>
+          Los Anexos de Provisión de Datos definen qué información entrega una institución al Nodo,
+          para qué fines públicos y bajo qué condiciones.
+        </p>
+
+        <p style="margin-top:10px; font-size:14px; color:#555;">
+          Resolución Exenta N° 814/2025 aplica a todas las OAEs y aprueba los Anexos 1 y 2.
+        </p>
+
+        <div class="doc-table">
+          <table>
+            <thead>
+              <tr>
+                <th>OAE</th>
+                <th>ANEXO 1</th>
+                <th>ANEXO 2</th>
+                <th>RES. EXENTA SPS</th>
+                <th>RES. EXENTA OAE</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td><b>SP</b></td>
+                <td><a class="btn-pill" href="../docs/SP_Anexo1.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td><a class="btn-pill" href="../docs/SP_Anexo2.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td><a class="btn-pill" href="../docs/Res_Exenta_814_2025_Anexos_1_2.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td class="dash">-</td>
+              </tr>
+
+              <tr>
+                <td><b>SUSESO</b></td>
+                <td><a class="btn-pill" href="../docs/SUSESO_Anexo1.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td><a class="btn-pill" href="../docs/SUSESO_Anexo2.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td><a class="btn-pill" href="../docs/Res_Exenta_814_2025_Anexos_1_2.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td class="dash">-</td>
+              </tr>
+
+              <tr>
+                <td><b>DT</b></td>
+                <td><a class="btn-pill" href="../docs/DT_Anexo1.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td><a class="btn-pill" href="../docs/DT_Anexo2.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td><a class="btn-pill" href="../docs/Res_Exenta_814_2025_Anexos_1_2.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td class="dash">-</td>
+              </tr>
+
+              <tr>
+                <td><b>IPS</b></td>
+                <td><a class="btn-pill" href="../docs/IPS_Anexo1.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td><a class="btn-pill" href="../docs/IPS_Anexo2.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td><a class="btn-pill" href="../docs/Res_Exenta_814_2025_Anexos_1_2.pdf" target="_blank"><span class="ico">📄</span>Abrir</a></td>
+                <td class="dash">-</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="../assets/app.js?v=1004"></script>
+</body>
+</html>
