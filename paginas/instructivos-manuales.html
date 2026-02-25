@@ -1,1 +1,159 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Instructivos y Manuales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/style.css?v=1005">
+</head>
+<body>
 
+<header class="topbar">
+  <button class="burger" type="button" aria-label="Abrir menú">
+    <span>≡</span>
+  </button>
+
+  <div class="brand">
+    <img src="../assets/img/Logo.png" alt="Logo Nodo Laboral y Previsional">
+    <div class="brand-title">Repositorio Digital Sectorial</div>
+  </div>
+
+  <div class="searchwrap">
+    <span class="icon">🔎</span>
+    <input id="search" type="search" placeholder="Buscar instructivos, manuales, sandbox">
+    <button class="search-clear clear-btn" type="button" aria-label="Limpiar búsqueda" style="display:none;">×</button>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</header>
+
+<div class="overlay"></div>
+
+<div class="shell">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <nav class="menu menu-mobile-blocks">
+
+      <a href="../index.html" class="menu-btn-primary">Inicio</a>
+
+      <!-- DOCUMENTOS LEGALES -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Legales</div>
+        <div class="menu-block-content">
+          <a href="convenio.html">Convenio de Adhesión</a>
+          <a href="res-exenta-convenio.html">Res. Exenta Convenio</a>
+          <a href="anexos-tecnicos.html">Anexos Técnicos</a>
+          <div class="menu-children">
+            <a href="anexos-provision-datos.html" class="menu-child">Anexos de Provisión</a>
+            <a href="anexos-consumo-datos.html" class="menu-child">Anexos de Consumo</a>
+          </div>
+          <a href="reglas-uso.html">Reglas de Uso</a>
+        </div>
+      </div>
+
+      <!-- DOCUMENTOS TÉCNICOS -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Técnicos</div>
+        <div class="menu-block-content">
+        </div>
+      </div>
+
+      <!-- DOCUMENTOS OPERATIVOS -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Operativos</div>
+        <div class="menu-block-content">
+          <a href="datos-disponibles.html">Datos disponibles</a>
+          <a href="instructivos-manuales.html" class="active">
+            Instructivos y Manuales
+          </a>
+        </div>
+      </div>
+
+      <!-- DOCUMENTOS INFORMATIVOS -->
+      <div class="menu-block">
+        <div class="menu-block-title">Documentos Informativos</div>
+        <div class="menu-block-content">
+          <a href="documentos-nodo.html">Documentos Nodo</a>
+          <a href="mesas-tecnicas.html">Mesas Técnicas de Interoperabilidad</a>
+        </div>
+      </div>
+
+    </nav>
+  </aside>
+
+  <!-- ================= CONTENIDO ================= -->
+  <main class="main">
+    <section class="card">
+
+      <h1 class="h1">Instructivos y Manuales</h1>
+
+      <div class="intro-content">
+        <p>
+          Esta sección reúne instructivos técnicos y manuales operativos asociados al consumo del Nodo
+          Laboral y Previsional, incluyendo guías de integración, uso del Sandbox y procedimientos de
+          configuración para organismos públicos y privados.
+        </p>
+      </div>
+
+      <div class="doc-table">
+        <table>
+          <thead>
+            <tr>
+              <th>DOCUMENTO</th>
+              <th>FECHA</th>
+              <th>ACCIÓN</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>Instructivo de Consumo Nodo L&amp;P</td>
+              <td>06-10-2025</td>
+              <td>
+                <a class="btn"
+                   href="../docs/Instructivo_Consumo_Nodo.pdf"
+                   target="_blank"
+                   rel="noopener">
+                  <span class="ico">📄</span> Abrir
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Guía de Integración Nodo y Ficha L&amp;P – Privados</td>
+              <td>2026</td>
+              <td>
+                <a class="btn"
+                   href="../docs/Instructivo_Integracion_Privados.pdf"
+                   target="_blank"
+                   rel="noopener">
+                  <span class="ico">📄</span> Abrir
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Manual Sandbox – Consumo Ficha Única</td>
+              <td>07-01-2026</td>
+              <td>
+                <a class="btn"
+                   href="../docs/Manual_Sandbox_Consumo_Ficha_Unica.pdf"
+                   target="_blank"
+                   rel="noopener">
+                  <span class="ico">📄</span> Abrir
+                </a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<script src="../assets/app.js?v=1005"></script>
+</body>
+</html>
