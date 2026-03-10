@@ -766,3 +766,28 @@ body.menu-open .overlay{
 .sidebar .menu .menu-block-content a{
   margin-bottom:6px;
 }
+/* ==========================================
+   TABLA RESOLUCIONES CONVENIO
+   ========================================== */
+
+/* todos los títulos centrados */
+.doc-table-convenio thead th {
+  text-align: center !important;
+}
+
+/* institución izquierda */
+.doc-table-convenio tbody td:nth-child(1) {
+  text-align: left !important;
+  padding-left: 16px;
+}
+
+/* documento izquierda */
+.doc-table-convenio tbody td:nth-child(2) {
+  text-align: left !important;
+}
+
+/* fecha y acción centradas */
+.doc-table-convenio tbody td:nth-child(3),
+.doc-table-convenio tbody td:nth-child(4) {
+  text-align: center !important;
+}
