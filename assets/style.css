@@ -791,3 +791,39 @@ body.menu-open .overlay{
 .doc-table-convenio tbody td:nth-child(4) {
   text-align: center !important;
 }
+/* ==========================================
+   FIX TABLAS DE 2 COLUMNAS
+   Reglas de Uso / Documentos Nodo / Datos disponibles
+   ========================================== */
+
+/* títulos centrados */
+.doc-table table thead th{
+  text-align:center !important;
+}
+
+/* cuando la tabla tiene 2 columnas:
+   primera columna a la izquierda,
+   segunda columna centrada */
+.doc-table table tbody td:first-child:last-child {
+  text-align:center !important;
+}
+
+.doc-table table tbody td:first-child {
+  text-align:left !important;
+}
+
+.doc-table table tbody td:last-child {
+  text-align:center !important;
+}
+
+/* si la fila tiene exactamente 2 columnas, mantener acción centrada */
+.doc-table table tbody tr td:nth-child(2):last-child {
+  text-align:center !important;
+}
+
+/* botón dentro de la columna acción */
+.doc-table table tbody td:last-child .btn,
+.doc-table table tbody td:last-child .btn-pill {
+  display:inline-flex;
+  margin:0 auto;
+}
