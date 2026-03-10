@@ -863,3 +863,32 @@ body.menu-open .overlay{
 .doc-table table td:nth-child(4) {
   text-align: center;
 }
+/* ===== TABLAS REPOSITORIO ===== */
+
+/* TODOS LOS TITULOS CENTRADOS */
+
+.doc-table table th {
+  text-align: center;
+}
+
+
+/* DEFAULT contenido centrado */
+
+.doc-table table td {
+  text-align: center;
+}
+
+
+/* INSTITUCION izquierda */
+
+.doc-table table td:nth-child(1) {
+  text-align: left;
+  padding-left: 16px;
+}
+
+
+/* DOCUMENTO izquierda */
+
+.doc-table table td:nth-child(2) {
+  text-align: left;
+}
