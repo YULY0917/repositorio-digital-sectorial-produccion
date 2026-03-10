@@ -166,10 +166,10 @@ a:hover{ text-decoration:underline; }
   display:flex;
   flex-direction:column;
   gap:10px;
-  flex:1; /* empuja version hacia abajo */
+  flex:1;
 }
 
-/* ✅ CRÍTICO: los <a> del menú SIEMPRE deben ser block (evita “dos columnas”) */
+/* Links del menú */
 .menu a{
   display:block;
   width:100%;
@@ -180,8 +180,6 @@ a:hover{ text-decoration:underline; }
   text-decoration:none;
 }
 .menu a.active{ background:rgba(255,255,255,.22); }
-
-/* Si usas clase .sub en algún link (legacy), la respetamos */
 .menu a.sub{ padding-left:40px; }
 
 .menu a:hover{
@@ -251,31 +249,67 @@ a:hover{ text-decoration:underline; }
 
 /* ================= TABLAS ================= */
 .doc-table{
-  margin-top:18px;
+  width:100%;
+  margin-top:16px;
   border:1px solid var(--line);
   border-radius:18px;
   background:#fff;
   overflow-x:auto;
 }
+
 .doc-table table{
   width:100%;
   min-width:720px;
+  border-collapse:separate;
+  border-spacing:0;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
 }
-.doc-table thead th{
+
+/* Títulos de tabla centrados */
+.doc-table thead th,
+.doc-table table th,
+.doc-table th{
   background:#f4f7fb;
-  padding:16px;
+  color:#2F3A45;
+  font-weight:700;
   font-size:13px;
+  letter-spacing:.02em;
+  padding:14px 16px;
   text-transform:uppercase;
-  letter-spacing:.6px;
+  border-bottom:1px solid #e7edf6;
+  text-align:center !important;
 }
-.doc-table tbody td{
-  padding:18px;
-  border-bottom:1px solid #edf1f7;
-  font-size:15px;
+
+.doc-table tbody td,
+.doc-table table td,
+.doc-table td{
+  padding:16px 18px;
+  border-bottom:1px solid #eef3fb;
+  vertical-align:middle;
+  font-size:14px;
+  color:#2F3A45;
+  text-align:center;
 }
+
 .doc-table tbody tr:last-child td{ border-bottom:none; }
-.doc-table th:nth-child(n+2),
-.doc-table td:nth-child(n+2){
+
+/* Contenido columna 1 (INSTITUCIÓN / OAE / similar) a la izquierda */
+.doc-table tbody td:nth-child(1){
+  text-align:left;
+  padding-left:16px;
+}
+
+/* Contenido columna 2 (DOCUMENTO) a la izquierda */
+.doc-table tbody td:nth-child(2){
+  text-align:left;
+}
+
+/* FECHA y ACCIÓN centrados */
+.doc-table tbody td:nth-child(3),
+.doc-table tbody td:nth-child(4),
+.doc-table tbody td:nth-child(5){
   text-align:center;
 }
 
@@ -291,13 +325,56 @@ a:hover{ text-decoration:underline; }
   font-weight:400 !important;
 }
 
-/* ================= ANEXOS TÉCNICOS (TARJETAS) =================
-   SOLO afecta a clases .annex-*
-*/
+.doc-table td.muted,
+.doc-table .dash{
+  color:#6b778c;
+  font-weight:600;
+}
+
+/* ================= BOTÓN PILL ================= */
+.btn-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  background:#1f76bd;
+  color:#fff !important;
+  border-radius:14px;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 10px 22px rgba(31,118,189,.18);
+  transition:transform .12s ease, filter .12s ease;
+  white-space:nowrap;
+}
+
+.btn-pill:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.02);
+  text-decoration:none;
+}
+
+.btn-pill .ico{
+  width:18px;
+  height:18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  line-height:1;
+}
+
+.btn-pill.is-disabled{
+  pointer-events:none;
+  opacity:.45;
+  filter:grayscale(10%);
+  box-shadow:none;
+}
+
+/* ================= ANEXOS TÉCNICOS (TARJETAS) ================= */
 .annex-list{
   margin-top:18px;
   display:grid;
-  grid-template-columns:1fr; /* una debajo de la otra */
+  grid-template-columns:1fr;
   gap:14px;
 }
 
@@ -320,6 +397,34 @@ a:hover{ text-decoration:underline; }
   color:var(--muted);
   font-size:15px;
   line-height:1.55;
+}
+
+/* ================= ANEXOS TÉCNICOS - CARDS ================= */
+.anexos-cards{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin-top:18px;
+}
+
+.anexo-card{
+  background:#ffffff;
+  border:1px solid #d9dee8;
+  border-radius:18px;
+  padding:20px;
+}
+
+.anexo-card-title{
+  font-weight:800;
+  font-size:16px;
+  margin-bottom:10px;
+  color:#111827;
+}
+
+.anexo-card-text{
+  font-size:14.5px;
+  line-height:1.55;
+  color:#2F3A45;
 }
 
 /* ================= OVERLAY ================= */
@@ -359,11 +464,9 @@ body.menu-open .overlay{
   .shell{ display:block; }
   .main{ padding:18px; }
 
-  /* ✅ Fix: “Inicio” cortado en móvil (separación arriba del menú) */
   .menu{ padding-top:12px; }
   .menu a:first-child{ margin-top:6px; }
 
-  /* Ajuste fino: subir levemente "Última actualización" en móvil */
   .site-version{ margin-bottom:56px; }
 }
 
@@ -372,9 +475,9 @@ body.menu-open .overlay{
    ================================================= */
 @media (max-width: 520px){
   .topbar{
-    height:auto;              /* que crezca */
+    height:auto;
     padding:12px 14px;
-    flex-wrap:wrap;           /* 2 líneas */
+    flex-wrap:wrap;
     align-items:flex-start;
     gap:10px;
   }
@@ -394,30 +497,29 @@ body.menu-open .overlay{
     line-height:1.15;
   }
 
-  /* buscador bajo logo/título */
   .searchwrap{
     width:100%;
     margin-left:0;
     order:3;
   }
+
   #search{
     width:100%;
     height:40px;
     font-size:14px;
   }
+
   .search-results{
     width:92vw;
     right:0;
   }
 
-  /* que la version se vea en menú móvil */
   .site-version{
     position:sticky;
     bottom:12px;
     z-index:2;
   }
 
-  /* ===== FIX SOLO CELULAR: tarjetas anexos técnicos ===== */
   .annex-list{
     margin-top:14px;
     gap:12px;
@@ -441,9 +543,7 @@ body.menu-open .overlay{
   }
 }
 
-/* ===========================
-   TEXTO CONTENIDO (GLOBAL)
-   =========================== */
+/* ================= TEXTO CONTENIDO (GLOBAL) ================= */
 .card p,
 .card li,
 .card span{
@@ -451,12 +551,12 @@ body.menu-open .overlay{
   line-height:1.7;
 }
 
-/* Destacados dentro del contenido */
 .card p strong,
 .card li strong{
   color:var(--blue-dark);
   font-weight:700;
 }
+
 .card p,
 .card li,
 .card span{
@@ -464,15 +564,8 @@ body.menu-open .overlay{
 }
 
 /* =========================================================
-   MENÚ JERÁRQUICO FINAL (para tu estructura solicitada)
-   Estructura:
-   Documentos Legales -> Convenio
-   Documentos Técnicos -> Anexos Técnicos -> (Provisión, Consumo)
-   Documentos Operativos -> Reglas, Datos
-   Documentos Informativos -> Documentos Nodo
+   MENÚ JERÁRQUICO FINAL
    ========================================================= */
-
-/* Los títulos de categoría NO deben comportarse como botón del menú */
 .menu-title{
   padding:10px 16px;
   font-weight:900;
@@ -480,35 +573,29 @@ body.menu-open .overlay{
   opacity:.92;
 }
 
-/* Separación entre categorías (cuando usas <div class="menu-group">) */
 .menu-group{
   margin-top:14px;
 }
 
-/* Contenedor de hijos (subnivel) */
 .menu-children{
   display:flex;
   flex-direction:column;
   gap:10px;
 }
 
-/* Subnivel real: sangría para hijos de "Anexos Técnicos" */
 .menu-children a{
   padding-left:40px;
 }
-/* ===========================
-   AJUSTES MENÚ (PADRE/HIJO + ACTIVO UNIFORME)
-   Pegar al FINAL de assets/style.css
-   =========================== */
 
-/* 1) Padres en negrita */
+/* ===========================
+   AJUSTES MENÚ
+   =========================== */
 .menu .menu-parent {
   font-weight: 700 !important;
 }
 
-/* 2) Hijos sin negrita + indentación jerárquica */
 .menu .menu-children {
-  margin-left: 14px;           /* sangría visual */
+  margin-left: 14px;
   margin-top: 6px;
   margin-bottom: 6px;
   padding-left: 10px;
@@ -516,43 +603,36 @@ body.menu-open .overlay{
 }
 
 .menu .menu-child {
-  font-weight: 400 !important; /* NO negrita */
+  font-weight: 400 !important;
   display: block;
 }
 
-/* 3) Activo uniforme para CUALQUIER link del menú */
 .menu a.is-active,
 .menu a.active,
 .menu a[aria-current="page"] {
   background: rgba(255,255,255,0.22) !important;
-  border-radius: 16px; /* forma tipo “píldora” */
+  border-radius: 16px;
 }
 
-/* (opcional) hover consistente */
 .menu a:hover {
   background: rgba(255,255,255,0.14);
 }
+
 /* ===========================
    MENÚ: NEGRITA SOLO EN TÍTULOS + INICIO
-   + JERARQUÍA FIJA DE ANEXOS
    =========================== */
-
-/* 1) Solo los títulos de bloque en negrita */
 .menu .menu-block-title {
   font-weight: 700 !important;
 }
 
-/* 2) Inicio en negrita (botón principal) */
 .menu .menu-btn-primary {
   font-weight: 700 !important;
 }
 
-/* 3) Todos los links normales (sin negrita) */
 .menu a {
   font-weight: 400 !important;
 }
 
-/* 4) Hijos SIEMPRE indentados bajo Anexos Técnicos */
 .menu .menu-children {
   margin-left: 14px;
   margin-top: 6px;
@@ -566,7 +646,6 @@ body.menu-open .overlay{
   font-weight: 400 !important;
 }
 
-/* 5) Activo uniforme (para cualquier link, sin afectar niveles) */
 .menu a.is-active,
 .menu a.active,
 .menu a[aria-current="page"],
@@ -575,22 +654,18 @@ body.menu-open .overlay{
   background: rgba(255,255,255,0.22) !important;
   border-radius: 16px;
 }
+
 /* =========================================================
    FIX DEFINITIVO: NEGRITA SOLO EN INICIO + TITULOS
-   (Pegar al FINAL de assets/style.css)
    ========================================================= */
-
-/* 1) TITULOS de bloque en negrita */
 .sidebar .menu .menu-block-title{
   font-weight: 700 !important;
 }
 
-/* 2) INICIO (botón principal) en negrita */
 .sidebar .menu .menu-btn-primary{
   font-weight: 700 !important;
 }
 
-/* 3) TODOS los enlaces (padres e hijos) sin negrita */
 .sidebar .menu a,
 .sidebar .menu .menu-block-content a,
 .sidebar .menu .menu-block-content > a,
@@ -599,7 +674,6 @@ body.menu-open .overlay{
   font-weight: 400 !important;
 }
 
-/* 4) Jerarquía visual hijos (indent) */
 .sidebar .menu .menu-children{
   margin-left: 14px;
   margin-top: 6px;
@@ -612,7 +686,6 @@ body.menu-open .overlay{
   display: block;
 }
 
-/* 5) Activo uniforme (NO cambia negrita) */
 .sidebar .menu a.is-active,
 .sidebar .menu a.active,
 .sidebar .menu a[aria-current="page"],
@@ -621,145 +694,24 @@ body.menu-open .overlay{
   background: rgba(255,255,255,0.22) !important;
   border-radius: 16px;
 }
-/* ===========================
-   BOTÓN "DESCARGAR" + TABLAS ANEXOS
-   (Agregar al final de assets/style.css)
-   =========================== */
 
-.doc-table{ width:100%; margin-top:16px; }
-
-.doc-table table{
-  width:100%;
-  border-collapse:separate;
-  border-spacing:0;
-  background:#fff;
-  border:1px solid #d9dee8;
-  border-radius:16px;
-  overflow:hidden;
-}
-
-.doc-table thead th{
-  background:#f4f7fb;
-  color:#2F3A45;
-  font-weight:700;
-  font-size:13px;
-  letter-spacing:.02em;
-  padding:14px 16px;
-  text-transform:uppercase;
-  border-bottom:1px solid #e7edf6;
-}
-
-.doc-table tbody td{
-  padding:16px;
-  border-bottom:1px solid #eef3fb;
-  vertical-align:middle;
-  font-size:14px;
-  color:#2F3A45;
-}
-
-.doc-table tbody tr:last-child td{ border-bottom:none; }
-
-.doc-table td.muted,
-.doc-table .dash{
-  color:#6b778c;
-  font-weight:600;
-}
-
-.btn-pill{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 16px;
-  background:#1f76bd;
-  color:#fff !important;
-  border-radius:14px;
-  font-weight:700;
-  text-decoration:none;
-  box-shadow:0 10px 22px rgba(31,118,189,.18);
-  transition:transform .12s ease, filter .12s ease;
-  white-space:nowrap;
-}
-
-.btn-pill:hover{ transform:translateY(-1px); filter:brightness(1.02); }
-
-.btn-pill .ico{
-  width:18px;
-  height:18px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  font-size:14px;
-  line-height:1;
-}
-
-/* Botón deshabilitado (cuando no hay documento) */
-.btn-pill.is-disabled{
-  pointer-events:none;
-  opacity:.45;
-  filter:grayscale(10%);
-  box-shadow:none;
-}
-/* ===========================
-   ANEXOS TÉCNICOS - CARDS
-   =========================== */
-
-.anexos-cards{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  margin-top:18px;
-}
-
-.anexo-card{
-  background:#ffffff;
-  border:1px solid #d9dee8;
-  border-radius:18px;
-  padding:20px;
-}
-
-.anexo-card-title{
-  font-weight:800;
-  font-size:16px;
-  margin-bottom:10px;
-  color:#111827;
-}
-
-.anexo-card-text{
-  font-size:14.5px;
-  line-height:1.55;
-  color:#2F3A45;
-}
 /* =========================================================
-   MENU COLAPSABLE DEFINITIVO
-   Padres tipo botón (igual que Inicio)
-   Hijos visibles solo al abrir
+   MENÚ COLAPSABLE DEFINITIVO
    ========================================================= */
-
-/* =============================
-   1) Ocultar submenús por defecto
-   ============================= */
 .sidebar .menu .menu-block-content{
   display:none;
 }
 
-/* =============================
-   2) Mostrar solo si está abierto
-   ============================= */
 .sidebar .menu .menu-block.is-open > .menu-block-content{
   display:block;
 }
 
-/* =============================
-   3) Padres como botón (igual Inicio)
-   ============================= */
 .sidebar .menu .menu-block-title{
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   width:100%;
   padding:16px;
-
   border-radius:16px;
   color:#fff;
   font-weight:700;
@@ -768,19 +720,14 @@ body.menu-open .overlay{
   transition:background .15s ease;
 }
 
-/* Hover igual que los links */
 .sidebar .menu .menu-block-title:hover{
   background:rgba(255,255,255,.18);
 }
 
-/* Estado abierto */
 .sidebar .menu .menu-block.is-open > .menu-block-title{
   background:rgba(255,255,255,.22);
 }
 
-/* =============================
-   4) Flecha
-   ============================= */
 .sidebar .menu .menu-block-title::after{
   content:"▸";
   font-size:14px;
@@ -792,9 +739,6 @@ body.menu-open .overlay{
   content:"▾";
 }
 
-/* =============================
-   5) Hijos indentados
-   ============================= */
 .sidebar .menu .menu-children{
   margin-left:14px;
   margin-top:6px;
@@ -808,87 +752,17 @@ body.menu-open .overlay{
   font-weight:400 !important;
 }
 
-/* =============================
-   6) Activo uniforme
-   ============================= */
 .sidebar .menu a.is-active,
 .sidebar .menu a.active,
 .sidebar .menu a[aria-current="page"]{
   background:rgba(255,255,255,.22);
   border-radius:16px;
 }
-/* ==========================================
-   ESPACIO ENTRE PADRE Y SUBMENÚ
-   ========================================== */
 
 .sidebar .menu .menu-block-content{
-  margin-top:8px;   /* espacio entre Documentos Legales y Convenio */
+  margin-top:8px;
 }
 
 .sidebar .menu .menu-block-content a{
-  margin-bottom:6px; /* separación entre hijos */
-}
-/* ===== TABLAS REPOSITORIO ===== */
-
-.doc-table table th,
-.doc-table table td {
-  text-align: center;
-}
-
-/* INSTITUCION */
-
-.doc-table table th:nth-child(1),
-.doc-table table td:nth-child(1) {
-  text-align: left;
-  padding-left: 16px;
-}
-
-/* DOCUMENTO */
-
-.doc-table table th:nth-child(2),
-.doc-table table td:nth-child(2) {
-  text-align: left;
-}
-
-/* FECHA centrado */
-
-.doc-table table th:nth-child(3),
-.doc-table table td:nth-child(3) {
-  text-align: center;
-}
-
-/* ACCION centrado */
-
-.doc-table table th:nth-child(4),
-.doc-table table td:nth-child(4) {
-  text-align: center;
-}
-/* ===== TABLAS REPOSITORIO ===== */
-
-/* TODOS LOS TITULOS CENTRADOS */
-
-.doc-table table th {
-  text-align: center;
-}
-
-
-/* DEFAULT contenido centrado */
-
-.doc-table table td {
-  text-align: center;
-}
-
-
-/* INSTITUCION izquierda */
-
-.doc-table table td:nth-child(1) {
-  text-align: left;
-  padding-left: 16px;
-}
-
-
-/* DOCUMENTO izquierda */
-
-.doc-table table td:nth-child(2) {
-  text-align: left;
+  margin-bottom:6px;
 }
