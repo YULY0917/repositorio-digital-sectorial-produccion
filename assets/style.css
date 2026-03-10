@@ -828,16 +828,3 @@ body.menu-open .overlay{
 .sidebar .menu .menu-block-content a{
   margin-bottom:6px; /* separación entre hijos */
 }
-/* ===== TABLA DOCUMENTOS - ALINEAR TEXTO ===== */
-
-.doc-table table th,
-.doc-table table td {
-  text-align: center;
-}
-
-/* columna DOCUMENTO alineada a la izquierda */
-
-.doc-table table td:nth-child(2),
-.doc-table table th:nth-child(2) {
-  text-align: left;
-}
